@@ -1,0 +1,24 @@
+gems: [jekyll-paginate]
+# Dependencies
+markdown:         kramdown
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Ska's Blog
+tagline:          'development architecture integration operation'
+description:      '아키텍트==雜夫'
+url:              http://skaqud.github.io
+
+author:
+  name:           'ska'
+  url:
+
+paginate:         5
+
+# Custom vars
+version:          2.0.0
+
+github:
+  repo:           https://github.com/skaqud
