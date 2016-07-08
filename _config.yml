@@ -1,4 +1,5 @@
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
 # Dependencies
 markdown:         kramdown
 
@@ -18,7 +19,6 @@ author:
 paginate:         5
 
 # Custom vars
-version:          2.0.0
-
+version:          0.0.1
 github:
   repo:           https://github.com/skaqud
