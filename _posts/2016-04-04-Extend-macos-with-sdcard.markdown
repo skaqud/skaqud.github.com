@@ -4,8 +4,6 @@ title:  "MacOS SD카드 용량 확장"
 date:   2016-04-04 21:10:49 +0700
 categories: hobby, life
 ---
-# MacOS SD카드 용량 확장#
-
 ## mac SD 설정 관련 ##
 
 sleepwatcher 설치
