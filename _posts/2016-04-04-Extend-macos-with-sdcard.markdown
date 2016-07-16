@@ -6,6 +6,9 @@ categories: hobby, life
 ---
 ## mac SD 설정 관련 ##
 
+mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
+jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.
+
 sleepwatcher 설치
 
 참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
@@ -35,9 +38,8 @@ sleepwatcher 설치
 참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&wr_id=849473
 
 1. 아이튠즈 설정 - 고급 - iTunes Media 폴더 위치
-라는 메뉴에서 원하는 위치로 변경하면 됩니다.
-하지만 이경우 아마도, 새로운 보관함을 만드는 것일겁니다 아마도.
+라는 메뉴에서 원하는 위치로 변경
 
 2. 파인더에서 기본적인 보관함 위치인 '홈폴더 - 음악 - iTunes' 폴더를 SD카드로 이동한다음
 아이튠즈를 실행할때 Option키를 누르면서 실행하면 보관함 선택할 수 있는 메뉴가 뜹니다.
-여기서 옮긴 보관함을 선택해주면됩니다.
+여기서 옮긴 보관함을 선택
