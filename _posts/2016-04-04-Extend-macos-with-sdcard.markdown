@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Vagrant로 로컬에 가상 개발환경 준비하기"
+title:  "MacOS SD카드 용량 확장"
 date:   2016-04-04 21:10:49 +0700
 categories: hobby, life
 ---
