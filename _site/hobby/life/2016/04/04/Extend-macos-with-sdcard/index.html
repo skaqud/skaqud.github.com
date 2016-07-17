@@ -10,7 +10,7 @@
 
   <title>
     
-      404: Page not found &middot; 雜夫's Blog
+      MacOS SD카드 용량 확장 &middot; 雜夫's Blog
     
   </title>
 
@@ -102,9 +102,88 @@
       </div>
 
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
+        <div class="post">
+  <h1 class="post-title">MacOS SD카드 용량 확장</h1>
+  <span class="post-date">04 Apr 2016</span>
+  <h2 id="mac-sd--">mac SD 설정 관련</h2>
+
+<p>mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
+jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.</p>
+
+<p>sleepwatcher 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
+</code></pre>
+</div>
+
+  	brew update &amp;&amp; brew install sleepwatcher
+
+  	ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
+
+  	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
+
+  	sleep 내용
+  	#!/bin/sh
+  	diskutil unmount /Volumes/SkaMacSD
+  	sleep 1
+  	kextunload -b com.apple.driver.AppleSDXC
+
+  	wake 내용
+  	!/bin/sh
+  	kextload -b com.apple.driver.AppleSDXC
+  	sleep 1
+  	diskutil mount /Volumes/SkaMacSD
+
+<h2 id="itunes--">ITunes 라이브러리 옮기기</h2>
+
+<p>참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;wr_id=849473</p>
+
+<ol>
+  <li>
+    <p>아이튠즈 설정 - 고급 - iTunes Media 폴더 위치
+라는 메뉴에서 원하는 위치로 변경</p>
+  </li>
+  <li>
+    <p>파인더에서 기본적인 보관함 위치인 ‘홈폴더 - 음악 - iTunes’ 폴더를 SD카드로 이동한다음
+아이튠즈를 실행할때 Option키를 누르면서 실행하면 보관함 선택할 수 있는 메뉴가 뜹니다.
+여기서 옮긴 보관함을 선택</p>
+  </li>
+</ol>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/architecture/2016/04/26/make-devenv/">
+            WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
+            <small>26 Apr 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/architecture/2016/04/11/Using-Vagrant/">
+            Vagrant로 로컬에 가상 개발환경 준비하기
+            <small>11 Apr 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/jekyll/update/2016/03/01/welcome-to-jekyll/">
+            Welcome to Jekyll!
+            <small>01 Mar 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
 </div>
 
       </div>

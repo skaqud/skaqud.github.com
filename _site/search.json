@@ -1,0 +1,57 @@
+[
+
+	{
+		"title"    : "WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기",
+		"category" : "architecture",
+		"desc"     : "본 문서에서는 준비된 가상 개발환경에 WEB,WAS,DB를 설치하고 Sample Application을 deploy하여 확인하는 과정에 대해 설명합니다.개요다음과 같은 환경에서 로컬에 생성된 linux(CentOS) 가상환경(VM)을 기반으로 WEB-WAS-DB를 구성하고 Sample application 을 deploy 하여 테스트합니다.세부 테스트...",
+		"tags"     : "",
+		"url"      : "/architecture/2016/04/26/make-devenv/",
+		"date"     : "2016-04-26 01:01:49 +0900"
+	} ,
+
+	{
+		"title"    : "Vagrant로 로컬에 가상 개발환경 준비하기",
+		"category" : "architecture",
+		"desc"     : "본 문서에서는 간략하게 Vagrant(와 Virtualbox) 를 이용하여 개발환경으로 사용할 가상 환경을 로컬에 생성하는 과정을 설명합니다. 아무래도 개인적으로 좀 더 거창하고 복잡한 Docker 보다는 vagrant가 더 접근하기 쉬웠던 것 같습니다.vagrant+Virtualbox 설치  Vagrant - 최신 버전 1.8.1(https://ww...",
+		"tags"     : "",
+		"url"      : "/architecture/2016/04/11/Using-Vagrant/",
+		"date"     : "2016-04-11 18:15:49 +0900"
+	} ,
+
+	{
+		"title"    : "MacOS SD카드 용량 확장",
+		"category" : "hobbylife",
+		"desc"     : "mac SD 설정 관련mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설...",
+		"tags"     : "",
+		"url"      : "/hobby/life/2016/04/04/Extend-macos-with-sdcard/",
+		"date"     : "2016-04-04 23:10:49 +0900"
+	} ,
+
+	{
+		"title"    : "Welcome to Jekyll!",
+		"category" : "jekyllupdate",
+		"desc"     : "You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run je...",
+		"tags"     : "",
+		"url"      : "/jekyll/update/2016/03/01/welcome-to-jekyll/",
+		"date"     : "2016-03-01 01:05:11 +0900"
+	} ,
+
+	{
+		"title"    : "AWS Summit korea 참관후기",
+		"category" : "Tech후기",
+		"desc"     : "들었던 내용들을 시간순서대로 적어보았습니다.SM엔터테인먼트 on AWS별 내용이….ㅡ.,ㅡ;AWS 최신 서비스 살펴보기 - Aurora, Lambda, EFS, Machine Learning, ECS변화기술 : SOA - MicroSerivces조직 : Decentralized 아주 작은 팀들이 필요,  Agility, Ownership –&gt; D...",
+		"tags"     : "",
+		"url"      : "/tech/%ED%9B%84%EA%B8%B0/2015/04/21/AWS-Summit-Korea-review/",
+		"date"     : "2015-04-21 18:10:49 +0900"
+	} ,
+
+	{
+		"title"    : "Debian기반 Linux + tomcat + git개발환경 구성하기",
+		"category" : "Tech삽질",
+		"desc"     : "1. OS설치 및 환경설정1) crunchbang linux설치http://crunchbang.org/download/(64bit 버전으로 다운로드)vmplayer로 해당 iso지정하여 설치(설치하는 데 한글로 지정하여 별 문제 없었음)설치 이후 저장소 업데이트(콘솔을 열어 터미널에서 실행한다.)sudo apt-get update나눔고딕 폰트 설치 -...",
+		"tags"     : "",
+		"url"      : "/tech/%EC%82%BD%EC%A7%88/2013/03/10/Make-Linux-Server-Devenv/",
+		"date"     : "2013-03-10 18:10:49 +0900"
+	} 
+
+]

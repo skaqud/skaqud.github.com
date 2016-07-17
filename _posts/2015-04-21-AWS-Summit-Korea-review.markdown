@@ -2,19 +2,23 @@
 layout: post
 title:  "AWS Summit korea 참관후기"
 date:   2015-04-21 16:10:49 +0700
-categories: Tech, 후기
+categories: Tech 후기
 ---
 
 들었던 내용들을 시간순서대로 적어보았습니다.
+
 ---
 
 
 SM엔터테인먼트 on AWS
-
 ---
 
-오전 11시 30분
+별 내용이....ㅡ.,ㅡ;
+
+
 AWS 최신 서비스 살펴보기 - Aurora, Lambda, EFS, Machine Learning, ECS
+---
+
 변화
 기술 : SOA - MicroSerivces
 조직 : Decentralized 아주 작은 팀들이 필요,  Agility, Ownership --> Devops
@@ -44,10 +48,14 @@ shared file storage 운영은 아주 힘든일, demand에 따라서 다름 --> �
 
 NORMA?
 
+
+국내 사례로 본 클라우드 운영 최적화
 ---
 
-국내 사례로 본 클라우드 운영 최적화 - 모니터링, 자동화, 빌링
-	- MEGAZONE - AWS Cloud Partner
+
+모니터링, 자동화, 빌링
+MEGAZONE - AWS Cloud Partner
+
 고객사례 Use Cases
 전자 - 스트리밍, 영상 분석 서비스 - 단일 Ec2에서 사용시 유휴리소스 낭비 등 문제 --> Docker Container기반 마이크로 단위 서비스화  -> ECS서비스 사용(EC2 리소스 사용 극대화)
 
@@ -69,10 +77,9 @@ Blended(혼합-시간+전체사용료), Unblended(종량-사용시간으로 산�
 비용최적화
 --> 인스턴스 type 최적화 - Scannig - Detecting - Patterning - Recommendation --> 비용 절감안 제공
 
----
-
 
 엔터프라이즈에서의 하이브리드 환경 전략
+---
 
 기업은 더 이상 느리게 일할 수 없습니다.
 빠른 의사결정에 맞는 빠른 실행이 필요
@@ -92,9 +99,7 @@ DR검토
 핵심 업무에도 사용 - Dole:Sharepoint 사용, SAP HANA 사용(켈로그)
 
 ---
-
-엔터프라이즈 클라우드 도입 및 고려사항 - 메가마트 사례
-(NDS)
+엔터프라이즈 클라우드 도입 및 고려사항 - 메가마트 사례(NDS)
 
 클라우드 - 특정 산업군(게임,스타트업 등)들에서 사용하는 것을 기반으로 MainStream으로 진출하는 중
 Enterprise Application - ERP, CRM, BPM.... , 대개 Unix기반임
@@ -110,9 +115,10 @@ TCP 산정(총소유비용) ----> 클라우드에서 약 45% 절감.
 결과 - 매출 58% 증가, 6년 TCO기준으로 45%정도 비용 절감함
 ----> 자원을 탄력적으로 활용할 수 있는 부분이 매우 쉽고, 간편하다, 글로벌 확장에 좀 더 유연
 
----
 
 Enteprise Application 마이그레이션 고려사항
+---
+
 TCO검토- 비용 절감이 다가 아님. 확장성, 비용, 고가용성, 유연성.
 마이그레이션 방식 - folklift, Optimize, 절충형(embrace) --> 환경을 고려하여 최적의 방식을 선택
 라이선스 검토 - BYOL-기존라이센스 재활용, Pay-as-you-go-유틸리티 스타일로 사용
@@ -127,9 +133,8 @@ HA - 절충된 선에서 확보
 On-Promise 상의 Enterprise Application의 cloud 이전
 
 
----
-
 AWS를 통한 클라우드 보안 이해하기
+---
 
 클라우드에서의 보안 - AWS 상에서 어떻게 보안을 강화할 수 있는지에 대해
 ---> 클라우드는 기존과 조금 다르게 가야 하지 않는가???

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Ska's Blog</title>
+ <title>雜夫's Blog</title>
  <link href="http://skaqud.github.io/atom.xml" rel="self"/>
  <link href="http://skaqud.github.io/"/>
- <updated>2016-07-08T22:24:36+09:00</updated>
+ <updated>2016-07-17T21:42:09+09:00</updated>
  <id>http://skaqud.github.io</id>
  <author>
    <name>ska</name>
@@ -437,6 +437,58 @@ Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
  </entry>
  
  <entry>
+   <title>MacOS SD카드 용량 확장</title>
+   <link href="http://skaqud.github.io/hobby/life/2016/04/04/Extend-macos-with-sdcard/"/>
+   <updated>2016-04-04T23:10:49+09:00</updated>
+   <id>http://skaqud.github.io/hobby/life/2016/04/04/Extend-macos-with-sdcard</id>
+   <content type="html">&lt;h2 id=&quot;mac-sd--&quot;&gt;mac SD 설정 관련&lt;/h2&gt;
+
+&lt;p&gt;mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
+jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;sleepwatcher 설치&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+  	brew update &amp;amp;&amp;amp; brew install sleepwatcher
+
+  	ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
+
+  	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
+
+  	sleep 내용
+  	#!/bin/sh
+  	diskutil unmount /Volumes/SkaMacSD
+  	sleep 1
+  	kextunload -b com.apple.driver.AppleSDXC
+
+  	wake 내용
+  	!/bin/sh
+  	kextload -b com.apple.driver.AppleSDXC
+  	sleep 1
+  	diskutil mount /Volumes/SkaMacSD
+
+&lt;h2 id=&quot;itunes--&quot;&gt;ITunes 라이브러리 옮기기&lt;/h2&gt;
+
+&lt;p&gt;참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;amp;wr_id=849473&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;아이튠즈 설정 - 고급 - iTunes Media 폴더 위치
+라는 메뉴에서 원하는 위치로 변경&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;파인더에서 기본적인 보관함 위치인 ‘홈폴더 - 음악 - iTunes’ 폴더를 SD카드로 이동한다음
+아이튠즈를 실행할때 Option키를 누르면서 실행하면 보관함 선택할 수 있는 메뉴가 뜹니다.
+여기서 옮긴 보관함을 선택&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Welcome to Jekyll!</title>
    <link href="http://skaqud.github.io/jekyll/update/2016/03/01/welcome-to-jekyll/"/>
    <updated>2016-03-01T01:05:11+09:00</updated>
@@ -455,6 +507,407 @@ Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>AWS Summit korea 참관후기</title>
+   <link href="http://skaqud.github.io/tech/%ED%9B%84%EA%B8%B0/2015/04/21/AWS-Summit-Korea-review/"/>
+   <updated>2015-04-21T18:10:49+09:00</updated>
+   <id>http://skaqud.github.io/tech/%ED%9B%84%EA%B8%B0/2015/04/21/AWS-Summit-Korea-review</id>
+   <content type="html">&lt;p&gt;들었던 내용들을 시간순서대로 적어보았습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;sm-on-aws&quot;&gt;SM엔터테인먼트 on AWS&lt;/h2&gt;
+
+&lt;p&gt;별 내용이….ㅡ.,ㅡ;&lt;/p&gt;
+
+&lt;h2 id=&quot;aws------aurora-lambda-efs-machine-learning-ecs&quot;&gt;AWS 최신 서비스 살펴보기 - Aurora, Lambda, EFS, Machine Learning, ECS&lt;/h2&gt;
+
+&lt;p&gt;변화
+기술 : SOA - MicroSerivces
+조직 : Decentralized 아주 작은 팀들이 필요,  Agility, Ownership –&amp;gt; Devops
+   —&amp;gt; two pizza teams&lt;/p&gt;
+
+&lt;p&gt;APOLLO - 배포 서비스 도구
+pipelines - Continuous Delivery 도구
+—&amp;gt; 둘을 이용한 Devops pipeline&lt;/p&gt;
+
+&lt;p&gt;천개가 넘는 팀 + MS  ===&amp;gt; 50 Million Deployment&lt;/p&gt;
+
+&lt;p&gt;Code Commit, Code Deploy, Code Pipeline
+EC2 + docker –&amp;gt; 수천개의 container???? —-&amp;gt; EC2 Container Service&lt;/p&gt;
+
+&lt;p&gt;AWS Lambda ??????????? – 코드를 직접 올려놓으면 바로 실행됨, 서버 없이, S3기반으로????&lt;/p&gt;
+
+&lt;p&gt;Machine Learning - 똑똑한 어플리케이션? —&amp;gt; 한계 - 비용이 너무 많이 듬, 전문가가 없음 –&amp;gt; AWS Machine Learnig을 통해 극복???
+사용하는 방안? 배치를 통해 redshift,S3에 넣고 사용, 혹은 api등을 통한 실시간 사용&lt;/p&gt;
+
+&lt;p&gt;RDS Aurora - 기존의 RDBMS 데이터구조로는 폭발적으로 증가하는 데이터를 유지하기 힘듦. 기존에는 RDB가 Monolithic 구조 -&amp;gt; sharding 도 구조적으로 복사하는 것 이상은 아님 -&amp;gt; 결국 disk를 share하고 사용
+—–&amp;gt; 기존 구조가 고비용이고 유연하지 않다고 봄, 가용성 문제가 있음.
+Aurora - 3개의 AZ에 저장, 한 AZ의 두군데에 저장되며, SSD를 사용하여 속도가 빠름. 64TB까지 사용할 수 있음. –&amp;gt; Self healing, Fault tolerant 함&lt;/p&gt;
+
+&lt;p&gt;shared file storage 운영은 아주 힘든일, demand에 따라서 다름 –&amp;gt; 요청을 예상할 수 없어서….
+——–&amp;gt; EFS(elastic File system) : simple, elastic, scalable&lt;/p&gt;
+
+&lt;p&gt;NORMA?&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;국내 사례로 본 클라우드 운영 최적화&lt;/h2&gt;
+
+&lt;p&gt;모니터링, 자동화, 빌링
+MEGAZONE - AWS Cloud Partner&lt;/p&gt;
+
+&lt;p&gt;고객사례 Use Cases
+전자 - 스트리밍, 영상 분석 서비스 - 단일 Ec2에서 사용시 유휴리소스 낭비 등 문제 –&amp;gt; Docker Container기반 마이크로 단위 서비스화  -&amp;gt; ECS서비스 사용(EC2 리소스 사용 극대화)&lt;/p&gt;
+
+&lt;p&gt;글로벌 e러닝 서비스 - SLA 99.99%, 보안 기준 준수, 이중화, Legacy연동
+– IDC기반으로는 고려할 사항/비용이 너무 많이 듬
+—- Multi AZ 기반으로 구성 NAT/WEB/WAS/DB이중화, SES사용&lt;/p&gt;
+
+&lt;p&gt;N게임사 Multi-region 아키텍처 —&amp;gt; 미주에 특화된 아키텍터
+—&amp;gt; 이중화 VPN 연동,&lt;/p&gt;
+
+&lt;p&gt;G게임사 사례&lt;/p&gt;
+
+&lt;p&gt;—&amp;gt; 한국어 기술지원 가능&lt;/p&gt;
+
+&lt;p&gt;Blended(혼합-시간+전체사용료), Unblended(종량-사용시간으로 산출) Cost ?????? RI를 구매했는데 사용료가 오름??? –&amp;gt; 총 금액은 같으나, 부서 내부적인 금액은 조금씩 다를 수 있음
+(콘솔상에서 보이는 금액은 Blendid 라고 함) —&amp;gt; 빌링솔루션&lt;/p&gt;
+
+&lt;p&gt;비용최적화
+–&amp;gt; 인스턴스 type 최적화 - Scannig - Detecting - Patterning - Recommendation –&amp;gt; 비용 절감안 제공&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;엔터프라이즈에서의 하이브리드 환경 전략&lt;/h2&gt;
+
+&lt;p&gt;기업은 더 이상 느리게 일할 수 없습니다.
+빠른 의사결정에 맞는 빠른 실행이 필요
+성공을 위해 더 많은 실험이 필요-기존 인프라로는 충분하지 않다.(고투자,고비용), 실패비용이 높아서 실험을 할 수 없다. —&amp;gt; 이미 투자한 인프라가 있을 경우 어떻게?
+——&amp;gt; 하이브리드 환경 전략(투자 보호 + 혁신)&lt;/p&gt;
+
+&lt;p&gt;하이브리드 환경이란??? - 데이터센터와 AWS 클라우간의  네트워크, 데이터 공유
+—&amp;gt; AWS를 기존 기업 데이터센터의 확장으로 사용
+AWS의 VPC와 연결 or VPN으로 연결 or Direct Connect 라는 방식이 있음.(전용선으로 Direct Connect location에 연결)
+데이터 저장 S3,Storage Gateway - 데이터 백업(Glacier)&lt;/p&gt;
+
+&lt;p&gt;DR검토
+—&amp;gt; DR site로서의 AWS - Store&amp;amp;Backup, Pilot Light(데이터만 백업하고, 인스턴스는 inactive 상태로), Warm Standby(인스턴스는 작게 구성하고 이후 늘리는..), Multi Site(즉각적인 사용 가능)&lt;/p&gt;
+
+&lt;p&gt;데이터 분석 서비스&lt;/p&gt;
+
+&lt;p&gt;핵심 업무에도 사용 - Dole:Sharepoint 사용, SAP HANA 사용(켈로그)&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;엔터프라이즈 클라우드 도입 및 고려사항 - 메가마트 사례(NDS)&lt;/p&gt;
+
+&lt;p&gt;클라우드 - 특정 산업군(게임,스타트업 등)들에서 사용하는 것을 기반으로 MainStream으로 진출하는 중
+Enterprise Application - ERP, CRM, BPM…. , 대개 Unix기반임
+1. 기존 시스템을 확장(스토리지 등) 2. 신규 서비스를 런칭 3. 기존 서비스를마이그레이션
+Enterprise가 도입하면 좋은 부분???? 메가마트라는 온라인 쇼핑몰 - 농심 계열 대형 마트점 —&amp;gt; Pain Point 특정 이벤트, 행사 시 동접 증가로 시스템 폭주 -&amp;gt; 클라우드로 이관 결정&lt;/p&gt;
+
+&lt;p&gt;TCP 산정(총소유비용) —-&amp;gt; 클라우드에서 약 45% 절감.
+도쿄 AWS와 그룹 IDC간에 VPN을 통해 데이터 등을 동기화(네트워크 레이턴시에 대한 우려가 있었으나.. VPN(이중화)만으로 가능했음.)&lt;/p&gt;
+
+&lt;p&gt;1개월만으로 구축 완료 -&amp;gt; 빠른 Delivery 가 가능해짐, 2/25 오픈, 3/11~14 블랙데이 기간에도 안정적으로 서비스 되었음.
+— 방문자 49%, 페이지뷰 16% 증가, 응답시간 빨라짐&lt;/p&gt;
+
+&lt;p&gt;결과 - 매출 58% 증가, 6년 TCO기준으로 45%정도 비용 절감함
+—-&amp;gt; 자원을 탄력적으로 활용할 수 있는 부분이 매우 쉽고, 간편하다, 글로벌 확장에 좀 더 유연&lt;/p&gt;
+
+&lt;h2 id=&quot;enteprise-application--&quot;&gt;Enteprise Application 마이그레이션 고려사항&lt;/h2&gt;
+
+&lt;p&gt;TCO검토- 비용 절감이 다가 아님. 확장성, 비용, 고가용성, 유연성.
+마이그레이션 방식 - folklift, Optimize, 절충형(embrace) –&amp;gt; 환경을 고려하여 최적의 방식을 선택
+라이선스 검토 - BYOL-기존라이센스 재활용, Pay-as-you-go-유틸리티 스타일로 사용
+—–&amp;gt; 벤더와 정책 협의 필요&lt;/p&gt;
+
+&lt;p&gt;시스템 Sizing - 객관적인 자료 확보 힘듦 —&amp;gt; 클라우드 상에서는 예측 부담 감소(Scale out가능하기 때문에) - 실제 트래픽 증가에 효과적인 정책 수립&lt;/p&gt;
+
+&lt;p&gt;Hybrid 전략 검토, 전용선 검토, VPN이중화 검토&lt;/p&gt;
+
+&lt;p&gt;HA - 절충된 선에서 확보&lt;/p&gt;
+
+&lt;p&gt;On-Promise 상의 Enterprise Application의 cloud 이전&lt;/p&gt;
+
+&lt;h2 id=&quot;aws----&quot;&gt;AWS를 통한 클라우드 보안 이해하기&lt;/h2&gt;
+
+&lt;p&gt;클라우드에서의 보안 - AWS 상에서 어떻게 보안을 강화할 수 있는지에 대해
+—&amp;gt; 클라우드는 기존과 조금 다르게 가야 하지 않는가???
+Multi Level Security
+클라우드 상의 어플리케이션은 계속 형상이나 구조가 변경된다…. 시시각각 변하는 형태&lt;/p&gt;
+
+&lt;p&gt;AWS Config
+Cloudwatch -&amp;gt; 모니터링&lt;/p&gt;
+
+&lt;p&gt;AWS환경에서의 암호화 옵션
+—&amp;gt; AWS Key Management Service - 암호화 키의 생성, 관리, 사용, 삭제를 관리해줌
+—&amp;gt; 아예 EBS생성시 암호화 하여 생성할 수 있음
+S3에 대한 암호화도 가능 ——-&amp;gt; 연계되어 있는 서비스에 녹아들어 있음.
+(나스닥에서 분석하고 redshift에서 암호화하는 부분을 사용중)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Debian기반 Linux + tomcat + git개발환경 구성하기</title>
+   <link href="http://skaqud.github.io/tech/%EC%82%BD%EC%A7%88/2013/03/10/Make-Linux-Server-Devenv/"/>
+   <updated>2013-03-10T18:10:49+09:00</updated>
+   <id>http://skaqud.github.io/tech/%EC%82%BD%EC%A7%88/2013/03/10/Make-Linux-Server-Devenv</id>
+   <content type="html">&lt;h2 id=&quot;os--&quot;&gt;1. OS설치 및 환경설정&lt;/h2&gt;
+
+&lt;h3 id=&quot;crunchbang-linux&quot;&gt;1) crunchbang linux설치&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;http://crunchbang.org/download/&lt;/p&gt;
+
+&lt;p&gt;(64bit 버전으로 다운로드)&lt;/p&gt;
+
+&lt;p&gt;vmplayer로 해당 iso지정하여 설치(설치하는 데 한글로 지정하여 별 문제 없었음)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;설치 이후 저장소 업데이트(콘솔을 열어 터미널에서 실행한다.)
+sudo apt-get update
+나눔고딕 폰트 설치 - 한글관련
+sudo apt-get install ttf-nanum
+openssh 서버설치
+sudo apt-get install openssh-server
+ssh데몬 재기동
+sudo /etc/init.d/ssh restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ifconfig로 해당 OS의 IP를 확인하여 밖의 OS에서 ssh로 접근되는 지 확인
+(ssh client로 확인)&lt;/p&gt;
+
+&lt;h3 id=&quot;jdk-tomcat-&quot;&gt;2) jdk, tomcat 설치&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;openjdk설치
+sudo aptitude install openjdk-6-jdk
+sunjdk 설치
+sudo apt-get install sun-java6-jdk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(1)자동 설치 - 디렉토리가 자동으로 나뉘어 설치됨&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tomcat6 설치
+sudo apt-get install tomcat6 tomcat6-admin tomcat6-common tomcat6-user tomcat6-docs tomcat6-examples
+tomcat6 시작
+sudo /etc/init.d/tomcat6 start
+화면 확인
+http://192.168.118.129:8080
+설정파일 수정
+sudo vi /etc/tomcat6/server.xml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(2)수동 설치 - 톰캣 사이트에서 다운로드 후 설치, 홈 디렉토리 밑의 bin하위에 설치&lt;/p&gt;
+
+&lt;p&gt;(3)환경 설정
+  GET 통해 한글 데이터를 받을때 서버에서 URL을 UTF-8로 인코딩하도록 설정&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi conf/server.xml
+&amp;lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;8443&quot;
+               URIEncoding=&quot;UTF-8&quot;/&amp;gt; ---&amp;gt; 추가
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;패스 설정(bash 로그인 스크립트 수정 –&amp;gt; 마지막 붙임.1 참조)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CATALINA_HOME=/home/ska/bin/tomcat
+export CATALINA_HOME
+PATH=$PATH:$CATALINA_HOME/bin
+export PATH
+CLASSPATH=$CLASSPATH:$CATALINA_HOME/lib
+export CLASSPATH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;nginx---&quot;&gt;3) nginx 설치 및 연동&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(1)파일 다운로드 및 설치&lt;/p&gt;
+
+&lt;p&gt;자동 설치&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get update
+apt-get dist-upgrade
+apt-get install build-essential libpthread-stubs0 libpthread-stubs0-dev libgd2-xpm libgd2-xpm-dev libgeoip-dev libgeoip1 sysvinit openssl libssl-dev libpcre3-dev  libgcrypt11-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;수동 설치(컴파일 설치)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;다운로드 받은 뒤 특정 위치에 풀고
+아래와 같이 미리 라이브러리를 받은 뒤
+sudo apt-get install libpcre3-dev
+sudo apt-get install libssl-dev
+환경설정 후 컴파일
+./configure
+make install
+기본 설치경로 - /usr/local/nginx
+구동
+[ska@skaqud:/usr/local/nginx]$ sudo sbin/nginx
+종료
+종료는 # sbin/nginx -s stop 혹은 # sbin/nginx -s quit
+설정파일 등의 수정 후 재적용은 # sbin/nginx -s reload
+로그파일을 다시 열려면 # sbin/nginx -s reopen
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;확인&lt;/p&gt;
+
+&lt;p&gt;http://192.168.118.129/&lt;/p&gt;
+
+&lt;p&gt;연동&lt;/p&gt;
+
+&lt;p&gt;http://misoin.wordpress.com/2012/06/19/tomcat-nginx-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/&lt;/p&gt;
+
+&lt;p&gt;정적 자원(html, js, css, image 등)은 기본적으로 nginx 를 이용하고,
+동적 처리되는 부분에서는 tomcat를 사용하도록 하는 proxy 설정 방식이다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi conf/nginx.conf
+upstream backend {
+    server  localhost:8080
+}
+
+server {
+...(중략)
+    location /servlet {
+        proxy_pass      http://backend/servlet;
+        index           index.jsp;
+    }
+...(후략)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;연동확인&lt;/p&gt;
+
+&lt;p&gt;http://192.168.118.129/servlet/index.jsp 로 변경된 jsp파일 나오는 부분을 확인함.&lt;/p&gt;
+
+&lt;h3 id=&quot;svngit-&quot;&gt;4) svn/git 설치&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;이클립스에서 git플러그인 설치
+EGit플러그인은 Help -&amp;gt; Install New Software -&amp;gt; Work with에서 Indigo선택하시면 아래 Collaboration에서 Eclipse EGit를 설치&lt;/p&gt;
+
+&lt;h3 id=&quot;mysqldbms&quot;&gt;5) Mysql설치(DBMS설치)&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo 매번 치기 귀찮으면 명령어 실행
+sudo su
+mysql 설치
+apt-get install mysql-server
+설치 및 구동확인
+netstat -tap|grep mysql
+
+원격에서도 접근 가능하도록 수정
+vi /etc/mysql/my.cnf
+디비를 재부팅한다.
+/etc/init.d/mysql restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Mysql 접속 설정&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql -uroot -p
+권한 등록하기
+a. mysql 접속 후 mysql database 선택
+mysql&amp;gt; use mysql;
+b. user 테이블 살펴보기
+mysql&amp;gt; select host, user, password from user;
+root 의 host 값들은 localhost, 127.0.0.1 등으로 기본 등록되어 있지만, 외부접속을 나타내는 값이 없다.
+특정 아이피로 지정할 수도 있지만 여기선 % 기호로 어디서든 접속 가능하게 만든다.
+c. 권한 설정
+mysql&amp;gt; grant all privileges on *.* to &#39;root&#39;@&#39;192.168.118.1&#39; identified by &#39;root의 패스워드&#39;;
+Query OK, 0 rows affected (0.03 sec)
+d. 등록확인하기
+mysql&amp;gt; select host, user, password from user;
+root 계정의 host 필드에 % 가 등록되었는지 확인한다.
+e. refresh
+mysql&amp;gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+계정 추가(egov)
+use mysql;
+insert into user(host,user,password) values(&#39;localhost&#39;,&#39;egov&#39;,password(&#39;egov&#39;));
+insert into user(host,user,password) values(&#39;%&#39;,&#39;egov&#39;,password(&#39;egov&#39;));
+flush privileges;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;db 생성후 db에 계정연결&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;grant all privileges on DB명.* to 계정명@localhost identified by &#39;비밀번호&#39; with grant option;
+flush privileges;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;*** MySQL한글설정&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysql 또는 root 계정으로 작업을 권장합니다.
+vi /etc/my.cnf
+# client 부분밑에 추가
+[client]
+default-character-set = utf8
+# mysqld 부분밑에 추가
+[mysqld]
+init_connect = SET collation_connection = utf8_general_ci
+init_connect = SET NAMES utf8
+character-set-server = utf8
+collation-server = utf8_general_ci
+# mysqldump 부분밑에 추가
+[mysqldump]
+default-character-set = utf8
+# mysql 부분밑에 추가
+[mysql]
+default-character-set = utf8
+[저장후 나가기]
+# Mysql 재시작
+service mysqld restart 또는 /etc/init.d/mysqld restart
+# UTF8 확인하기
+# Mysql 접속
+mysql -u root -p [엔터]
+# 현재 캐릭터셋 확인
+show variables like &#39;c%&#39;; [엔터]
+
+혹시 이전에 생성한 테이블이 있으면 캐릭터셋을 변경
+alter table 테이블명 convert to character set euckr;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;hudson&quot;&gt;6) hudson설치&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;hudson-ci.org에서 해당 hudson.war파일을 다운로드 받은 뒤
+톰캣을 재기동하고 아래와 같이 접근
+http://192.168.118.129:8080/hudson-3.0.1/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;profile--&quot;&gt;붙임1. .profile에 들어갈 내용들&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## aliases &#39;ls&#39;
+alias ls=&quot;ls -hF --color&quot;
+alias l=&quot;ls -l&quot;
+#
+
+alias ..=&quot;cd ..;ls&quot;   # cd 명령후 파일목록 리스트 바로 출력, ccd 참조
+alias be=&quot;vi ~/.bashrc;source ~/.bashrc&quot;   # .bashrc 수정후 실행
+alias cls=&quot;clear&quot;
+alias h=&quot;history&quot;
+alias j=&#39;jobs -l&#39;
+
+alias logs=&quot;tail -f /var/log/messages /var/log/*log&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </content>
  </entry>
  

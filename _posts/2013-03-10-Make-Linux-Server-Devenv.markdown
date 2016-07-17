@@ -2,7 +2,7 @@
 layout: post
 title:  "Debian기반 Linux + tomcat + git개발환경 구성하기"
 date:   2013-03-10 16:10:49 +0700
-categories: Tech, 삽질
+categories: Tech 삽질
 ---
 
 ## 1. OS설치 및 환경설정 ##

@@ -7,7 +7,7 @@ markdown:         kramdown
 permalink:        pretty
 
 # Setup
-title:            Ska's Blog
+title:            雜夫's Blog
 tagline:          'development architecture integration operation'
 description:      '아키텍트==雜夫'
 url:              http://skaqud.github.io
