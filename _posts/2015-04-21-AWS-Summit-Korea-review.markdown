@@ -13,7 +13,7 @@ categories: Tech 후기
 SM엔터테인먼트 on AWS
 ---
 
-별 내용이....ㅡ.,ㅡ;
+잘 기억이....ㅡ.,ㅡ;
 
 
 AWS 최신 서비스 살펴보기 - Aurora, Lambda, EFS, Machine Learning, ECS
@@ -98,8 +98,11 @@ DR검토
 
 핵심 업무에도 사용 - Dole:Sharepoint 사용, SAP HANA 사용(켈로그)
 
+
+엔터프라이즈 클라우드 도입 및 고려사항
 ---
-엔터프라이즈 클라우드 도입 및 고려사항 - 메가마트 사례(NDS)
+
+- 메가마트 사례(NDS)
 
 클라우드 - 특정 산업군(게임,스타트업 등)들에서 사용하는 것을 기반으로 MainStream으로 진출하는 중
 Enterprise Application - ERP, CRM, BPM.... , 대개 Unix기반임
