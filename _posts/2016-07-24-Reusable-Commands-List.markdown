@@ -20,7 +20,6 @@ RPM명령
     rpm -ivh chef-12.5.1-1.el7.x86_64.rpm
     rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
 
-
 tar명령
 
 tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 듯
@@ -35,18 +34,17 @@ tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 �
     압축풀기
     tar xzvpf filename.tar.gz public_html/
 
-
 find명령
 
-    \*앞에는 부득이하게 \를 넣었음. 문제시 뺄 것
-    find공백이 들어간 파일명 검색
-    find ./ -name "* \*"
+    #find공백이 들어간 파일명 검색
+    find ./ -name "* *"
     # 수정한지 20일 이상된 파일만 삭제 ( -exec rm {} \; )
     find . -mtime +20 -type f -ls -exec rm {} \;
     # 확장자가 .htm* .gif, .js, .css 인 것만 퍼미션을 644(rw-r--r--)로
-    find . -name "\*.htm*" -o -name "\*.gif" -o -name "\*.js" -o -name "\*.css" -exec chmod 644 {} \;
+    find . -name "*.htm*" -o -name "*.gif" -o -name "*.js" -o -name "*.css" -exec chmod 644 {} \;
     # 파일 크기가 300KB 이상( -size +300k )인 파일만
     find . -size +300k -ls
+    #*..
 
 
 ### 참고가 될 Shell Script
@@ -83,7 +81,6 @@ SSH로그인자동화(공개키를 이용한)
     chmod 644 ~/.ssh/authorized_keys
     위의 작업을 해 준 계정에만 해당됨.
 
-
 OS 버전 확인
 
     ubuntu
@@ -92,7 +89,8 @@ OS 버전 확인
 
 위와 같이 해서 안될 경우 다음과 같이 수행
 
-    cat /etc/\*release
+    cat /etc/*release
+    #*...편집용comment
 
 
 저장소(Repository)서버 변경
@@ -126,41 +124,36 @@ OS 버전 확인
 
 빌드
 
-  docker build -t ska/myapp:1.0 .
-
-  docker build -t ska/java_web:1.0 .
+    docker build -t ska/myapp:1.0 .
+    docker build -t ska/java_web:1.0 .
 
 실행
 
-  docker run -d --name myapp -p 8080:8080 ska/myapp:1.0
-  docker run -i --name myapp -t ska/myapp:1.0 /bin/bash
+    docker run -d --name myapp -p 8080:8080 ska/myapp:1.0
+    docker run -i --name myapp -t ska/myapp:1.0 /bin/bash
+    docker run -d --name java_web -p 8080:8080 ska/java_web:1.0
+    docker run -i --name java_web -t ska/java_web:1.0 /bin/bash
 
-  docker run -d --name java_web -p 8080:8080 ska/java_web:1.0
-  docker run -i --name java_web -t ska/java_web:1.0 /bin/bash
-
-
-  #사용하지 않는 컨테이너 확인
-  docker ps -a | grep Exited | awk '{print $1}'
-  #사용하지 않는 컨테이너 전부 삭제
-  docker rm $(docker ps -a | grep Exited | awk '{print $1}')
-  #사용하지 않는 이미지 확인
-  docker images | grep none | awk '{print $3}'
-  #사용하지 않는 이미지 전부 삭제
-  docker rmi $(docker images | grep none | awk '{print $3}')
-
+    #사용하지 않는 컨테이너 확인
+    docker ps -a | grep Exited | awk '{print $1}'
+    #사용하지 않는 컨테이너 전부 삭제
+    docker rm $(docker ps -a | grep Exited | awk '{print $1}')
+    #사용하지 않는 이미지 확인
+    docker images | grep none | awk '{print $3}'
+    #사용하지 않는 이미지 전부 삭제
+    docker rmi $(docker images | grep none | awk '{print $3}')
 
 
 ### GIT
 
-git add ./*
-git commit -a -m "update recipes"
-git push origin master
+    git add ./*
+    git commit -a -m "commit message"
+    git push origin master
 
-git config --global user.name "...."
-git config --global user.email ......
+    git config --global user.name "...."
+    git config --global user.email ......
 
-git config http.proxy http://xx.xx.xx.xx:8888:8080
-
+    git config http.proxy http://xx.xx.xx.xx:8888
 
 
 ### MySQL
