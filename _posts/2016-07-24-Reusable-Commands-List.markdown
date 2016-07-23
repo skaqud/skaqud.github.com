@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "VM 기본환경 구성하기"
-date:   2016-01-03 11:20:15 +0700
+title:  "자주 사용하는 명령들"
+date:   2016-07-24 12:21:15 +0700
 categories: reuse
 ---
 
