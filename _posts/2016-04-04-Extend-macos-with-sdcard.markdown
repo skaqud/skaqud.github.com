@@ -12,20 +12,15 @@ jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개�
 sleepwatcher 설치
 
     참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
-
-  	brew update && brew install sleepwatcher
-
-  	ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
-
-  	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-
-  	sleep 내용
+    brew update && brew install sleepwatcher
+    ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
+    launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
+    #sleep 내용
   	#!/bin/sh
   	diskutil unmount /Volumes/SkaMacSD
   	sleep 1
   	kextunload -b com.apple.driver.AppleSDXC
-
-  	wake 내용
+    #wake 내용
   	!/bin/sh
   	kextload -b com.apple.driver.AppleSDXC
   	sleep 1
