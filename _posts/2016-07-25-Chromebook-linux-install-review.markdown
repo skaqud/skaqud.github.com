@@ -31,7 +31,9 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 # Crouton을 통한 Linux 설치
 
-참고
+우선 poin2 블로그처럼, crouton으로 리눅스를 설치하는 방법은 웹에서 꽤 쉽게 찾을 수 있다.
+
+참고 - [poin2블로그-crouton으로 리눅스 사용하기](http://blog.poin2.com/2015/09/크롬북에서-crouton-사용하기/)
 
 위의 내용들 참고하여 개발자모드로 변경한 뒤 crouton 쉘에서 다음과 같이 입력하여 설치
 
@@ -39,13 +41,10 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 다음 내용을 참고하여 설치
 
-우선 poin2 블로그처럼, crouton으로 리눅스를 설치하는 방법은 웹에서 꽤 쉽게 찾을 수 있다.
-
-- 참고 - (poin2블로그-crouton으로 리눅스 사용하기)[http://blog.poin2.com/2015/09/크롬북에서-crouton-사용하기/]
 
 다만, 설치시 우분투 설치 후 설정에서 삽질을 다소 하게 되는데, 아래를 참고해서 설치했다.
 
-- 참고 - (도시바 크롬북2 우분투 설치 14.04)[http://bookstorycabin.tistory.com/entry/도시바-크롬북2-chromebook-2-우분투-ubuntu-설치-1404]
+참고 - [도시바 크롬북2 우분투 설치 14.04](http://bookstorycabin.tistory.com/entry/도시바-크롬북2-chromebook-2-우분투-ubuntu-설치-1404)
 
 요점은, 설치 후 확인되지 않은 경우 ubuntu-software-center만을 이용해서 설치하라고 함, update 서비스나, apt-get을 이용하려고 하면 에러가 발생하는 경우가 많다. 익숙해지기 전까지는 위에서 알려준 대로, software-center 설치 후 language support와 IBUS를 설치하면 일단 초기세팅은 무리 없이 끝나는 듯 하다.
 
@@ -54,7 +53,7 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 설치시 몇번에 걸쳐 재설치를 해야만 하는 경우 다음과 같은 명령어들을 사용
 
-- 참고 - (How to Manage the Crouton Linux System on Your Chromebook)[http://www.howtogeek.com/210047/how-to-manage-the-crouton-linux-system-on-your-chromebook/]
+참고 - [How to Manage the Crouton Linux System on Your Chromebook](http://www.howtogeek.com/210047/how-to-manage-the-crouton-linux-system-on-your-chromebook/)
 
     #설치된 디렉토리 위치
     /mnt/stateful_partition/crouton/chroots/($osname)
