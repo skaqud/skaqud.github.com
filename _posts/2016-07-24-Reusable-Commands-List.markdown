@@ -11,16 +11,6 @@ categories: reuse
 
 ### 기타 명령들
 
-RPM명령
-
-    #설치된 rpm 조회
-    rpm -qa | grep chef
-    #(위에서 이름을 확인 후)설치된 rpm 삭제
-    rpm -e chef-12.4.1-1.el7.x86_64
-    rpm 설치
-    rpm -ivh chef-12.5.1-1.el7.x86_64.rpm
-    rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
-
 tar명령
 
 tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 듯
@@ -94,7 +84,7 @@ OS 버전 확인
     #*...편집용comment
 
 
-저장소(Repository)서버 변경
+저장소(Repository)서버 변경(ubuntu)
 
     sudo vi /etc/apt/sources.list
     :%s/archive.ubuntu.com/ftp.daumkakao.com/g
@@ -107,9 +97,20 @@ OS 버전 확인
 
     /etc/rc.local 하위에 추가하면 됨
 
-설치된 패키지 조회 및 제거
+설치된 패키지 조회 및 제거(ubuntu)
 
     dpkg --get-selections | grep jdk
+
+RPM명령(CentOS,RHEL계열)
+
+    #설치된 rpm 조회
+    rpm -qa | grep chef
+    #(위에서 이름을 확인 후)설치된 rpm 삭제
+    rpm -e chef-12.4.1-1.el7.x86_64
+    rpm 설치
+    rpm -ivh chef-12.5.1-1.el7.x86_64.rpm
+    rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
+
 
 ### 운영시 유용한 명령들
 
@@ -193,7 +194,23 @@ tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 �
 
 ### Screen 명령정리
 
----> tmux를 쓰거나 terminator 등 멀티화면 지원하는 ssh client를 쓰는 게 나음
+예전 터미널 상에서의 screen 명령보다는 tmux를 쓰거나 terminator 등 멀티화면 지원하는 ssh client를 쓰는 게 나음.
+tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 있지 않아서 터미널상에서 바로 쓸 수 있는 멀티Screen도구일 것 같음.
+
+    #설치
+    apt-get install tmux
+    #실행(실행시 아래 상태창이 생김)
+    tmux
+    # 새 창띄우기 - 순서대로 0부터 번호가 부여된 창이 생성됨
+    Ctrl+B 누르고 C
+    # 창 이동
+    Ctrl+B 누르고 숫자(화면번호)
+    # 같은 화면을 나눠서 쓸 경우
+    Ctrl+B 누르고 화살표
+    # 화면 나누기(가로)
+    Ctrl+B 누르고 =
+    # 화면 나누기(세로)
+    Ctrl+B 누르고 %
 
 
 ## Proxy 설정
