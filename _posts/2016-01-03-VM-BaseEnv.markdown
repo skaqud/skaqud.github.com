@@ -16,7 +16,7 @@ vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, �
 - 그밖에?
 
 
-## apt-get(패키지관리자) 속도 개선 ##
+# Repository 설정
 
 repository를 daumkakao쪽 서버로 변경
 
@@ -31,7 +31,7 @@ repository를 daumkakao쪽 서버로 변경
 
 http://ftp.neowiz.com/ 로 변경해도 됨.
 
-### 기본 어플리케이션 설치 ###
+# 기본 어플리케이션 설치
 
 git, wget, telnet, curl, tmux(multi screen terminal) 등 설치
 
@@ -49,14 +49,23 @@ ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항�
 별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 부득이하게
 
 
-### Oh my zsh 설치 ###
+# Shell 환경설정
+
+zsh 설치
+
+  apt-get install zsh
+
+
+Oh My Zsh 설치
 
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/
 
 
-### vim 환경설정 ###
+# vim 설치 및 설정
+
+## 환경설정 ##
 
 로컬의 .vimrc 안에 다음과 같은 내용을 넣음.
 
@@ -78,3 +87,30 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
     set softtabstop=4
     set tabstop=4
     set ruler
+    #keymap setting
+    nmap <F7> :NERDTree<CR>
+
+## Vundle, NERDTree 설치 ##
+
+참고 - [vim 플러그인 매니저, Vundle + NERDTree 플러그인 설치하기](https://dobest.io/install-vundle-and-nerdtree/)
+
+참고2 - [github-VundleVIM](https://github.com/VundleVim/Vundle.vim)
+
+아래와 같이 vundle 설치
+
+    mkdir ~/.vim/bundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    #.vimrc 파일 생성(참고2 링크에 있음)
+    #vim command mode에서 다음과 같이 입력
+    :PluginInstall
+
+vundle을 이용해 NERDTree 설치
+
+    :PluginSearch NERD
+    #vimrc에 아래 내용 추가
+    echo "Plugin 'The-NERD-Tree'" >> ~/.vimrc
+    # 설치
+    :PluginInstall
+
+참고3 - [vim 사용자를 위한 플러그인 매니저 vundle 을 소개 합니다.](https://kldp.org/node/125263)
+참고4 - [vimawesome](http://vimawesome.com)

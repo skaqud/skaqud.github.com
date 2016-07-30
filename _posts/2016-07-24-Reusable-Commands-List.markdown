@@ -7,11 +7,11 @@ categories: reuse
 
 자주 사용하는 명령들의 모음
 
-## Linux
+# Linux
 
-### 기타 명령들
+## 자주쓰는명령들
 
-tar명령
+### tar명령
 
 tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 듯
 
@@ -25,7 +25,7 @@ tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 �
     압축풀기
     tar xzvpf filename.tar.gz public_html/
 
-find명령
+### find명령
 
     #find공백이 들어간 파일명 검색
     find ./ -name "* *"
@@ -38,7 +38,7 @@ find명령
     #*..
 
 
-### 참고가 될 Shell Script
+## 참고가 될 Shell Script
 
     # Mysql service up check
     while [ `netstat -an | grep 3306 | wc -l` -eq 0 ]
@@ -57,7 +57,7 @@ find명령
     echo "Postgresql is UP!"
 
 
-### 상황별 해결방법
+## 상황별 해결방법
 
 SSH로그인자동화(공개키를 이용한)
 
@@ -112,7 +112,7 @@ RPM명령(CentOS,RHEL계열)
     rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
 
 
-### 운영시 유용한 명령들
+## 운영시 유용한 명령들
 
     * 로그 크기 확인하기(일정 크기가 넘는 로그파일 확인)
     du -k | awk '{if (length($1) > 5) print}'
@@ -120,9 +120,9 @@ RPM명령(CentOS,RHEL계열)
     ps -ef | grep 계정 | grep -v grep | awk '{print $2}' | xargs kill -9
 
 
-## 그밖의 도구들
+# 그밖의 도구들
 
-### Docker
+## Docker
 
 빌드
 
@@ -146,7 +146,7 @@ RPM명령(CentOS,RHEL계열)
     docker rmi $(docker images | grep none | awk '{print $3}')
 
 
-### GIT
+## GIT
 
     # 변경 반영 및 commit, push
     git add --all
@@ -168,7 +168,7 @@ RPM명령(CentOS,RHEL계열)
     git config http.proxy http://xx.xx.xx.xx:8888
 
 
-### MySQL
+## MySQL
 
     # DB생성
     CREATE SCHEMA ReviewDB DEFAULT CHARACTER SET utf8 ;
@@ -183,9 +183,9 @@ RPM명령(CentOS,RHEL계열)
     Drop schema ReviewDB cascade;
 
 
-### JDK
+## JDK
 
-tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움, 그래서 아래와 같이 tar를 특정위치에 풀고 update-alternatives 로 시스템에서 인식되도록 함. 
+tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움, 그래서 아래와 같이 tar를 특정위치에 풀고 update-alternatives 로 시스템에서 인식되도록 함.
 
     wget ......install_file_path/jdk-8u66-linux-x64.gz
     tar zxvf jdk-8u66-linux-x64.gz
@@ -196,14 +196,14 @@ tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 �
     update-alternatives --install /usr/bin/javaws javaws /opt/jdk1.8.0_66/bin/javaws 1
 
 
-### Python
+## Python
 
     바로 활용할 수 있는 단순 웹 서버(보통 python은 다 설치되어 있음)
     #run SimpleHTTPServer
     python -m SimpleHTTPServer 8080
 
 
-### Screen 명령정리
+## Screen 명령정리
 
 예전 터미널 상에서의 screen 명령보다는 tmux를 쓰거나 terminator 등 멀티화면 지원하는 ssh client를 쓰는 게 나음.
 tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 있지 않아서 터미널상에서 바로 쓸 수 있는 멀티Screen도구일 것 같음.

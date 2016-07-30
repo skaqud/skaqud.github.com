@@ -105,7 +105,7 @@
         <div class="post">
   <h1 class="post-title">MacOS SD카드 용량 확장</h1>
   <span class="post-date">04 Apr 2016</span>
-  <h2 id="mac-sd--">mac SD 설정 관련</h2>
+  <p>mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면…)</p>
 
 <p>mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
 jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.</p>
@@ -113,26 +113,21 @@ jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개�
 <p>sleepwatcher 설치</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
-</code></pre>
-</div>
-
-  	brew update &amp;&amp; brew install sleepwatcher
-
-  	ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
-
-  	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-
-  	sleep 내용
+brew update &amp;&amp; brew install sleepwatcher
+ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
+#sleep 내용
   	#!/bin/sh
   	diskutil unmount /Volumes/SkaMacSD
   	sleep 1
   	kextunload -b com.apple.driver.AppleSDXC
-
-  	wake 내용
+#wake 내용
   	!/bin/sh
   	kextload -b com.apple.driver.AppleSDXC
   	sleep 1
   	diskutil mount /Volumes/SkaMacSD
+</code></pre>
+</div>
 
 <h2 id="itunes--">ITunes 라이브러리 옮기기</h2>
 
@@ -158,27 +153,27 @@ jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개�
     
       <li>
         <h3>
+          <a href="/reuse/2016/07/25/Chromebook-linux-install-review/">
+            크롬북 Crouton을 이용한 Linux 설치 사용기
+            <small>25 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/reuse/2016/07/24/Reusable-Commands-List/">
+            자주 사용하는 명령들
+            <small>24 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/architecture/2016/04/26/make-devenv/">
             WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
             <small>26 Apr 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/architecture/2016/04/11/Using-Vagrant/">
-            Vagrant로 로컬에 가상 개발환경 준비하기
-            <small>11 Apr 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/jekyll/update/2016/03/01/welcome-to-jekyll/">
-            Welcome to Jekyll!
-            <small>01 Mar 2016</small>
           </a>
         </h3>
       </li>
