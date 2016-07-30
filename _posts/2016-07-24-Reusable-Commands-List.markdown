@@ -131,9 +131,9 @@ RPM명령(CentOS,RHEL계열)
 
 실행
 
-    docker run -d --name myapp -p 8080:8080 ska/myapp:1.0
+    docker run -d --name myapp -p 8080 ska/myapp:1.0
     docker run -i --name myapp -t ska/myapp:1.0 /bin/bash
-    docker run -d --name java_web -p 8080:8080 ska/java_web:1.0
+    docker run -d --name java_web -p 8080 ska/java_web:1.0
     docker run -i --name java_web -t ska/java_web:1.0 /bin/bash
 
     #사용하지 않는 컨테이너 확인
@@ -216,36 +216,36 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
 ## Proxy 설정
 
     #env에 추가(wget,curl 등 cli 기반 도구의 경우)
-    export http_proxy="http://xx.xx.xx.xx:8888:8080"
-    export https_proxy="http://xx.xx.xx.xx:8888:8080"
+    export http_proxy="http://xx.xx.xx.xx:8888"
+    export https_proxy="http://xx.xx.xx.xx:8888"
 
     #proxy setting(로그인쉘에 추가-bash의 경우)
-    echo 'export http_proxy="http://xx.xx.xx.xx:8888:8080"' >> ~/.bash_profile
-    echo 'export https_proxy="https://xx.xx.xx.xx:8888:8080"' >> ~/.bash_profile
+    echo 'export http_proxy="http://xx.xx.xx.xx:8888"' >> ~/.bash_profile
+    echo 'export https_proxy="https://xx.xx.xx.xx:8888"' >> ~/.bash_profile
 
     #apt proxy setting(ubuntu 패키지 관리자)
-    echo 'Acquire::http::proxy "http://xx.xx.xx.xx:8888:8080/";' >> /etc/apt/apt.conf
-    echo 'Acquire::https::proxy "http://xx.xx.xx.xx:8888:8080/";' >> /etc/apt/apt.conf
+    echo 'Acquire::http::proxy "http://xx.xx.xx.xx:8888/";' >> /etc/apt/apt.conf
+    echo 'Acquire::https::proxy "http://xx.xx.xx.xx:8888/";' >> /etc/apt/apt.conf
 
     #yum proxy setting(centos 패키지 관리자)
-    echo 'proxy=http://xx.xx.xx.xx:8888:8080' >> /etc/yum.conf
+    echo 'proxy=http://xx.xx.xx.xx:8888' >> /etc/yum.conf
 
     #WINDOWS일 경우
-    set HTTP_PROXY="http://xx.xx.xx.xx:8888:8080"
-    set HTTPS_PROXY="http://xx.xx.xx.xx:8888:8080"
+    set HTTP_PROXY="http://xx.xx.xx.xx:8888"
+    set HTTPS_PROXY="http://xx.xx.xx.xx:8888"
 
     #git(gitconfig) 설정
-    git config http.proxy http://xx.xx.xx.xx:8888:8080
+    git config http.proxy http://xx.xx.xx.xx:8888
 
     #docker proxy 설정
     참고 - http://nknu.net/running-docker-behind-a-proxy-on-ubuntu-14-04/
 
     /etc/defaults/docker
     파일 수정
-    export http_proxy="http://xx.xx.xx.xx:8888:8080/"
+    export http_proxy="http://xx.xx.xx.xx:8888/"
 
     ### gpg proxy 설정
-    http-proxy="http://xx.xx.xx.xx:8888:8080/"
+    http-proxy="http://xx.xx.xx.xx:8888/"
     home 디렉토리 하위 .gnupg/gpg.conf
     아래와 같이 --keyserver-options 뒤에 넣습니다.
-    RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy=http://xx.xx.xx.xx:8888:8080 --recv-keys \
+    RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy=http://xx.xx.xx.xx:8888 --recv-keys \
