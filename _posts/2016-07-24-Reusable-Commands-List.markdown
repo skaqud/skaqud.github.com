@@ -148,10 +148,20 @@ RPM명령(CentOS,RHEL계열)
 
 ### GIT
 
+    # 변경 반영 및 commit, push
+    git add --all
     git add ./*
     git commit -a -m "commit message"
     git push origin master
 
+    #development 브랜치로 변경
+    git checkout development
+    # 브랜치 정보 보기
+    git branch
+    # 상태보기
+    git status
+
+    # 설정
     git config --global user.name "...."
     git config --global user.email ......
 
@@ -160,9 +170,10 @@ RPM명령(CentOS,RHEL계열)
 
 ### MySQL
 
-    DB생성
+    # DB생성
     CREATE SCHEMA ReviewDB DEFAULT CHARACTER SET utf8 ;
-    계정 생성
+    # 계정 생성
+    # MySQL은 접근시 모든호스트(%)로부터의 권한과 로컬(localhost)로부터의 권한을 별도로 줌
     create user 'gerrit'@'%' identified by 'gerrit123';
     grant all privileges on *.* to 'gerrit'@'%';
     create user 'gerrit'@'localhost' identified by 'gerrit123';
@@ -174,7 +185,7 @@ RPM명령(CentOS,RHEL계열)
 
 ### JDK
 
-tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움
+tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움, 그래서 아래와 같이 tar를 특정위치에 풀고 update-alternatives 로 시스템에서 인식되도록 함. 
 
     wget ......install_file_path/jdk-8u66-linux-x64.gz
     tar zxvf jdk-8u66-linux-x64.gz
