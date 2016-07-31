@@ -2,7 +2,9 @@
 layout: post
 title:  "AWS Summit korea 참관후기"
 date:   2015-04-21 16:10:49 +0700
-categories: Tech 후기
+tags:
+- Tech
+- review
 ---
 
 AWS Summit korea에서 들었던 내용들을 시간순서대로 적어보았습니다.

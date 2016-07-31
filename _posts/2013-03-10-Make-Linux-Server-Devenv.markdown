@@ -2,7 +2,9 @@
 layout: post
 title:  "Debian기반 Linux + tomcat + git개발환경 구성하기"
 date:   2013-03-10 16:10:49 +0700
-categories: Tech 삽질
+tags: 
+- Tech
+- 삽질
 ---
 
 Debian기반 Linux + nginx + tomcat mysql + git개발환경 삽질 기록.

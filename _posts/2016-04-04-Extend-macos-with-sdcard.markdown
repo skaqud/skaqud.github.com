@@ -2,7 +2,9 @@
 layout: post
 title:  "MacOS SD카드 용량 확장"
 date:   2016-04-04 21:10:49 +0700
-categories: hobby life
+tags: 
+- hobby
+- life
 ---
 
 mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면...)

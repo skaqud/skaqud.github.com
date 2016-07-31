@@ -2,7 +2,9 @@
 layout: post
 title:  "자주 사용하는 명령들"
 date:   2016-07-24 12:21:15 +0700
-categories: reuse
+tags:
+- reuse
+- 삽질
 ---
 
 자주 사용하는 명령들의 모음

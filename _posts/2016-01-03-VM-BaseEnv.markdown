@@ -2,7 +2,9 @@
 layout: post
 title:  "VM 기본환경 구성하기"
 date:   2016-01-03 11:20:15 +0700
-categories: reuse
+tags:
+- reuse
+- 삽질
 ---
 
 vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임

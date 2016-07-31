@@ -2,7 +2,9 @@
 layout: post
 title:  "WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기"
 date:   2016-04-25 23:01:49 +0700
-categories: architecture
+tags:
+- architecture
+- Tech
 ---
 
 본 문서에서는 준비된 가상 개발환경에 WEB,WAS,DB를 설치하고 Sample Application을 deploy하여 확인하는 과정에 대해 설명합니다.

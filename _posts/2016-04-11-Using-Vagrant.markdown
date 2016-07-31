@@ -2,7 +2,9 @@
 layout: post
 title:  "Vagrant로 로컬에 가상 개발환경 준비하기"
 date:   2016-04-11 16:15:49 +0700
-categories: architecture
+tags:
+- architecture
+- Tech
 ---
 본 문서에서는 간략하게 Vagrant(와 Virtualbox) 를 이용하여 개발환경으로 사용할 가상 환경을 로컬에 생성하는 과정을 설명합니다. 아무래도 개인적으로 좀 더 거창하고 복잡한 Docker 보다는 vagrant가 더 접근하기 쉬웠던 것 같습니다.
 

@@ -2,7 +2,10 @@
 layout: post
 title:  "크롬북 Crouton을 이용한 Linux 설치 사용기"
 date:   2016-07-25 12:21:15 +0700
-categories: reuse
+tags:
+- life
+- review
+- hobby
 ---
 
 Asus C201(정확한 모델명은 C201PA-DS02) 크롬북에 crouton을 통해 ubuntu(with xfce)를 설치하고 사용해본 7일 사용소감.
