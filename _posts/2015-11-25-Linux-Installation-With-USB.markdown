@@ -11,7 +11,7 @@ tags:
 
 준비물
 
-- Linux OS 이미지(보통 ISO) - 개인적인 느낌은 다음과 같다.
+1. Linux OS 이미지(보통 ISO) - 개인적인 느낌은 다음과 같다.
 
 [ubuntu](http://www.ubuntu.com/download/desktop) - ubuntu desktop main ISO
 
@@ -19,19 +19,20 @@ tags:
 
 [kubuntu](http://www.kubuntu.org/getkubuntu/) - kde기반, 뭔가 취향에 안맞다.
 
-[ubuntu mate](https://ubuntu-mate.org/what-is-ubuntu-mate/) - 데스크탑 환경으로 MATE 사용, GNOME2 사용
+[ubuntu mate](https://ubuntu-mate.org/what-is-ubuntu-mate/) - 데스크탑 환경으로 MATE 사용, GNOME2 사용, 취향에 안맞음
 
-[linux mint](https://www.linuxmint.com/download.php) - 가장 윈도우와 유사, 배포판 중 1위, 하지만 역시 내 취향이 아님
+[linux mint](https://www.linuxmint.com/download.php) - 가장 윈도우와 유사, 배포판 중 1위, 하지만 역시 내 취향이 아님, ubuntu mate와 비슷함
 
 [ElementaryOS](https://elementary.io) - 가장 예쁜 OS, 개인적으로 버그가 좀 잦음 편이었음
 
 위에서부터 한번씩 돌았다가 다시 맨위로 갔음, 사용자 수나, 안정성 면에서 나은 것 같다.
 
-- 설치 USB 제작 프로그램 - [rufus](https://rufus.akeo.ie/?locale=ko_KR) - 설치 필요 없고, 가벼움
-- USB - 4GB짜리면 된다.
+2. 설치 USB 제작 프로그램 - [rufus](https://rufus.akeo.ie/?locale=ko_KR) - 설치 필요 없고, 가벼움
+
+3. USB - 4GB짜리면 된다.
 
 
-rufus 사용시 다음 주의(나머지는 어렴지 않음)
+rufus 사용시 다음 주의(나머지는 어렵지 않음)
 
     디스크 형식과 부팅 시스템 유형 - MBR파티션 형식의 BIOS 혹은 UEFI
     파일시스템 - FAT32
