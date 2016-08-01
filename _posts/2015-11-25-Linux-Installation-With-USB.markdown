@@ -10,6 +10,7 @@ tags:
 사용중이던 Thinkpad X201이 Windows 10을 설치하니 도저히 사용하지 못할 정도로 느려져서, 좀 더 가벼운 OS를 설치해보기로 했다. ODD가 없어서 USB를 통해 설치하기로 함.
 
 준비물
+
 - Linux OS 이미지(보통 ISO) - 개인적인 느낌은 다음과 같다.
 
 [ubuntu](http://www.ubuntu.com/download/desktop) - ubuntu desktop main ISO
@@ -32,7 +33,7 @@ tags:
 
 rufus 사용시 다음 주의(나머지는 어렴지 않음)
 
-- 디스크 형식과 부팅 시스템 유형 - MBR파티션 형식의 BIOS 혹은 UEFI
-- 파일시스템 - FAT32
+    디스크 형식과 부팅 시스템 유형 - MBR파티션 형식의 BIOS 혹은 UEFI
+    파일시스템 - FAT32
 
 설치할 ISO를 선택하여 rufus에서 부팅디스크를 만든 뒤, 해당 USB를 꼽고,BIOS에서 부팅이 되도록 하여 설치를 진행하면 된다.
