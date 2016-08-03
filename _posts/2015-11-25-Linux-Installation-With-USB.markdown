@@ -23,7 +23,7 @@ tags:
 
 [linux mint](https://www.linuxmint.com/download.php) - 가장 윈도우와 유사, 배포판 중 1위, 하지만 역시 내 취향이 아님, ubuntu mate와 비슷함
 
-[ElementaryOS](https://elementary.io) - 가장 예쁜 OS, 개인적으로 버그가 좀 잦음 편이었음
+[ElementaryOS](https://elementary.io) - 가장 예쁜 OS, 개인적으로 버그가 좀 잦은 편이었음
 
 위에서부터 한번씩 돌았다가 다시 맨위로 갔음, 사용자 수나, 안정성 면에서 나은 것 같다.
 
