@@ -10,7 +10,7 @@
 
   <title>
     
-      MacOS SD카드 용량 확장 &middot; 雜夫's Blog
+      부팅 가능한 USB로 Linux 설치하기 &middot; 雜夫's Blog
     
   </title>
 
@@ -111,47 +111,47 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">MacOS SD카드 용량 확장</h1>
-  <span class="post-date">04 Apr 2016</span>
-  <p>mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면…)</p>
+  <h1 class="post-title">부팅 가능한 USB로 Linux 설치하기</h1>
+  <span class="post-date">25 Nov 2015</span>
+  <p>사용중이던 Thinkpad X201이 Windows 10을 설치하니 도저히 사용하지 못할 정도로 느려져서, 좀 더 가벼운 OS를 설치해보기로 했다. ODD가 없어서 USB를 통해 설치하기로 함.</p>
 
-<p>mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
-jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.</p>
+<p>준비물</p>
 
-<p>sleepwatcher 설치</p>
+<ol>
+  <li>Linux OS 이미지(보통 ISO) - 개인적인 느낌은 다음과 같다.</li>
+</ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
-brew update &amp;&amp; brew install sleepwatcher
-ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-#sleep 내용
-  	#!/bin/sh
-  	diskutil unmount /Volumes/SkaMacSD
-  	sleep 1
-  	kextunload -b com.apple.driver.AppleSDXC
-#wake 내용
-  	!/bin/sh
-  	kextload -b com.apple.driver.AppleSDXC
-  	sleep 1
-  	diskutil mount /Volumes/SkaMacSD
-</code></pre>
-</div>
+<p><a href="http://www.ubuntu.com/download/desktop">ubuntu</a> - ubuntu desktop main ISO</p>
 
-<h2 id="itunes--">ITunes 라이브러리 옮기기</h2>
+<p><a href="http://xubuntu.org/getxubuntu/">xubuntu</a> - xcfe기반, 쥐가 마스코트, unity,kde보다는 가벼움</p>
 
-<p>참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;wr_id=849473</p>
+<p><a href="http://www.kubuntu.org/getkubuntu/">kubuntu</a> - kde기반, 뭔가 취향에 안맞다.</p>
+
+<p><a href="https://ubuntu-mate.org/what-is-ubuntu-mate/">ubuntu mate</a> - 데스크탑 환경으로 MATE 사용, GNOME2 사용, 취향에 안맞음</p>
+
+<p><a href="https://www.linuxmint.com/download.php">linux mint</a> - 가장 윈도우와 유사, 배포판 중 1위, 하지만 역시 내 취향이 아님, ubuntu mate와 비슷함</p>
+
+<p><a href="https://elementary.io">ElementaryOS</a> - 가장 예쁜 OS, 개인적으로 버그가 좀 잦은 편이었음</p>
+
+<p>위에서부터 한번씩 돌았다가 다시 맨위로 갔음, 사용자 수나, 안정성 면에서 나은 것 같다.</p>
 
 <ol>
   <li>
-    <p>아이튠즈 설정 - 고급 - iTunes Media 폴더 위치
-라는 메뉴에서 원하는 위치로 변경</p>
+    <p>설치 USB 제작 프로그램 - <a href="https://rufus.akeo.ie/?locale=ko_KR">rufus</a> - 설치 필요 없고, 가벼움</p>
   </li>
   <li>
-    <p>파인더에서 기본적인 보관함 위치인 ‘홈폴더 - 음악 - iTunes’ 폴더를 SD카드로 이동한다음
-아이튠즈를 실행할때 Option키를 누르면서 실행하면 보관함 선택할 수 있는 메뉴가 뜹니다.
-여기서 옮긴 보관함을 선택</p>
+    <p>USB - 4GB짜리면 된다.</p>
   </li>
 </ol>
+
+<p>rufus 사용시 다음 주의(나머지는 어렵지 않음)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>디스크 형식과 부팅 시스템 유형 - MBR파티션 형식의 BIOS 혹은 UEFI
+파일시스템 - FAT32
+</code></pre>
+</div>
+
+<p>설치할 ISO를 선택하여 rufus에서 부팅디스크를 만든 뒤, 해당 USB를 꼽고,BIOS에서 부팅이 되도록 하여 설치를 진행하면 된다.</p>
 
 </div>
 

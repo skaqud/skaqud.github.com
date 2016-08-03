@@ -10,7 +10,7 @@
 
   <title>
     
-      MacOS SD카드 용량 확장 &middot; 雜夫's Blog
+      VI 사용팁 &middot; 雜夫's Blog
     
   </title>
 
@@ -111,47 +111,101 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">MacOS SD카드 용량 확장</h1>
-  <span class="post-date">04 Apr 2016</span>
-  <p>mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면…)</p>
+  <h1 class="post-title">VI 사용팁</h1>
+  <span class="post-date">09 Apr 2015</span>
+  <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Tab과 Space 관련</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">기타</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-3">
+              <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">참고</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>VI사용시 자주 까먹는, 팁 모음</p>
 
-<p>mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
-jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.</p>
+<h1 id="tocAnchor-1-1">Tab과 Space 관련</h1>
 
-<p>sleepwatcher 설치</p>
+<p>
+  <a href="http://naturephoto.tistory.com/38">VIM에서 tab을 space로 바꾸기</a>
+</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
-brew update &amp;&amp; brew install sleepwatcher
-ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-#sleep 내용
-  	#!/bin/sh
-  	diskutil unmount /Volumes/SkaMacSD
-  	sleep 1
-  	kextunload -b com.apple.driver.AppleSDXC
-#wake 내용
-  	!/bin/sh
-  	kextload -b com.apple.driver.AppleSDXC
-  	sleep 1
-  	diskutil mount /Volumes/SkaMacSD
+<div class="highlighter-rouge"><pre class="highlight"><code>:set expandtab
 </code></pre>
 </div>
 
-<h2 id="itunes--">ITunes 라이브러리 옮기기</h2>
+<p>귀찮을 경우 설정으로.. .vimrc에 다음 내용 추가</p>
 
-<p>참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;wr_id=849473</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>set ts=4
+au Bufenter \*.\(py\|java\|c\) set et
+</code></pre>
+</div>
 
-<ol>
+<h1 id="tocAnchor-1-2">기타</h1>
+
+<h3 id="auto-indent">들여쓰기 설정(auto indent)</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>:set ai(noai)
+</code></pre>
+</div>
+
+<p>설정할 경우 붙여넣기 했을 때 정상적으로 indent 되지 않는 경우가 대부분…?</p>
+
+<h3 id="section-1">여러 행 탭 끼워 넣기</h3>
+
+<ul>
   <li>
-    <p>아이튠즈 설정 - 고급 - iTunes Media 폴더 위치
-라는 메뉴에서 원하는 위치로 변경</p>
+    <p>3개 행에 동일한 탭을 끼워넣을 경우 숫자+«(탭추가) »(탭제거)</p>
+
+    <p>#탭 사이즈를 조정하는 변수
+  set ts(sw/sts)=4
+  :set ts=4
+  :set sw=4
+  :set sts=4</p>
   </li>
-  <li>
-    <p>파인더에서 기본적인 보관함 위치인 ‘홈폴더 - 음악 - iTunes’ 폴더를 SD카드로 이동한다음
-아이튠즈를 실행할때 Option키를 누르면서 실행하면 보관함 선택할 수 있는 메뉴가 뜹니다.
-여기서 옮긴 보관함을 선택</p>
-  </li>
-</ol>
+</ul>
+
+<h3 id="vim----indent-">vim에서 자동으로 블럭 설정하여 indent 맞추기</h3>
+
+<ul>
+  <li>Shift+V 눌러 Visual Line Mode 로 들어간 뒤 선택할 영역을 조정하여 =을 누르면 자동으로 맞춰짐</li>
+</ul>
+
+<p>-&gt; 맘에 들지 않는 방식으로 자동 정렬 됨….ㅡ.,ㅡ;</p>
+
+<h3 id="dos--">dos 포맷 변환</h3>
+
+<p>간혹 작업시 dos에서 가져온 파일일 경우 ^M 문서가 보이는 경우 아래와 같이 일괄 삭제</p>
+
+<p>:%s/^M//g</p>
+
+<p>^M은 일반적으로 Ctrl + V + M 을 누른다.</p>
+
+<p>위의 내용을 수정했는데도, 간혹 dos 포맷이라고 할 경우</p>
+
+<p>:set ff=unix</p>
+
+<h1 id="tocAnchor-1-3">참고</h1>
+
+<p>.vimrc 설정은 다음을 참고</p>
+
+<p>
+  <a href="http://blog.outsider.ne.kr/518">vim설정을 위한 .vimrc</a>
+</p>
 
 </div>
 
