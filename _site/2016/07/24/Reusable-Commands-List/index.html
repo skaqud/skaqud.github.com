@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/toc.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
@@ -26,6 +27,18 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 
 
@@ -460,6 +473,15 @@ RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy
     
       <li>
         <h3>
+          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
+            Jekyll로 Github Page에 블로그만들기
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2016/07/25/Chromebook-linux-install-review/">
             크롬북 Crouton을 이용한 Linux 설치 사용기
             <small>25 Jul 2016</small>
@@ -472,15 +494,6 @@ RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy
           <a href="/2016/04/26/make-devenv/">
             WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
             <small>26 Apr 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2016/04/11/Using-Vagrant/">
-            Vagrant로 로컬에 가상 개발환경 준비하기
-            <small>11 Apr 2016</small>
           </a>
         </h3>
       </li>

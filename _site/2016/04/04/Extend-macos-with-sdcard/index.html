@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/toc.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
@@ -26,6 +27,18 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 
 
@@ -113,22 +126,53 @@
         <div class="post">
   <h1 class="post-title">MacOS SD카드 용량 확장</h1>
   <span class="post-date">04 Apr 2016</span>
-  <p>mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면…)</p>
+  <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">sleepwatcher 설치</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">ITunes 라이브러리 옮기기</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>mac에서 SD카드를 통해 용량 확장시, 인식을 못하거나 에러를 뱉는 경우를 방지하기 위한 방법입니다.(애초에 용량 큰 걸 샀으면…)</p>
+
+<h1 id="tocAnchor-1-1">sleepwatcher 설치</h1>
 
 <p>mac의 장점인 전원을 끄지 않고 sleep 모드로 두었을 때, 깨어날 경우 간혹 SD카드를 인식하지 못하는 경우가 있음.
-jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요하다.</p>
+jettison(http://macnews.tistory.com/2308) 이라는 대안도 있으나 소개글의 댓글을 보면 이게 되는건지 아닌지 확신할 수가 없어, 검색을 통해 sleepwatcher 라는 도구를 설치. 약간의 shell script에 대한 지식이 필요함.</p>
 
-<p>sleepwatcher 설치</p>
+<p>
+  <a href="https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/">JetDrive Lite, Dropbox, 그리고 sleepwatcher</a>
+</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>참고 : https://joshua.huh.today/2016/03/06/jetdrive-lite-dropbox-and-sleep-watcher/
-brew update &amp;&amp; brew install sleepwatcher
+<p>설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>brew update &amp;&amp; brew install sleepwatcher
 ln -sfv /usr/local/Cellar/sleepwatcher/2.2/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-#sleep 내용
+</code></pre>
+</div>
+
+<p>script 작성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#sleep 내용
   	#!/bin/sh
   	diskutil unmount /Volumes/SkaMacSD
   	sleep 1
   	kextunload -b com.apple.driver.AppleSDXC
+
 #wake 내용
   	!/bin/sh
   	kextload -b com.apple.driver.AppleSDXC
@@ -137,9 +181,13 @@ launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibi
 </code></pre>
 </div>
 
-<h2 id="itunes--">ITunes 라이브러리 옮기기</h2>
+<p>다만, 위와 같이 적용한다고 해도, 10중 1,2는 제대로 동작하지 않음….</p>
 
-<p>참고 : http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;wr_id=849473</p>
+<h1 id="tocAnchor-1-2">ITunes 라이브러리 옮기기</h1>
+
+<p>
+  <a href="http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&amp;wr_id=849473">Clien-Itunes보관함 변경</a>
+</p>
 
 <ol>
   <li>
@@ -161,6 +209,15 @@ launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibi
     
       <li>
         <h3>
+          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
+            Jekyll로 Github Page에 블로그만들기
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2016/07/25/Chromebook-linux-install-review/">
             크롬북 Crouton을 이용한 Linux 설치 사용기
             <small>25 Jul 2016</small>
@@ -173,15 +230,6 @@ launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibi
           <a href="/2016/07/24/Reusable-Commands-List/">
             자주 사용하는 명령들
             <small>24 Jul 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2016/04/26/make-devenv/">
-            WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
-            <small>26 Apr 2016</small>
           </a>
         </h3>
       </li>
