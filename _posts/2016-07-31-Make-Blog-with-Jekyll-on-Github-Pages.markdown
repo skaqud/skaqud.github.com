@@ -65,7 +65,7 @@ tags:
 
 - tocGenerator.rb 파일을 \_plugin 디렉토리에 복사(없으면 생성)
 - css/toc.css 파일을 css디렉토리에 복사
-- 이후 content가 들어가는 곳에 content 부분을 content | toc_generator 로 수정해주면 됨
+- 이후 content가 들어가는 곳에 "content" 부분을 "content | toc_generator" 로 수정해주면 됨
 
 다만, markdown문서가 #, ## 등 제목 레벨의 내용이 없다면 아무것도 보이지 않을 수 있음.
 
