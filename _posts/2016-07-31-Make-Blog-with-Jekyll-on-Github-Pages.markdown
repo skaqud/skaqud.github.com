@@ -71,6 +71,13 @@ tags:
 
 적용은 되나, 로컬에서만 보이고, github에 push 하고 난 뒤는 보이지 않음....ㅜ.ㅜ;
 
+## 추가로 적용할 부분들
+
+- tag page 확장
+- web font 변경
+- 검색 기능 추가
+- 오류 수정 - TOC 기능
+
 
 ## Google Analytics 설정
 

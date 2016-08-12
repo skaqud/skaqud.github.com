@@ -39,6 +39,17 @@ tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 �
     find . -size +300k -ls
     #*..
 
+### awk,xargs 명령
+
+awk, xargs등의 명령은 ps, netstat 등과 연결하여 현재 떠있는 프로세스ID를 알아내거나, 그 프로세스들에 특정 작업을 하는 등 운영작업에 많이 사용됨.
+
+    #특정 user의 process를 무조건 kill하는 명령
+    ps -ef | grep user | awk '{print($1)}' | xargs kill -9
+    #구분자를 :로 하여 첫번째 필드를 출력
+    awk ‘FS=”:” {print $1}’ /etc/passwd
+
+xargs는 표준 입력을 통해 명령 줄을 만들고 실행함. 너무 긴 명령행을 방지하기 위해 사용
+
 
 ## 참고가 될 Shell Script
 
@@ -61,32 +72,38 @@ tar.gz, tgz 등은 단순히 묶을 때 czvf, 풀때 xzvf 만 기억하면 될 �
 
 ## 상황별 해결방법
 
+참고 - [생활코딩:SSH Key-비밀번호 없이 로그인](https://opentutorials.org/module/432/3742)
+
 SSH로그인자동화(공개키를 이용한)
 
-    키 생성(있을 경우 통과)
-    ssh-keygen
-    타겟 서버로 복사
+    #키 생성-rsa알고리즘으로 생성한다는 의미
+    ssh-keygen -t rsa
+    #타겟 서버로 복사
     scp ~/.ssh/id_rsa.pub vagrant@192.168.33.12:
-    허용 키 목록에 등록(해당 서버에 접속하여)
+    #혹은 다음과 같이 복사함.
+    ssh-copy-id vagrant@192.168.33.12
+    #해당 서버에 접속하여 허용 키 목록에 등록
     cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
-    권한 설정
+    #권한 설정
     chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/id_rsa
+    chmod 644 ~/.ssh/id_rsa.pub  
     chmod 644 ~/.ssh/authorized_keys
-    위의 작업을 해 준 계정에만 해당됨.
+    chmod 644 ~/.ssh/known_hosts
+    #위의 작업을 해 준 계정에만 해당됨.(위에서는 vagrant)
+
 
 OS 버전 확인
 
-    ubuntu
+    #ubuntu
+    #보안상의 이유로 바뀌어 있는 경우가 있음
     cat /etc/issue
+    #그럴 경우 아래와 같이 수행
+    cat /etc/*release*
+    #혹은
     lsb_release -a
 
-위와 같이 해서 안될 경우 다음과 같이 수행
-
-    cat /etc/*release
-    #*...편집용comment
-
-
-저장소(Repository)서버 변경(ubuntu)
+저장소(Repository)서버 변경(ubuntu) - 기본적으로 설정되어 있는 repository의 경우 대부분 서버가 외국이라, 속도가 상당히 드린 편임, 아래와 같이 국내서버로 변경한다.
 
     sudo vi /etc/apt/sources.list
     :%s/archive.ubuntu.com/ftp.daumkakao.com/g
@@ -99,11 +116,13 @@ OS 버전 확인
 
     /etc/rc.local 하위에 추가하면 됨
 
-설치된 패키지 조회 및 제거(ubuntu)
+설치된 패키지 조회 및 제거
+
+    (ubuntu)
 
     dpkg --get-selections | grep jdk
 
-RPM명령(CentOS,RHEL계열)
+    RPM명령(CentOS,RHEL계열)
 
     #설치된 rpm 조회
     rpm -qa | grep chef
@@ -150,11 +169,20 @@ RPM명령(CentOS,RHEL계열)
 
 ## GIT
 
+### 일반 명령
+
     # 변경 반영 및 commit, push
     git add --all
     git add ./*
+    # gitifnore에 있으나, 무시하고 등록하고 싶을 경우
+    git add -f 파일명
+
     git commit -a -m "commit message"
+    # push
     git push origin master
+    # u옵션은 이후 push시 remote와 branch를 저장(이후로는 merge만 하면 됨)
+    git push -u origin master
+
 
     #development 브랜치로 변경
     git checkout development
@@ -163,11 +191,39 @@ RPM명령(CentOS,RHEL계열)
     # 상태보기
     git status
 
+    로컬에서 수정한 내용을 무시하고 싶을 때
+    git checkout -- 파일명
+
     # 설정
+
+### 바이너리 파일 표시
+
+바이너리 파일의 경우 git에서 관리해줄 수 없는 포맷이라고 표시하는 게, git repository의 크기에도 좋고 관리에도 좋을 것 같음. 최상위 디렉토리에 .gitattributes 파일을 생성하고 다음과 같이 입력한다.
+
+  \*.jpg binary
+
+### gitignore 표시
+
+서버로 push 하지 않거나, 로컬로 다운로드가 필요하지 않은 파일의 경우(서버와 로컬이 설정이 달라야 할 경우) 최상위 디렉토리에 .gitignore 파일을 만들고 제외할 파일을 입력한다.
+
+예로 C# project의 gitignore는 다음과 같음.
+
+[Example .gitignore file I use for C# projects](https://gist.github.com/kmorcinek/2710267)
+
+
+### 설정
+
+git 설정은 로컬의 사용자 홈 디렉토리에 .gitconfig 라는 이름으로 저장됨. 파일을 직접 수정해도 되나, 정확히 format을 모르므로, 아래와 같이 명령어 사용하는 게 편함.
+
+    #글로벌 설정, email, username
     git config --global user.name "...."
     git config --global user.email ......
 
+    # 프록시 설정
     git config http.proxy http://xx.xx.xx.xx:8888
+
+    # https verify false - 프록시 사용시 https 인증서 문제가 있다면 사용
+    git config http.sslVerify "false"
 
 
 ## MySQL
@@ -262,3 +318,8 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
     home 디렉토리 하위 .gnupg/gpg.conf
     아래와 같이 --keyserver-options 뒤에 넣습니다.
     RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy=http://xx.xx.xx.xx:8888 --recv-keys \
+
+    #android-sdk manager의 경우, 홈 디렉토리의 .android/androidtools.cfg 파일에 다음 내용 입력
+    http.proxyLogin=USER@PASSWORD
+    http.proxyPort=PORTNUMBER
+    http.proxyHost=PROXYHTTP
