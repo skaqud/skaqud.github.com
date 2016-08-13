@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      라즈베리파이2 설치 및 사용기 &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/toc.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2016. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">라즈베리파이2 설치 및 사용기</h1>
+  <span class="post-date">02 Mar 2015</span>
+  <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">개요</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">초기 설치 및 설정</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">WIFI 설정</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">3</span> <span class="toctext">기타 활용</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-4-1"><span class="tocnumber">3.1</span> <span class="toctext">samba 설치</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-4-2"><span class="tocnumber">3.2</span> <span class="toctext">transmission설치</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-7">
+              <a href="#tocAnchor-1-7"><span class="tocnumber">4</span> <span class="toctext">이슈</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>노리고 있던 라즈베리파이2를 구입하여 집 안에서 아기에게 틀어주기위한 동영상NAS로 세팅하기까지의 과정</p>
+
+<h1 id="tocAnchor-1-1">개요</h1>
+
+<p>집 안에서 NAS 역할을 할 서버에 대해 궁리하다가, 맥미니, 베어본PC, 스틱PC 등 여러가지 들을 궁리해봤으나, 가격, 성능, 불안정함(?) 등으로 선뜻 시도를 해 보지 못하고 있다가, 라즈베리파이2가 마침 나와서, 사서 안되면 딴거라도 해 보면 되지 하고 지름.</p>
+
+<p>사실 GPIO, 파이썬, 아두이노 등과 연결하여 좀 더 창의적이고, 유익한 쓰임(?)으로 사용할 수 있을 것 같으나, 그렇게 크리에이티브하고, 부지런한 인간은 아니라서 세팅하면서 나왔던 내용을 적음.</p>
+
+<h1 id="tocAnchor-1-2">초기 설치 및 설정</h1>
+
+<p>OS image 다운로드 - rasbian 이라고 하며 debian의 변형판이다.</p>
+
+<p>https://www.raspberrypi.org/downloads/raspbian/</p>
+
+<p>SD카드(4~8GB)를 구해 위의 이미지를 SD카드에 쓴다. 윈도우에서는 <a href="https://sourceforge.net/projects/win32diskimager/">Win32DiskImager</a> 를 이용하여 설치한다.</p>
+
+<p>SD카드를 넣고 라즈베리파이에 전원을 넣어 부팅한다. 보드에서 불이 반짝반짝 하며 부팅된다. 처음에는 모니터가 연결되어 있어야 함(IP를 모르므로..)</p>
+
+<p>외장하드가 있을 경우 부팅시 인식하도록 다음과 같이 /etc/fstab에 추가</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>raspberrypi:~$ cat /etc/fstab
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p1  /boot           vfat    defaults          0       2
+/dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
+/dev/sda1  /home/addedHDD         ntfs    defaults  0       0   #add hdd
+</code></pre>
+</div>
+
+<h2 id="tocAnchor-1-2-1">WIFI 설정</h2>
+
+<p>유선의 경우 선을 꼽고 ifconfig로 나오는 IP로 바로 접근 가능
+무선랜의 경우 무선랜카드를 꼽고, 다음과 같이 설정한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#달려있는 USB장비를 확인
+raspberrypi:~$ lsusb
+Protocol spec without prior Class and Subclass spec at line 17454
+Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp. SMC9514 Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast Ethernet Adapter
+Bus 001 Device 004: ID 0411:0157 BUFFALO INC. (formerly MelCo., Inc.) External Hard Drive HD-PEU2
+
+#IP는 다음과 같이 설정
+raspberrypi:~$ cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+
+# wlan setting
+allow-hotplug wlan0
+auto wlan0
+iface wlan0 inet static
+address 192.168.0.XX
+gateway 192.168.0.1
+netmask 255.255.255.0
+wpa-ssid "YOURSSID"
+wpa-psk "YOURPSK"
+
+# eth0 setting
+auto eth0
+iface eth0 inet static
+address 192.168.0.XX
+gateway 192.168.0.1
+netmask 255.255.255.0
+</code></pre>
+</div>
+
+<p>IP등 변경시 정상적으로 적용하기 위해서는 다음과 같이 network서비스를 재시작한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo /etc/init.d/networking restart
+</code></pre>
+</div>
+
+<p>그밖의 명령</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#무선랜down
+sudo ifdown wlan0
+#무선랜up
+sudo ifup wlan0
+</code></pre>
+</div>
+
+<h1 id="tocAnchor-1-4">기타 활용</h1>
+
+<h2 id="tocAnchor-1-4-1">samba 설치</h2>
+
+<p>참고 - <a href="http://ghost9087.tistory.com/2">라즈베리파이 활용기-NAS로 활용하기(1)</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># samba 설치
+sudo apt-get install samba samba-common-bin
+# samba.conf 파일 수정
+sudo vi /etc/samba/smb.conf
+
+#Share Definitions 하위의 내용을 다음과 같이 수정
+[profiles]
+   comment = Users profiles
+   path = /home/addedHDD
+   guest ok = no
+   browseable = yes
+   writable = yes
+   create mask = 0777
+   directory mask = 0777
+
+ #samba 계정 추가
+ sudo smbpasswd -a [username]
+
+ #서비스 재시작
+ sudo /etc/init.d/samba restart
+</code></pre>
+</div>
+
+<h2 id="tocAnchor-1-4-2">transmission설치</h2>
+
+<p>참고 - <a href="http://ghost9087.tistory.com/3">라즈베리파이 활용기-NAS로 활용하기(2)</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install transmission-daemon
+#설치 후 바로 실행되는데 멈춘 후
+/etc/init.d/transmission-daemon stop
+#설정파일 수정
+/etc/transmission-daemon/settings.json
+#수정한 항목
+#download-dir
+#incomplete-dir
+#rpc-password
+#다시 시작
+/etc/init.d/transmission-daemon start
+</code></pre>
+</div>
+
+<p>이후 http://localhost:9091 로 접속(transmission/YOURPASSWORD)</p>
+
+<h1 id="tocAnchor-1-7">이슈</h1>
+
+<ul>
+  <li>
+    <p>전원 - 외장 2.5 인치 하드 등 전원을 많이 필요로 하는 USB 연결시 5V,2A 이상의 전원을 사용해야 함, 그렇지 않으면 기동시 문제가 생긴다. 아무 핸드폰 충전기로 다 되는 건 아님</p>
+  </li>
+  <li>
+    <p>무선 랜 카드의 경우 IPtime에서 나오는 걸로 2개(iptime n105ua, n100mini) 붙여봤는데, n105ua는 랜카드 인식이 안되고(커널 단 문제라고…), n100mini는 정상 인식하나, 수신률이나 속도는 좋지 않은 편이다. 유선이 가능하다면 세팅 후 유선으로 사용하는 게 좋을 것 같음.</p>
+  </li>
+  <li>
+    <p>케이스가 아크릴로 별도로 만들어진 제품을 사용중인데, 그다지 퀄리티가 좋지 않다. 사용하다 보면, USB선이 계속 빠져서 전원이 나가는 경우가 계속 생김. 확인하고 구입해야 할 것 같다.</p>
+  </li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
+            Jekyll로 Github Page에 블로그만들기
+            <small>01 Aug 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/07/25/Chromebook-linux-install-review/">
+            크롬북 Crouton을 이용한 Linux 설치 사용기
+            <small>25 Jul 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/07/24/Reusable-Commands-List/">
+            자주 사용하는 명령들
+            <small>24 Jul 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
