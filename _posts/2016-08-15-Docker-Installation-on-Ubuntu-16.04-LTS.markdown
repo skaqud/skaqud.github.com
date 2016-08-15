@@ -45,11 +45,34 @@ tags:
 테스트로 tomcat을 docker hub에서 pull 하여 확인
 
     sudo docker pull tomcat
+    Using default tag: latest
+    latest: Pulling from library/tomcat
+    357ea8c3d80b: Pull complete
+    52befadefd24: Pull complete
+    42f3df327392: Pull complete
+    4e195c5e4516: Pull complete
+    297a64db205e: Pull complete
+    600f17c406e3: Pull complete
+    30e8d8bfa9f5: Pull complete
+    3be4eef33530: Pull complete
+    c8da2b1886ec: Pull complete
+    336408773ec8: Pull complete
+    1f5bc41dc68d: Pull complete
+    Digest: sha256:c3e0ecbb5844d2bf209c423fcaeddce03307107b1d486b7ef0e50f59a6829646
+    Status: Downloaded newer image for tomcat:latest
+
     #명령으로 이미지를 받았는지 확인
     sudo docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    tomcat              latest              a48852c0fc95        3 days ago          357.4 MB
+
     #이미지를 기반으로 컨테이너 시작
     sudo docker run -d -p 8080:8080 --name=test tomcat
+    27134fb70d48304a3d71775247e88f31394580dd484152415f382b9579e5aa40
+
+    sudo docker ps -a
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+    27134fb70d48        tomcat              "catalina.sh run"   8 seconds ago       Up 8 seconds        0.0.0.0:8080->8080/tcp   test
+
 
 이후 로컬의 브라우저를 통해 톰캣 디폴트 화면을 확인
-
-    
