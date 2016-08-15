@@ -22,14 +22,14 @@ tags:
     5767564 -rw-r-----  1 colord whoopsie 563662  8월 11 21:55 _usr_lib_colord_colord-sane.113.crash
 
     % sudo rm /var/crash/*
-    # sudo reboot
+    % sudo reboot
 
 리부트 후 이상없음을 확인
 
 차후로도 다른 이유로 같은 메세지가 뜨는 게 보기 싫다면 다음과 같이 apport를 끄면 된다고 함.
 
     #다음 파일을 연 뒤
-    sudo vi /etc/default/apport
+    % sudo vi /etc/default/apport
     #다음과 같이 수정
     #enabled=1
     enabled=1
