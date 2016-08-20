@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "크롬북 Crouton을 이용한 Linux 설치 사용기"
-date:   2016-07-25 12:21:15 +0700
+title: 크롬북 Crouton을 이용한 Linux 설치 사용기
+date: '2016-07-25 12:21:15 +0700'
 tags:
-- life
-- review
-- hobby
+  - life
+  - review
+  - hobby
+published: true
 ---
 
 Asus C201(정확한 모델명은 C201PA-DS02) 크롬북에 crouton을 통해 ubuntu(with xfce)를 설치하고 사용해본 7일 사용소감.
@@ -73,7 +74,15 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 # Linux 설정 및 사용
 
-이후 설치한 것들은 다음과 같음
+초기 설치
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install software-center
+
+소프트웨어 센터 설치 후 다음과 같은 것들을 설치
+
+이후 설치
 
 - openjdk-7-jdk(apt-get) - 설치됨
 - firefox(ubuntu-software-center) - 설치됨
