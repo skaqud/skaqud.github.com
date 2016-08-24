@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "크롬북 Crouton을 이용한 Linux 설치 사용기"
-date:   2016-07-25 12:21:15 +0700
+title: 크롬북 Crouton을 이용한 Linux 설치 사용기
+date: '2016-07-25 12:21:15 +0700'
 tags:
-- life
-- review
-- hobby
+  - life
+  - review
+  - hobby
+published: true
 ---
 
 Asus C201(정확한 모델명은 C201PA-DS02) 크롬북에 crouton을 통해 ubuntu(with xfce)를 설치하고 사용해본 7일 사용소감.
@@ -73,7 +74,32 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 # Linux 설정 및 사용
 
-이후 설치한 것들은 다음과 같음
+초기 설치
+
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install software-center
+
+소프트웨어 센터 설치 후 sw center에서 language-support, ibus-hangul 설치함.
+
+처음에는 브라우저 상에서 정상적으로 한글이 나오지 않음
+
+language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
+
+시스템의 로케일 설정
+
+    # cat /etc/default/locale
+    LANG="ko_KR.UTF-8"
+
+로케일 설정후 시스템을 재기동하면 전체 메세지가 한글로 변경됨 이후 한글 입력에 문제가 생기면
+
+    ibus-setup
+    ibus-setup-hangul
+
+둘을 차례로 재기동해 본다.
+
+
+이후 설치
 
 - openjdk-7-jdk(apt-get) - 설치됨
 - firefox(ubuntu-software-center) - 설치됨
@@ -85,10 +111,29 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
 
 이클립스로 단순한 java 소스는 컴파일 가능했고, 무리 없이 사용 가능했다. sublime-text, atom 등 요즘 많이 쓰이는 개발도구들은 쉽게 설치해서 쓰기는 힘듬, 급한대로 vim으로 써야 할 것 같다.
 
+덧. 그냥 콘솔만 띄워서 쓰고 있음, 브라우저는 어쩔 수 없이 크로미움을 설치
+
+
 ## Linux 사용관련 소감
 
-linux 설치 후 chrome <-> linux는 생각만큼 원활하지는 않다. 단축키로 이동 가능하나(Ctrl+Alt+Shift+<- 와 ->)한쪽에 너무 많은 부하(?)를 줄 경우 지멋대로 재부팅을 하기도 함. 간혹 Linux에 넘어갔을 때 크롬북을 그냥 덮으면, 왠지 화면을 계속 띄워놓고 있는 듯한 느낌이 든다. 배터리 소모도 그렇고, 여는 순간 계속 화면이 켜있던 느낌이 듬.
+- linux 설치 후 chrome <-> linux는 생각만큼 원활하지는 않다. 단축키로 이동 가능하나(Ctrl+Alt+Shift+<- 와 ->)한쪽에 너무 많은 부하(?)를 줄 경우 지멋대로 재부팅을 하기도 함. 간혹 Linux에 넘어갔을 때 크롬북을 그냥 덮으면, 왠지 화면을 계속 띄워놓고 있는 듯한 느낌이 든다. 배터리 소모도 그렇고, 여는 순간 계속 화면이 켜있던 느낌이 듬.
 
-생각보다 기존 PC와 키보드가 달라, 리눅스 사용시 적용이 좀 힘들다. 터미널에서 Insert키를 자주 쓰는데, 없다...ㅡ.,ㅡ;
+- 생각보다 기존 PC와 키보드가 달라, 리눅스 사용시 적용이 좀 힘들다. 터미널에서 Insert키를 자주 쓰는데, 없다...ㅡ.,ㅡ;
 
-크롬OS에서도 브라우징이 생각만큼 빠르지 않다. 가장 체감이 될 때는 웹페이지에서 뒤로 갈 때.
+- 크롬OS에서도 브라우징이 생각만큼 빠르지 않다. 가장 체감이 될 때는 웹페이지에서 뒤로 갈 때.
+
+- galium os 등 크롬북 특화 OS 설치 불가능(CPU문제인듯)
+
+- Playstore 업데이트 - 언제 생길지 아직 기약이 없음.
+
+- C201의 경우 일부 데스크탑 환경이 정상적으로 설치되지 않음, CPU 문제인 듯, Unity, gnome 안되고, xfce, kde, lxde 는 됨. xfce가 가볍고 사용하기도 적당한 것 같음
+
+- Crouton으로 실행시 no screen found 에러가 발생할 경우
+    
+    다음과 같이 실행
+    참고 - https://github.com/dnschneid/crouton/wiki/Asus-C201
+
+    sudo enter-chroot
+    sudo rm /dev/dri/card0
+    sudo mv /dev/dri/card1 /dev/dri/card0
+
