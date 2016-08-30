@@ -25,7 +25,7 @@ tags:
 
     FROM ubuntu:14.04
 
-    daum의 repository를 사용하지 않을 경우, 중간에 apt-get을 통한 설치가 끊김.
+    #daum의 repository를 사용하지 않을 경우, 중간에 apt-get을 통한 설치가 끊김.
     RUN echo "deb http://ftp.daumkakao.com/ubuntu trusty main universe" > /etc/apt/sources.list
     #RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 
@@ -51,6 +51,6 @@ tags:
 
     docker build -t ska/tomcat:0.1 .
 
-실행은 다음과 같이
+실행은 다음과 같이 할 수 있음.
 
     docker run -d --name skat -p 8080:8080 ska/tomcat:0.1
