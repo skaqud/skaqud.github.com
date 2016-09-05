@@ -9,6 +9,7 @@ tags:
 
 노트북과 크롬북에서 사용중인, Ubuntu 14, 16에서의 테마 변경 방법
 
+
 # Ubuntu 16.04(LTS,Unity) 경우
 
 우선 unity-tweak-tool 설치
@@ -32,9 +33,12 @@ Paper 설치
 이후 아래와 같이 unity-tweak-tool을 실행하여 theme와 icon을 변경해주면 됨, 가끔 잘 먹지 않으나 기다리거나 재부팅하면 된다.
 
 참고 - [Ubuntu 16.04(LTS) 설치 후 세팅](http://programmingsummaries.tistory.com/389)
+
 참고2 - [깔끔한 우분투 테마-Paper](http://programmingsummaries.tistory.com/344)
 
+
 # Ubuntu 14.04(crouton버전,xfce) 경우
+
 
 참고 사이트를 참고(?)하여 다음과 같이 설치
 

@@ -18,9 +18,9 @@ tags:
 
 참고 : [Deploying Java applications with Docker](https://blogs.infosupport.com/deploying-java-applications-with-docker/)
 
-참고 : [USING DOCKER TO EFFICIENTLY CREATE MULTIPLE TOMCAT INSTANCES] (http://blog.trifork.com/2013/08/15/using-docker-to-efficiently-create-multiple-tomcat-instances/)
+참고 : [USING DOCKER TO EFFICIENTLY CREATE MULTIPLE TOMCAT INSTANCES](http://blog.trifork.com/2013/08/15/using-docker-to-efficiently-create-multiple-tomcat-instances/)
 
-가장 단순하게, 다음과 같은 docker 파일을 생성
+가장 단순하게, 다음과 같은 docker 파일을 생성, OS image 위에서 아래와 같은 작업을 미리 빌드시에 해 둔 새로운 이미지를 빌드함. jdk설치 등은 조금 시간이 오래 걸리기도 함, 한 번 실행시켰던 명령은 캐쉬에서 읽어와 빨리 진행된다.
 
 
     FROM ubuntu:14.04
