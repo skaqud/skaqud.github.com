@@ -35,7 +35,7 @@ tags:
 
     # Accept the Oracle Java license - sun-jdk설치시 라이센스 동의부분
     RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
-
+ㅔ
     # Install Oracle Java
     RUN apt-get -y install oracle-java7-installer
     # Install tomcat
