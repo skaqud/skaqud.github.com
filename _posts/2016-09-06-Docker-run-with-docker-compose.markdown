@@ -8,7 +8,7 @@ tags:
 - Docker
 ---
 
-Docker compose로 간단한 HA환경을 구성해 보는 방법
+Docker compose로 간단한 HA환경을 구성해 보는 방법(작성중)
 
 요즈음은 대부분 서비스를 적당한 Size로 구성하고 배치하여 MicroService화 하는 방법이 대세가 되었다. Dockerfile의 경우 실제 서비스를 구성하기 위해서는 손이 좀 더 가게 되는데, Docker Compose를 이용하면 Multi-node환경에서 좀 더 편하게 서비스를 구성하고 실행할 수 있다.
 
