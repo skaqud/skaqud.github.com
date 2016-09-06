@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Docker 컨테이너를 빌드하기"
+title:  "Docker 이미지를 빌드하기"
 date:   2016-08-21 18:30:00
 tags:
 - 삽질
@@ -8,7 +8,7 @@ tags:
 - Docker
 ---
 
-로컬에서 docker를 통해 Java application을 Deploy하는 방법
+로컬에서 Dockerfile로 Customized Java application Docker image를 만드는 방법
 
 # 빌드 시작하기
 
