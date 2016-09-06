@@ -14,9 +14,9 @@ tags:
 
 참고 : [Deploying Java applications with Docker](https://blogs.infosupport.com/deploying-java-applications-with-docker/)
 
-참고 : [USING DOCKER TO EFFICIENTLY CREATE MULTIPLE TOMCAT INSTANCES](http://blog.trifork.com/2013/08/15/using-docker-to-efficiently-create-multiple-tomcat-instances/)
+참고2 : [USING DOCKER TO EFFICIENTLY CREATE MULTIPLE TOMCAT INSTANCES](http://blog.trifork.com/2013/08/15/using-docker-to-efficiently-create-multiple-tomcat-instances/)
 
-가장 단순하게, 다음과 같은 docker 파일을 생성, OS image 위에서 아래와 같은 작업을 미리 빌드시에 해 둔 새로운 이미지를 빌드함. jdk설치 등은 조금 시간이 오래 걸리기도 함, 한 번 실행시켰던 명령은 캐쉬에서 읽어와 빨리 진행된다.
+가장 단순하게, 다음과 같은 docker 파일을 생성, OS image 위에서 아래와 같은 작업을 미리 빌드시에 해 둔 새로운 이미지를 빌드함. jdk설치 등은 조금 시간이 오래 걸리기도 하나, 한 번 실행시켰던 명령은 캐쉬에서 읽어와 빨리 진행된다.
 
 
     FROM ubuntu:14.04
@@ -110,6 +110,8 @@ docker-entrypoint의 내용은 다음과 같다.
 
     CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
     a2953e534aac        ska/tomcat:0.1      "/docker-entrypoint.s"   7 minutes ago       Up 7 minutes        0.0.0.0:8080->8080/tcp   skat
+
+실제 사용한 Dockerfile과 sh은 [이곳](https://github.com/skaqud/template/tree/master/docker/tomcat)을 참고.
 
 마지막으로 원하는 Java Application이 있으면 상단의 Dockerfile에 COPY하고 webapps 경로에 미리 복사해두면 Deploy된다.DB도 올려야 한다면 하나의 컨테이너에 올릴 수 있다.
 
