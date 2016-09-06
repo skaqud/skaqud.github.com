@@ -68,7 +68,7 @@ tags:
 정확히 원인을 찾을 수 없을 경우 아래와 같이 컨테이너를 시작하면서 들어가서 원인을 확인해야 함.
 
     #-i:interactive, -t:tty + 맨 끝 shell
-    docker run -i -t --name skat -p 8080:8080 ska/tomcat:0.1 /bin/bash
+    docker run -i -t --name skat ska/tomcat:0.1 /bin/bash
 
 Dockerfile을 통한 docker container의 경우 CMD로 실행되는 서비스 데몬과 함께 생명주기를 같이 함. 때문에 위의 경우 tomcat 데몬이 실행되고 나면 죽어버리는 것 같다. 이를 방지하기 위해 기존 CMD는 제거하고, 다음과 같이 맨 뒤에 입력해 주어야 한다.
 
