@@ -15,11 +15,20 @@ Docker compose로 간단한 HA환경을 구성해 보는 방법(작성중)
 다음과 같은 환경을 테스트로 구성할 예정, WEB과 WAS는 이중화 되어 있고, DB의 경우 비용이 좀 많이 들어가게 되어 우선은 대상에서 제외.
 
 WEB1(nginx) --- WAS1(tomcat7-petclinic<war>)
+
              X                               > DB(MariaDB)
+
 WEB2(nginx) --- WAS2(tomcat7-petclinic<war>)            
 
 
+참고 - [A sample Docker workflow with Nginx, Node.js and Redis](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/)
+
+참고2 - [How to use Docker Compose to run complex multi container apps on your Raspberry Pi](http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/)
+
+
 # 준비
+
+## docker-compose 설치
 
 Docker 설치에 비해 Docker-compose의 설치는 정말 간단하다.(Docker engine이 이미 설치되어 있어야 한다.)
 
@@ -34,7 +43,11 @@ Docker 설치에 비해 Docker-compose의 설치는 정말 간단하다.(Docker 
     $ docker-compose --version
     docker-compose version 1.8.0, build f3628c7
 
-WAS에 deploy할 petclinic war를 미리 준비한다.
+## WAR 준비
+
+WAS에 deploy할 petclinic war를 미리 준비한다. 해당 프로젝트를 clone한 뒤 이클립스 혹은 Maven으로 빌드한다. 필요한 파일은 war.
+
+    git clone https://github.com/spring-projects/spring-petclinic.git
 
 # 구성
 
