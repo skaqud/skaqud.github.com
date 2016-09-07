@@ -61,15 +61,21 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
     #설치 가능한 목록보기
     sudo sh ~/Downloads/crouton -r list
 
-    #설치
+    #설치(desktop을 xfce기반으로)
     sudo sh ~/Downloads/crouton -r trusty -t xfce
-
+    #설치(desktop없이 cli만)
+    sudo sh ~/Downloads/crouton -r trusty -t extra-cli
+    
     #잘못 설치했을 경우 삭제
     sudo delete-chroot name
 
     #설치된 OS시작
     sudo startxfce4
-
+    #혹은(cli일때)
+    sudo startcli
+    
+    #cli로 시작 후 환경에 접속
+    sudo enter-chroot
 
 
 # Linux 설정 및 사용
@@ -89,14 +95,14 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
 시스템의 로케일 설정
 
     # cat /etc/default/locale
-    LANG="ko_KR.UTF-8"
+    LANG="ko_KR.utf8"
 
 로케일 설정후 시스템을 재기동하면 전체 메세지가 한글로 변경됨 이후 한글 입력에 문제가 생기면
 
     ibus-setup
     ibus-setup-hangul
 
-둘을 차례로 재기동해 본다.
+둘을 차례로 재기동해 본다. --> 이래도 잘 안되는 경우가 있음.
 
 
 이후 설치
@@ -113,16 +119,18 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
 
 덧. 그냥 콘솔만 띄워서 쓰고 있음, 브라우저는 어쩔 수 없이 크로미움을 설치
 
+덧2. 한글사용이 문제가 많다. 됐다 안됐다 함.... 나처럼 github에 있는 파일만 수정하기 위해서라면, cli모드로 설치한 뒤 git으로 파일을 연동하고 크롬 앱으로 문서만 작성하는 것도 나쁘지 않을 것 같다.(Text 크롬 앱 이용) 
+
 
 ## Linux 사용관련 소감
 
-- linux 설치 후 chrome <-> linux는 생각만큼 원활하지는 않다. 단축키로 이동 가능하나(Ctrl+Alt+Shift+<- 와 ->)한쪽에 너무 많은 부하(?)를 줄 경우 지멋대로 재부팅을 하기도 함. 간혹 Linux에 넘어갔을 때 크롬북을 그냥 덮으면, 왠지 화면을 계속 띄워놓고 있는 듯한 느낌이 든다. 배터리 소모도 그렇고, 여는 순간 계속 화면이 켜있던 느낌이 듬.
+- linux 설치 후 chrome <-> linux는 생각만큼 원활하지는 않다. 단축키로 이동 가능하나(Ctrl+Alt+Shift+<- 와 ->)한쪽에 너무 많은 부하(?)를 줄 경우 지멋대로 재부팅을 하기도 함.(버그가 있는듯) 간혹 Linux에 넘어갔을 때 크롬북을 그냥 덮으면, 왠지 화면을 계속 띄워놓고 있는 듯한 느낌이 든다. 배터리 소모도 그렇고, 여는 순간 계속 화면이 켜있던 느낌이 듬.
 
 - 생각보다 기존 PC와 키보드가 달라, 리눅스 사용시 적용이 좀 힘들다. 터미널에서 Insert키를 자주 쓰는데, 없다...ㅡ.,ㅡ;
 
 - 크롬OS에서도 브라우징이 생각만큼 빠르지 않다. 가장 체감이 될 때는 웹페이지에서 뒤로 갈 때.
 
-- galium os 등 크롬북 특화 OS 설치 불가능(CPU문제인듯)
+- galium os 등 크롬북 특화 OS 설치 불가능(CPU가 ARM계열의 Rockchip이라 다른 크롬북 기반의 OS를 설치할수도 없고 crouton일 때도 설치할 수 있는 desktop환경에 제약이 있다. 이런게 불편하면 맘편히 인텔기반 크롬북을 사는 게 좋다.)
 
 - Playstore 업데이트 - 언제 생길지 아직 기약이 없음.
 
@@ -136,4 +144,3 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
     sudo enter-chroot
     sudo rm /dev/dri/card0
     sudo mv /dev/dri/card1 /dev/dri/card0
-
