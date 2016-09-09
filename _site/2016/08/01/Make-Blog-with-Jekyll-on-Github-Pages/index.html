@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="/public/css/poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="/public/css/toc.css">
-
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -96,6 +95,8 @@
     
       
     
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -132,72 +133,21 @@
         <div class="post">
   <h1 class="post-title">Jekyll로 Github Page에 블로그만들기</h1>
   <span class="post-date">01 Aug 2016</span>
-  <div id="toc-container">
-  <table class="toc" id="toc">
-    <tbody>
-      <tr>
-        <td>
-          <div id="toctitle">
-            <h2>Contents</h2>
-          </div>
-          <ul>
-            <li class="toc_level-1 toc_section-1">
-              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Jekyll 설치 및 설정</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-2">
-                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">Jekyll 설치</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-3">
-                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">Jekyll 설정</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="toc_level-1 toc_section-4">
-              <a href="#tocAnchor-1-4"><span class="tocnumber">2</span> <span class="toctext">테마 설치 및 적용</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-5">
-                  <a href="#tocAnchor-1-4-1"><span class="tocnumber">2.1</span> <span class="toctext">TOC(Table of Contents) 표시하기</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-6">
-                  <a href="#tocAnchor-1-4-2"><span class="tocnumber">2.2</span> <span class="toctext">추가로 적용할 부분들</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-7">
-                  <a href="#tocAnchor-1-4-3"><span class="tocnumber">2.3</span> <span class="toctext">Google Analytics 설정</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-8">
-                  <a href="#tocAnchor-1-4-4"><span class="tocnumber">2.4</span> <span class="toctext">DISQUS 설정</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="toc_level-1 toc_section-9">
-              <a href="#tocAnchor-1-9"><span class="tocnumber">3</span> <span class="toctext">트러블슈팅</span></a>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div><p>개인적인 자료 정리의 목적으로, Github에서 만든 서비스 중 page에 jekyll 이라는 설치형 블로그를 설치하고 구성해 보았다.</p>
+  <p>개인적인 자료 정리의 목적으로, Github에서 만든 서비스 중 page에 jekyll 이라는 설치형 블로그를 설치하고 구성해 보았다.</p>
 
 <p>_로 시작하는 파일들, 디렉토리들이 많은데 편집 편의상 앞에 \를 달아놓았음.(실제는 없음)</p>
 
-<h1 id="tocAnchor-1-1">Jekyll 설치 및 설정</h1>
+<h1 id="jekyll---">Jekyll 설치 및 설정</h1>
 
-<h2 id="tocAnchor-1-1-1">Jekyll 설치</h2>
+<h2 id="jekyll-">Jekyll 설치</h2>
 
 <p>이미 잘 정리된 포스트를 참고하여 설치</p>
 
-<p>
-  <a href="http://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/">지킬로 깃허브에 무료 블로그 만들기</a>
-</p>
+<p><a href="http://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/">지킬로 깃허브에 무료 블로그 만들기</a></p>
 
-<p>
-  <a href="http://halryang.net/Jekyll-Blogging-For-Beginners/">초보자를 위한 Jekyll Blog 시작하기</a>
-</p>
+<p><a href="http://halryang.net/Jekyll-Blogging-For-Beginners/">초보자를 위한 Jekyll Blog 시작하기</a></p>
 
-<p>
-  <a href="http://jekyllrb-ko.github.io/docs/installation/">지킬 한글 번역 사이트-설치</a>
-</p>
+<p><a href="http://jekyllrb-ko.github.io/docs/installation/">지킬 한글 번역 사이트-설치</a></p>
 
 <p>별다르게 어려운 점은 없었음.</p>
 
@@ -215,11 +165,9 @@ jekyll serve --watch
 
 <p>추가로 사용중인 ubuntu 노트북에서도 다음과 같이 jekyll 환경을 설치</p>
 
-<p>
-  <a href="http://vjinn.github.io/install-jekyll/">운영체제별 지킬 설치와 사용</a>
-</p>
+<p><a href="http://vjinn.github.io/install-jekyll/">운영체제별 지킬 설치와 사용</a></p>
 
-<h2 id="tocAnchor-1-1-2">Jekyll 설정</h2>
+<h2 id="jekyll--1">Jekyll 설정</h2>
 
 <p>기본적인 설정은 _config.yml 페이지 안에 있음, 블로그 명, 사용하는 플러그인… 등 관련 정보를 적절히 수정</p>
 
@@ -227,46 +175,53 @@ jekyll serve --watch
 
 <p>차후 시간이 되는대로 검색 기능을 구현할 예정.</p>
 
-<h1 id="tocAnchor-1-4">테마 설치 및 적용</h1>
+<h1 id="section">테마 설치 및 적용</h1>
 
-<p>
-  <a href="http://jekyllthemes.org">지킬 테마 모음</a>
-</p>
+<p><a href="http://jekyllthemes.org">지킬 테마 모음</a></p>
 
 <p>위의 사이트에서 취향에 맞는 테마를 고른 뒤, download 하여 블로그를 시작하거나, Homepage로 가서 개발자가 github에 올려놓은 실제 구동중인 사이트 소스를 참고하여 받을 수 있음, 간혹 jekyll이나 플러그인들의 버전 문제로 정상 구동이 안될 경우도 많으므로, 사이트나, github상의 README를 잘 읽어볼 것</p>
 
 <p>테마별로 약간씩, page나 메뉴를 추가하는 방식들이 다름, 사용자의 소스를 참고하여 추가하면 html에 약간 익숙한 정도라도 추가 가능, ruby나 rails에 대한 지식이 있으면 더 좋을 것 같다.</p>
 
-<h2 id="tocAnchor-1-4-1">TOC(Table of Contents) 표시하기</h2>
+<h2 id="toctable-of-contents-">TOC(Table of Contents) 표시하기</h2>
 
-<p>문서에서 상단에 보여지는 TOC를 설치하기 위해 다음과 같이 설정하였으나, 로컬에서는 동작하나, github에서는 보이지 않음(아직 실패중)</p>
+<p>, 간단히 markdown 엔진이 kramdown이면 다음과 같이 TOC를 추가하고 싶은 곳에 추가하면 된다.</p>
 
-<p>
-  <a href="https://github.com/dafi/jekyll-toc-generator">Jekyll TOC Genetator</a>
-</p>
+<p>참고 - <a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">How I Add a Table of Contents to my Jekyll Blog Written in Markdown</a></p>
 
-<p>적용방법</p>
+<p>TOC를 넣고 싶은 곳에 아래와 같이 입력</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* TOC
+{:toc}
+</code></pre>
+</div>
+
+<p>아래는 실패기</p>
+
+<p><del>문서에서 상단에 보여지는 TOC를 설치하기 위해 다음과 같이 설정하였으나, 로컬에서는 동작하나, github에서는 보이지 않음</del></p>
+
+<p><del><a href="https://github.com/dafi/jekyll-toc-generator">Jekyll TOC Genetator</a></del></p>
+
+<p><del>적용방법</del></p>
+
+<p><del>- tocGenerator.rb 파일을 _plugin 디렉토리에 복사(없으면 생성)</del>
+<del>- css/toc.css 파일을 css디렉토리에 복사</del>
+<del>- 이후 content가 들어가는 곳에 “content” 부분을 “content 파이프 toc_generator” 로 수정해주면 됨</del></p>
+
+<p><del>다만, markdown문서가 #, ## 등 제목 레벨의 내용이 없다면 아무것도 보이지 않을 수 있음.</del></p>
+
+<p><del>적용은 되나, 로컬에서만 보이고, github에 push 하고 난 뒤는 보이지 않음….ㅜ.ㅜ;</del></p>
+
+<h2 id="section-1">추가로 적용할 부분들</h2>
 
 <ul>
-  <li>tocGenerator.rb 파일을 _plugin 디렉토리에 복사(없으면 생성)</li>
-  <li>css/toc.css 파일을 css디렉토리에 복사</li>
-  <li>이후 content가 들어가는 곳에 “content” 부분을 “content 파이프 toc_generator” 로 수정해주면 됨</li>
-</ul>
-
-<p>다만, markdown문서가 #, ## 등 제목 레벨의 내용이 없다면 아무것도 보이지 않을 수 있음.</p>
-
-<p>적용은 되나, 로컬에서만 보이고, github에 push 하고 난 뒤는 보이지 않음….ㅜ.ㅜ;</p>
-
-<h2 id="tocAnchor-1-4-2">추가로 적용할 부분들</h2>
-
-<ul>
-  <li>tag page 확장</li>
+  <li><del>Table Of content 기능 추가(완료)</del></li>
+  <li><del>tag page 확장(완료)</del></li>
   <li>web font 변경</li>
   <li>검색 기능 추가</li>
-  <li>오류 수정 - TOC 기능</li>
 </ul>
 
-<h2 id="tocAnchor-1-4-3">Google Analytics 설정</h2>
+<h2 id="google-analytics-">Google Analytics 설정</h2>
 
 <p>웹 로그 분석 서비스임. 자세한 내용은 구글링을 참고.</p>
 
@@ -284,11 +239,11 @@ jekyll serve --watch
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-4-4">DISQUS 설정</h2>
+<h2 id="disqus-">DISQUS 설정</h2>
 
-<p>Communication을 위한 댓글다는 기능, 필요성을 못 느껴 설치하지 않음.</p>
+<p>Communication을 위한 댓글달기 SaaS 서비스, 필요성을 못 느껴 설치하지 않음.</p>
 
-<h1 id="tocAnchor-1-9">트러블슈팅</h1>
+<h1 id="section-2">트러블슈팅</h1>
 
 <ul>
   <li>
@@ -309,27 +264,27 @@ jekyll serve --watch
     
       <li>
         <h7>
-          <a href="/2016/07/25/Chromebook-linux-install-review/">
-            크롬북 Crouton을 이용한 Linux 설치 사용기
-            <small>25 Jul 2016</small>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/24/Reusable-Commands-List/">
-            자주 사용하는 명령들
-            <small>24 Jul 2016</small>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/04/26/make-devenv/">
-            WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
-            <small>26 Apr 2016</small>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
           </a>
         </h7>
       </li>

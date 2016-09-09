@@ -14,11 +14,9 @@ Docker compose로 간단한 HA환경을 구성해 보는 방법(작성중)
 
 다음과 같은 환경을 테스트로 구성할 예정, WEB과 WAS는 이중화 되어 있고, DB의 경우 비용이 좀 많이 들어가게 되어 우선은 대상에서 제외.
 
-WEB1(nginx) --- WAS1(tomcat7-petclinic<war>)
-
-             X                               > DB(MariaDB)
-
-WEB2(nginx) --- WAS2(tomcat7-petclinic<war>)            
+    WEB1(nginx) --- WAS1(tomcat7-petclinic<war>)
+                 X                               > DB(MariaDB)
+    WEB2(nginx) --- WAS2(tomcat7-petclinic<war>)            
 
 
 참고 - [A sample Docker workflow with Nginx, Node.js and Redis](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/)

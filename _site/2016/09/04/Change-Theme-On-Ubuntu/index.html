@@ -10,7 +10,7 @@
 
   <title>
     
-      Tag=reuse &middot; 雜夫's Blog
+      Ubuntu(Unity,Xfce)테마 변경하기 &middot; 雜夫's Blog
     
   </title>
 
@@ -87,7 +87,7 @@
     
       
         
-          <a class="sidebar-nav-item active" href="/tags2/">Tag=reuse</a>
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
         
       
     
@@ -130,29 +130,100 @@
       </div>
 
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">Tag=reuse</h1>
-  <div id="archives">
-  <div class="archive-group">
-    
-    <h3 id="#"></h3>
-    <a name=""></a>
-    
-    <article class="archive-item">
-      <h4><a href="/2016/07/24/Reusable-Commands-List/">자주 사용하는 명령들</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/2016/01/03/VM-BaseEnv/">VM 기본환경 구성하기</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/2015/04/09/VI-Tips/">VI 사용팁</a></h4>
-    </article>
-    
-  </div>
+        <div class="post">
+  <h1 class="post-title">Ubuntu(Unity,Xfce)테마 변경하기</h1>
+  <span class="post-date">04 Sep 2016</span>
+  <p>노트북과 크롬북에서 사용중인, Ubuntu 14, 16에서의 테마 변경 방법</p>
+
+<h1 id="ubuntu-1604ltsunity-">Ubuntu 16.04(LTS,Unity) 경우</h1>
+
+<p>우선 unity-tweak-tool 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install unity-tweak-tool
+</code></pre>
 </div>
 
+<p>설치 가능한 몇가지 테마가 있는데, Numix, Paper가 괜찮은 듯.</p>
+
+<p>Numix 테마 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo add-apt-repository ppa:numix/ppa
+$ sudo apt-get update
+$ sudo apt-get install numix-*
+</code></pre>
+</div>
+
+<p>Paper 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo add-apt-repository ppa:snwh/pulp
+$ sudo apt-get update
+$ sudo apt-get install paper-icon-theme paper-gtk-theme
+</code></pre>
+</div>
+
+<p>이후 아래와 같이 unity-tweak-tool을 실행하여 theme와 icon을 변경해주면 됨, 가끔 잘 먹지 않으나 기다리거나 재부팅하면 된다.</p>
+
+<p>참고 - <a href="http://programmingsummaries.tistory.com/389">Ubuntu 16.04(LTS) 설치 후 세팅</a></p>
+
+<p>참고2 - <a href="http://programmingsummaries.tistory.com/344">깔끔한 우분투 테마-Paper</a></p>
+
+<h1 id="ubuntu-1404croutonxfce-">Ubuntu 14.04(crouton버전,xfce) 경우</h1>
+
+<p>참고 사이트를 참고(?)하여 다음과 같이 설치</p>
+
+<p>아이콘은 다음과 같이 설치, 잘 적용됨.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo add-apt-repository ppa:elementary-add-team/icons
+$ sudo apt-get update
+$ sudo apt-get install elementary-add-icon-theme
+</code></pre>
+</div>
+
+<p>테마는 다음으로 설치하려고 하였으나, 적용을 해도 기본으로 설치되어 있는 것과 크게 달라지지 않음…
+(테마 설치 디렉토리는 /usr/share/themes/)</p>
+
+<p>테마 - <a href="https://www.xfce-look.org/p/1016679/">axiom</a></p>
+
+<p>gtk-2,3, xfce도 xfce4와 xfcem이 있는데, 무슨 차이인지..</p>
+
+<p>crouton이 문제인지.. 딱히 원인을 모르겠음.</p>
+
+<p>참고 - <a href="http://tacitus-textcube.blogspot.kr/2010/06/xfce4-look-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0.html">Xfce4 Look 변경하기</a></p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/08/16/Docker-Installation-on-Ubuntu-16.04-LTS/">
+            Ubuntu16.04(LTS)에 Docker 설치
+            <small>16 Aug 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
 </div>
 
       </div>

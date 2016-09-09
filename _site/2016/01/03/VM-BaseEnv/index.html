@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="/public/css/poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="/public/css/toc.css">
-
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -96,6 +95,8 @@
     
       
     
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -132,41 +133,18 @@
         <div class="post">
   <h1 class="post-title">VM 기본환경 구성하기</h1>
   <span class="post-date">03 Jan 2016</span>
-  <div id="toc-container">
-  <table class="toc" id="toc">
-    <tbody>
-      <tr>
-        <td>
-          <div id="toctitle">
-            <h2>Contents</h2>
-          </div>
-          <ul>
-            <li class="toc_level-1 toc_section-1">
-              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Repository 설정</span></a>
-            </li>
-            <li class="toc_level-1 toc_section-2">
-              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">기본 어플리케이션 설치</span></a>
-            </li>
-            <li class="toc_level-1 toc_section-3">
-              <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">Shell 환경설정</span></a>
-            </li>
-            <li class="toc_level-1 toc_section-4">
-              <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">vim 설치 및 설정</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-5">
-                  <a href="#tocAnchor-1-4-1"><span class="tocnumber">4.1</span> <span class="toctext">환경설정</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-6">
-                  <a href="#tocAnchor-1-4-2"><span class="tocnumber">4.2</span> <span class="toctext">Vundle, NERDTree 설치</span></a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div><p>vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임</p>
+  <ul id="markdown-toc">
+  <li><a href="#repository-" id="markdown-toc-repository-">Repository 설정</a></li>
+  <li><a href="#section" id="markdown-toc-section">기본 어플리케이션 설치</a></li>
+  <li><a href="#shell-" id="markdown-toc-shell-">Shell 환경설정</a></li>
+  <li><a href="#vim---" id="markdown-toc-vim---">vim 설치 및 설정</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">환경설정</a></li>
+      <li><a href="#vundle-nerdtree-" id="markdown-toc-vundle-nerdtree-">Vundle, NERDTree 설치</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임</p>
 
 <p>다음과 같은 내용들을 포함합니다.(ubuntu 14,16 버전 대상)</p>
 
@@ -178,7 +156,7 @@
   <li>그밖에?</li>
 </ul>
 
-<h1 id="tocAnchor-1-1">Repository 설정</h1>
+<h1 id="repository-">Repository 설정</h1>
 
 <p>repository를 daumkakao쪽 서버로 변경</p>
 
@@ -195,7 +173,7 @@ apt-get update
 
 <p>http://ftp.neowiz.com/ 로 변경해도 됨.</p>
 
-<h1 id="tocAnchor-1-2">기본 어플리케이션 설치</h1>
+<h1 id="section">기본 어플리케이션 설치</h1>
 
 <p>git, wget, telnet, curl, tmux(multi screen terminal) 등 설치</p>
 
@@ -218,7 +196,7 @@ apt-get update
 <p>ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
 별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 부득이하게</p>
 
-<h1 id="tocAnchor-1-3">Shell 환경설정</h1>
+<h1 id="shell-">Shell 환경설정</h1>
 
 <p>zsh 설치</p>
 
@@ -237,9 +215,9 @@ apt-get update
 
 <p>참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/</p>
 
-<h1 id="tocAnchor-1-4">vim 설치 및 설정</h1>
+<h1 id="vim---">vim 설치 및 설정</h1>
 
-<h2 id="tocAnchor-1-4-1">환경설정</h2>
+<h2 id="section-1">환경설정</h2>
 
 <p>로컬의 .vimrc 안에 다음과 같은 내용을 넣음.</p>
 
@@ -266,7 +244,7 @@ nmap &lt;F7&gt; :NERDTree&lt;CR&gt;
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-4-2">Vundle, NERDTree 설치</h2>
+<h2 id="vundle-nerdtree-">Vundle, NERDTree 설치</h2>
 
 <p>참고 - <a href="https://dobest.io/install-vundle-and-nerdtree/">vim 플러그인 매니저, Vundle + NERDTree 플러그인 설치하기</a></p>
 
@@ -304,27 +282,27 @@ echo "Plugin 'The-NERD-Tree'" &gt;&gt; ~/.vimrc
     
       <li>
         <h7>
-          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
-            Jekyll로 Github Page에 블로그만들기
-            <small>01 Aug 2016</small>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/25/Chromebook-linux-install-review/">
-            크롬북 Crouton을 이용한 Linux 설치 사용기
-            <small>25 Jul 2016</small>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/24/Reusable-Commands-List/">
-            자주 사용하는 명령들
-            <small>24 Jul 2016</small>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
           </a>
         </h7>
       </li>

@@ -1,6 +1,5 @@
 gems:
   - jekyll-paginate
-  - nokogiri
 # Dependencies
 markdown:         kramdown
 

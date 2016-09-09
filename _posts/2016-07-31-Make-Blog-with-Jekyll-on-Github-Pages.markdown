@@ -57,26 +57,37 @@ tags:
 
 ## TOC(Table of Contents) 표시하기
 
-문서에서 상단에 보여지는 TOC를 설치하기 위해 다음과 같이 설정하였으나, 로컬에서는 동작하나, github에서는 보이지 않음(아직 실패중)
+, 간단히 markdown 엔진이 kramdown이면 다음과 같이 TOC를 추가하고 싶은 곳에 추가하면 된다.
 
-[Jekyll TOC Genetator](https://github.com/dafi/jekyll-toc-generator)
+참고 - [How I Add a Table of Contents to my Jekyll Blog Written in Markdown](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
 
-적용방법
+TOC를 넣고 싶은 곳에 아래와 같이 입력
 
-- tocGenerator.rb 파일을 \_plugin 디렉토리에 복사(없으면 생성)
-- css/toc.css 파일을 css디렉토리에 복사
-- 이후 content가 들어가는 곳에 "content" 부분을 "content 파이프 toc_generator" 로 수정해주면 됨
+    * TOC
+    {:toc}
 
-다만, markdown문서가 #, ## 등 제목 레벨의 내용이 없다면 아무것도 보이지 않을 수 있음.
+아래는 실패기
 
-적용은 되나, 로컬에서만 보이고, github에 push 하고 난 뒤는 보이지 않음....ㅜ.ㅜ;
+~~문서에서 상단에 보여지는 TOC를 설치하기 위해 다음과 같이 설정하였으나, 로컬에서는 동작하나, github에서는 보이지 않음~~
+
+~~[Jekyll TOC Genetator](https://github.com/dafi/jekyll-toc-generator)~~
+
+~~적용방법~~
+
+~~- tocGenerator.rb 파일을 \_plugin 디렉토리에 복사(없으면 생성)~~
+~~- css/toc.css 파일을 css디렉토리에 복사~~
+~~- 이후 content가 들어가는 곳에 "content" 부분을 "content 파이프 toc_generator" 로 수정해주면 됨~~
+
+~~다만, markdown문서가 #, ## 등 제목 레벨의 내용이 없다면 아무것도 보이지 않을 수 있음.~~
+
+~~적용은 되나, 로컬에서만 보이고, github에 push 하고 난 뒤는 보이지 않음....ㅜ.ㅜ;~~
 
 ## 추가로 적용할 부분들
 
-- tag page 확장
+- ~~Table Of content 기능 추가(완료)~~
+- ~~tag page 확장(완료)~~
 - web font 변경
 - 검색 기능 추가
-- 오류 수정 - TOC 기능
 
 
 ## Google Analytics 설정
@@ -97,7 +108,7 @@ Google Analytics 가입 후 다음과 같은 Script들을 모든 페이지 상�
 
 ## DISQUS 설정
 
-Communication을 위한 댓글다는 기능, 필요성을 못 느껴 설치하지 않음.
+Communication을 위한 댓글달기 SaaS 서비스, 필요성을 못 느껴 설치하지 않음.
 
 # 트러블슈팅
 

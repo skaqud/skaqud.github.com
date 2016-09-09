@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="/public/css/poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="/public/css/toc.css">
-
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -96,6 +95,8 @@
     
       
     
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -132,68 +133,43 @@
         <div class="post">
   <h1 class="post-title">자주 사용하는 명령들</h1>
   <span class="post-date">24 Jul 2016</span>
-  <div id="toc-container">
-  <table class="toc" id="toc">
-    <tbody>
-      <tr>
-        <td>
-          <div id="toctitle">
-            <h2>Contents</h2>
-          </div>
-          <ul>
-            <li class="toc_level-1 toc_section-1">
-              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Linux</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-2">
-                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">자주쓰는명령들</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-3">
-                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">참고가 될 Shell Script</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-4">
-                  <a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">상황별 해결방법</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-5">
-                  <a href="#tocAnchor-1-1-4"><span class="tocnumber">1.4</span> <span class="toctext">운영시 유용한 명령들</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="toc_level-1 toc_section-6">
-              <a href="#tocAnchor-1-6"><span class="tocnumber">2</span> <span class="toctext">그밖의 도구들</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-7">
-                  <a href="#tocAnchor-1-6-1"><span class="tocnumber">2.1</span> <span class="toctext">Docker</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-8">
-                  <a href="#tocAnchor-1-6-2"><span class="tocnumber">2.2</span> <span class="toctext">GIT</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-9">
-                  <a href="#tocAnchor-1-6-3"><span class="tocnumber">2.3</span> <span class="toctext">MySQL</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-10">
-                  <a href="#tocAnchor-1-6-4"><span class="tocnumber">2.4</span> <span class="toctext">JDK</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-11">
-                  <a href="#tocAnchor-1-6-5"><span class="tocnumber">2.5</span> <span class="toctext">Python</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-12">
-                  <a href="#tocAnchor-1-6-6"><span class="tocnumber">2.6</span> <span class="toctext">Screen 명령정리</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-13">
-                  <a href="#tocAnchor-1-6-7"><span class="tocnumber">2.7</span> <span class="toctext">Proxy 설정</span></a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div><p>자주 사용하는 명령들의 모음</p>
+  <ul id="markdown-toc">
+  <li><a href="#linux" id="markdown-toc-linux">Linux</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">자주쓰는명령들</a>        <ul>
+          <li><a href="#tar" id="markdown-toc-tar">tar명령</a></li>
+          <li><a href="#find" id="markdown-toc-find">find명령</a></li>
+          <li><a href="#awkxargs-" id="markdown-toc-awkxargs-">awk,xargs 명령</a></li>
+        </ul>
+      </li>
+      <li><a href="#shell-script" id="markdown-toc-shell-script">참고가 될 Shell Script</a></li>
+      <li><a href="#ssh-" id="markdown-toc-ssh-">SSH 터널링</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">상황별 해결방법</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">운영시 유용한 명령들</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3" id="markdown-toc-section-3">그밖의 도구들</a>    <ul>
+      <li><a href="#docker" id="markdown-toc-docker">Docker</a></li>
+      <li><a href="#git" id="markdown-toc-git">GIT</a>        <ul>
+          <li><a href="#section-4" id="markdown-toc-section-4">일반 명령</a></li>
+          <li><a href="#section-5" id="markdown-toc-section-5">바이너리 파일 표시</a></li>
+          <li><a href="#gitignore-" id="markdown-toc-gitignore-">gitignore 표시</a></li>
+          <li><a href="#section-6" id="markdown-toc-section-6">설정</a></li>
+        </ul>
+      </li>
+      <li><a href="#mysql" id="markdown-toc-mysql">MySQL</a></li>
+      <li><a href="#jdk" id="markdown-toc-jdk">JDK</a></li>
+      <li><a href="#python" id="markdown-toc-python">Python</a></li>
+      <li><a href="#screen-" id="markdown-toc-screen-">Screen 명령정리</a></li>
+      <li><a href="#proxy-" id="markdown-toc-proxy-">Proxy 설정</a></li>
+    </ul>
+  </li>
+</ul>
 
-<h1 id="tocAnchor-1-1">Linux</h1>
+<p>자주 사용하는 명령들의 모음</p>
 
-<h2 id="tocAnchor-1-1-1">자주쓰는명령들</h2>
+<h1 id="linux">Linux</h1>
+
+<h2 id="section">자주쓰는명령들</h2>
 
 <h3 id="tar">tar명령</h3>
 
@@ -238,7 +214,7 @@ awk ‘FS=”:” {print $1}’ /etc/passwd
 
 <p>xargs는 표준 입력을 통해 명령 줄을 만들고 실행함. 너무 긴 명령행을 방지하기 위해 사용</p>
 
-<h2 id="tocAnchor-1-1-2">참고가 될 Shell Script</h2>
+<h2 id="shell-script">참고가 될 Shell Script</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># Mysql service up check
 while [ `netstat -an | grep 3306 | wc -l` -eq 0 ]
@@ -258,7 +234,22 @@ echo "Postgresql is UP!"
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-1-3">상황별 해결방법</h2>
+<h2 id="ssh-">SSH 터널링</h2>
+
+<p>Linux 폐쇄망에서의 터널링 사례1</p>
+
+<p>A-|-B-C-인터넷
+위와 같은 상황에서 A는 직접적으로 인터넷을 사용할 수 없는데, A와 B가 SSH를 통해 연결할 수 있고, B에서 C의 특정 포트를 통해 인터넷을 사용할 수 있다고 하면(프록시) A는 B를 터널링하여 C를 통해 인터넷 환경에 접근할 수 있다. 주로 기업 환경에서 보안때문에 막혀 있는 경우 apt, yum등 패키지 업데이트나 패치 등을 위해 사용하기도 한다.</p>
+
+<p>ssh USERID@B서버IP -N -L 28080:C서버IP:C서버포트</p>
+
+<p>A서버에서 위와 같이 입력하면 B서버를 통해 C서버IP:C서버포트로 접근할 수 있는 터널이 생긴다. 로컬에서는 http_proxy 등의 값을 변경해주어 localhost의 28080 -&gt; C서버IP:C서버포트 로 바로 접근할 수 있다.</p>
+
+<p>Windows에서의 터널링 사례</p>
+
+<p>(작성중)</p>
+
+<h2 id="section-1">상황별 해결방법</h2>
 
 <p>참고 - <a href="https://opentutorials.org/module/432/3742">생활코딩:SSH Key-비밀번호 없이 로그인</a></p>
 
@@ -328,7 +319,7 @@ rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-1-4">운영시 유용한 명령들</h2>
+<h2 id="section-2">운영시 유용한 명령들</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>* 로그 크기 확인하기(일정 크기가 넘는 로그파일 확인)
 du -k | awk '{if (length($1) &gt; 5) print}'
@@ -337,9 +328,9 @@ ps -ef | grep 계정 | grep -v grep | awk '{print $2}' | xargs kill -9
 </code></pre>
 </div>
 
-<h1 id="tocAnchor-1-6">그밖의 도구들</h1>
+<h1 id="section-3">그밖의 도구들</h1>
 
-<h2 id="tocAnchor-1-6-1">Docker</h2>
+<h2 id="docker">Docker</h2>
 
 <p>빌드</p>
 
@@ -366,7 +357,7 @@ docker rmi $(docker images | grep none | awk '{print $3}')
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-2">GIT</h2>
+<h2 id="git">GIT</h2>
 
 <h3 id="section-4">일반 명령</h3>
 
@@ -409,9 +400,7 @@ git checkout -- 파일명
 
 <p>예로 C# project의 gitignore는 다음과 같음.</p>
 
-<p>
-  <a href="https://gist.github.com/kmorcinek/2710267">Example .gitignore file I use for C# projects</a>
-</p>
+<p><a href="https://gist.github.com/kmorcinek/2710267">Example .gitignore file I use for C# projects</a></p>
 
 <h3 id="section-6">설정</h3>
 
@@ -429,7 +418,7 @@ git config http.sslVerify "false"
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-3">MySQL</h2>
+<h2 id="mysql">MySQL</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># DB생성
 CREATE SCHEMA ReviewDB DEFAULT CHARACTER SET utf8 ;
@@ -445,7 +434,7 @@ Drop schema ReviewDB cascade;
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-4">JDK</h2>
+<h2 id="jdk">JDK</h2>
 
 <p>tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움, 그래서 아래와 같이 tar를 특정위치에 풀고 update-alternatives 로 시스템에서 인식되도록 함.</p>
 
@@ -459,7 +448,7 @@ update-alternatives --install /usr/bin/javaws javaws /opt/jdk1.8.0_66/bin/javaws
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-5">Python</h2>
+<h2 id="python">Python</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>바로 활용할 수 있는 단순 웹 서버(보통 python은 다 설치되어 있음)
 #run SimpleHTTPServer
@@ -467,7 +456,7 @@ python -m SimpleHTTPServer 8080
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-6">Screen 명령정리</h2>
+<h2 id="screen-">Screen 명령정리</h2>
 
 <p>예전 터미널 상에서의 screen 명령보다는 tmux를 쓰거나 terminator 등 멀티화면 지원하는 ssh client를 쓰는 게 나음.
 tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 있지 않아서 터미널상에서 바로 쓸 수 있는 멀티Screen도구일 것 같음.</p>
@@ -489,7 +478,7 @@ Ctrl+B 누르고 %
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-6-7">Proxy 설정</h2>
+<h2 id="proxy-">Proxy 설정</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#env에 추가(wget,curl 등 cli 기반 도구의 경우)
 export http_proxy="http://xx.xx.xx.xx:8888"
@@ -541,27 +530,27 @@ http.proxyHost=PROXYHTTP
     
       <li>
         <h7>
-          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
-            Jekyll로 Github Page에 블로그만들기
-            <small>01 Aug 2016</small>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/25/Chromebook-linux-install-review/">
-            크롬북 Crouton을 이용한 Linux 설치 사용기
-            <small>25 Jul 2016</small>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/04/26/make-devenv/">
-            WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기
-            <small>26 Apr 2016</small>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
           </a>
         </h7>
       </li>

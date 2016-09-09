@@ -10,7 +10,7 @@
 
   <title>
     
-      Tag=reuse &middot; 雜夫's Blog
+      우분투16.04(LTS)에서 시스템 프로그램 오류를 발견했습니다. 에러시 &middot; 雜夫's Blog
     
   </title>
 
@@ -87,7 +87,7 @@
     
       
         
-          <a class="sidebar-nav-item active" href="/tags2/">Tag=reuse</a>
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
         
       
     
@@ -130,29 +130,74 @@
       </div>
 
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">Tag=reuse</h1>
-  <div id="archives">
-  <div class="archive-group">
-    
-    <h3 id="#"></h3>
-    <a name=""></a>
-    
-    <article class="archive-item">
-      <h4><a href="/2016/07/24/Reusable-Commands-List/">자주 사용하는 명령들</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/2016/01/03/VM-BaseEnv/">VM 기본환경 구성하기</a></h4>
-    </article>
-    
-    <article class="archive-item">
-      <h4><a href="/2015/04/09/VI-Tips/">VI 사용팁</a></h4>
-    </article>
-    
-  </div>
+        <div class="post">
+  <h1 class="post-title">우분투16.04(LTS)에서 시스템 프로그램 오류를 발견했습니다. 에러시</h1>
+  <span class="post-date">14 Aug 2016</span>
+  <p>우분투 16.04(LTS)를 노트북으로 사용중, 로그인 후 계속 발생하는 “시스템 프로그램 오류를 발견했습니다.” (System program problem detected)에러 메세지를 해결하는 방법.</p>
+
+<p>참고</p>
+
+<p><a href="http://www.binarytides.com/ubuntu-fix-system-program-problem-error/">How to fix “System program problem detected” error on Ubuntu</a></p>
+
+<p>다음과 같이 crash report files들을 삭제하고 재시도</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% ls -ail                                                 16-08-15 - 22:32:10
+합계 560
+5767172 drwxrwsrwt  2 root   whoopsie   4096  8월 15 22:33 .
+5767169 drwxr-xr-x 14 root   root       4096  4월 21 07:19 ..
+5767564 -rw-r-----  1 colord whoopsie 563662  8월 11 21:55 _usr_lib_colord_colord-sane.113.crash
+
+% sudo rm /var/crash/*
+% sudo reboot
+</code></pre>
 </div>
 
+<p>리부트 후 이상없음을 확인</p>
+
+<p>차후로도 다른 이유로 같은 메세지가 뜨는 게 보기 싫다면 다음과 같이 apport를 끄면 된다고 함.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#다음 파일을 연 뒤
+% sudo vi /etc/default/apport
+#다음과 같이 수정
+#enabled=1
+enabled=1
+</code></pre>
+</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
 </div>
 
       </div>

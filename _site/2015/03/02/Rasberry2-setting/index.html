@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="/public/css/poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="/public/css/toc.css">
-
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -96,6 +95,8 @@
     
       
     
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -132,54 +133,15 @@
         <div class="post">
   <h1 class="post-title">라즈베리파이2 설치 및 사용기</h1>
   <span class="post-date">02 Mar 2015</span>
-  <div id="toc-container">
-  <table class="toc" id="toc">
-    <tbody>
-      <tr>
-        <td>
-          <div id="toctitle">
-            <h2>Contents</h2>
-          </div>
-          <ul>
-            <li class="toc_level-1 toc_section-1">
-              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">개요</span></a>
-            </li>
-            <li class="toc_level-1 toc_section-2">
-              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">초기 설치 및 설정</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-3">
-                  <a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">WIFI 설정</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="toc_level-1 toc_section-4">
-              <a href="#tocAnchor-1-4"><span class="tocnumber">3</span> <span class="toctext">기타 활용</span></a>
-              <ul>
-                <li class="toc_level-2 toc_section-5">
-                  <a href="#tocAnchor-1-4-1"><span class="tocnumber">3.1</span> <span class="toctext">samba 설치</span></a>
-                </li>
-                <li class="toc_level-2 toc_section-6">
-                  <a href="#tocAnchor-1-4-2"><span class="tocnumber">3.2</span> <span class="toctext">transmission설치</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="toc_level-1 toc_section-7">
-              <a href="#tocAnchor-1-7"><span class="tocnumber">4</span> <span class="toctext">이슈</span></a>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div><p>노리고 있던 라즈베리파이2를 구입하여 집 안에서 아기에게 틀어주기위한 동영상NAS로 세팅하기까지의 과정</p>
+  <p>노리고 있던 라즈베리파이2를 구입하여 집 안에서 아기에게 틀어주기위한 동영상NAS로 세팅하기까지의 과정</p>
 
-<h1 id="tocAnchor-1-1">개요</h1>
+<h1 id="section">개요</h1>
 
 <p>집 안에서 NAS 역할을 할 서버에 대해 궁리하다가, 맥미니, 베어본PC, 스틱PC 등 여러가지 들을 궁리해봤으나, 가격, 성능, 불안정함(?) 등으로 선뜻 시도를 해 보지 못하고 있다가, 라즈베리파이2가 마침 나와서, 사서 안되면 딴거라도 해 보면 되지 하고 지름.</p>
 
 <p>사실 GPIO, 파이썬, 아두이노 등과 연결하여 좀 더 창의적이고, 유익한 쓰임(?)으로 사용할 수 있을 것 같으나, 그렇게 크리에이티브하고, 부지런한 인간은 아니라서 세팅하면서 나왔던 내용을 적음.</p>
 
-<h1 id="tocAnchor-1-2">초기 설치 및 설정</h1>
+<h1 id="section-1">초기 설치 및 설정</h1>
 
 <p>OS image 다운로드 - rasbian 이라고 하며 debian의 변형판이다.</p>
 
@@ -199,7 +161,7 @@ proc            /proc           proc    defaults          0       0
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-2-1">WIFI 설정</h2>
+<h2 id="wifi-">WIFI 설정</h2>
 
 <p>유선의 경우 선을 꼽고 ifconfig로 나오는 IP로 바로 접근 가능
 무선랜의 경우 무선랜카드를 꼽고, 다음과 같이 설정한다.</p>
@@ -251,9 +213,9 @@ sudo ifup wlan0
 </code></pre>
 </div>
 
-<h1 id="tocAnchor-1-4">기타 활용</h1>
+<h1 id="section-2">기타 활용</h1>
 
-<h2 id="tocAnchor-1-4-1">samba 설치</h2>
+<h2 id="samba-">samba 설치</h2>
 
 <p>참고 - <a href="http://ghost9087.tistory.com/2">라즈베리파이 활용기-NAS로 활용하기(1)</a></p>
 
@@ -280,7 +242,7 @@ sudo vi /etc/samba/smb.conf
 </code></pre>
 </div>
 
-<h2 id="tocAnchor-1-4-2">transmission설치</h2>
+<h2 id="transmission">transmission설치</h2>
 
 <p>참고 - <a href="http://ghost9087.tistory.com/3">라즈베리파이 활용기-NAS로 활용하기(2)</a></p>
 
@@ -300,7 +262,7 @@ sudo vi /etc/samba/smb.conf
 
 <p>이후 http://localhost:9091 로 접속(transmission/YOURPASSWORD)</p>
 
-<h1 id="tocAnchor-1-7">이슈</h1>
+<h1 id="section-3">이슈</h1>
 
 <ul>
   <li>
@@ -322,27 +284,27 @@ sudo vi /etc/samba/smb.conf
     
       <li>
         <h7>
-          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
-            Jekyll로 Github Page에 블로그만들기
-            <small>01 Aug 2016</small>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/25/Chromebook-linux-install-review/">
-            크롬북 Crouton을 이용한 Linux 설치 사용기
-            <small>25 Jul 2016</small>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/24/Reusable-Commands-List/">
-            자주 사용하는 명령들
-            <small>24 Jul 2016</small>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
           </a>
         </h7>
       </li>

@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="/public/css/poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="/public/css/toc.css">
-
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -96,6 +95,8 @@
     
       
     
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -132,29 +133,9 @@
         <div class="post">
   <h1 class="post-title">WEB,WAS,DB 설치 및 웹 어플리케이션 구성을 위해 연동하기</h1>
   <span class="post-date">26 Apr 2016</span>
-  <div id="toc-container">
-  <table class="toc" id="toc">
-    <tbody>
-      <tr>
-        <td>
-          <div id="toctitle">
-            <h2>Contents</h2>
-          </div>
-          <ul>
-            <li class="toc_level-1 toc_section-1">
-              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">개요</span></a>
-            </li>
-            <li class="toc_level-1 toc_section-2">
-              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">실행하기</span></a>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div><p>본 문서에서는 준비된 가상 개발환경에 WEB,WAS,DB를 설치하고 Sample Application을 deploy하여 확인하는 과정에 대해 설명합니다.</p>
+  <p>본 문서에서는 준비된 가상 개발환경에 WEB,WAS,DB를 설치하고 Sample Application을 deploy하여 확인하는 과정에 대해 설명합니다.</p>
 
-<h1 id="tocAnchor-1-1">개요</h1>
+<h1 id="section">개요</h1>
 
 <p>다음과 같은 환경에서 로컬에 생성된 linux(CentOS) 가상환경(VM)을 기반으로 WEB-WAS-DB를 구성하고 Sample application 을 deploy 하여 테스트합니다.</p>
 
@@ -168,7 +149,7 @@
   <li>WebApp : spring-petclinic(https://github.com/spring-projects/spring-petclinic)</li>
 </ul>
 
-<h1 id="tocAnchor-1-2">실행하기</h1>
+<h1 id="section-1">실행하기</h1>
 
 <p>우선은 vagrant + virtualbox로 linux vm을 로컬에서 시작</p>
 
@@ -441,27 +422,27 @@ grant all privileges on petclinic.* to 'petclinic'@'localhost';
     
       <li>
         <h7>
-          <a href="/2016/08/01/Make-Blog-with-Jekyll-on-Github-Pages/">
-            Jekyll로 Github Page에 블로그만들기
-            <small>01 Aug 2016</small>
+          <a href="/2016/09/07/Docker-run-with-docker-compose/">
+            Docker Compose로 HA환경 구성하기
+            <small>07 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/25/Chromebook-linux-install-review/">
-            크롬북 Crouton을 이용한 Linux 설치 사용기
-            <small>25 Jul 2016</small>
+          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
+            Ubuntu(Unity,Xfce)테마 변경하기
+            <small>04 Sep 2016</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/07/24/Reusable-Commands-List/">
-            자주 사용하는 명령들
-            <small>24 Jul 2016</small>
+          <a href="/2016/08/22/Build-Docker-Container/">
+            Docker 이미지를 빌드하기
+            <small>22 Aug 2016</small>
           </a>
         </h7>
       </li>
