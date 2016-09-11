@@ -23,7 +23,9 @@ vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, �
 - 그밖에?
 
 
-# Repository 설정
+# 환경설정
+
+## Repository 설정
 
 repository를 daumkakao쪽 서버로 변경
 
@@ -38,19 +40,19 @@ repository를 daumkakao쪽 서버로 변경
 
 http://ftp.neowiz.com/ 로 변경해도 됨.
 
-# 기본 어플리케이션 설치
+## 기본 어플리케이션 설치
 
 git, wget, telnet, curl, tmux(multi screen terminal) 등 설치
 
-    apt-get install git wget telnet curl tmux
+    $ apt-get install git wget telnet curl tmux
 
 zsh 설치(fish는 적응하기가 좀 힘듬)
 
-    apt-get install zsh
+    $ apt-get install zsh
 
 기본 쉘 변경
 
-    chsh -s /usr/bin/zsh
+    $ chsh -s /usr/bin/zsh
 
 ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
 별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 부득이하게
@@ -60,12 +62,12 @@ ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항�
 
 zsh 설치
 
-  apt-get install zsh
+    $ apt-get install zsh
 
 
 Oh My Zsh 설치
 
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+    $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/
 
@@ -105,8 +107,8 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 
 아래와 같이 vundle 설치
 
-    mkdir ~/.vim/bundle
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    $ mkdir ~/.vim/bundle
+    $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     #.vimrc 파일 생성(참고2 링크에 있음)
     #vim command mode에서 다음과 같이 입력
     :PluginInstall
@@ -115,7 +117,7 @@ vundle을 이용해 NERDTree 설치
 
     :PluginSearch NERD
     #vimrc에 아래 내용 추가
-    echo "Plugin 'The-NERD-Tree'" >> ~/.vimrc
+    $ echo "Plugin 'The-NERD-Tree'" >> ~/.vimrc
     # 설치
     :PluginInstall
 
