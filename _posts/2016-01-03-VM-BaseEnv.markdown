@@ -54,8 +54,12 @@ zsh 설치(fish는 적응하기가 좀 힘듬)
 
     $ chsh -s /usr/bin/zsh
 
-ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
-별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 부득이하게
+ubuntu, centos 에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
+별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 다음과 같이 수동으로 ppa를 추가한 뒤 설치한다.
+
+    $ sudo add-apt-repository ppa:git-core/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install git
 
 
 # Shell 환경설정
@@ -63,7 +67,6 @@ ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항�
 zsh 설치
 
     $ apt-get install zsh
-
 
 Oh My Zsh 설치
 
@@ -116,7 +119,7 @@ Oh My Zsh 설치
 vundle을 이용해 NERDTree 설치
 
     :PluginSearch NERD
-    #vimrc에 아래 내용 추가
+    # .vimrc에 아래 내용 추가
     $ echo "Plugin 'The-NERD-Tree'" >> ~/.vimrc
     # 설치
     :PluginInstall
