@@ -6,9 +6,16 @@ tags:
 - life
 - Tech
 ---
+
+
 개인적인 자료 정리의 목적으로, Github에서 만든 서비스 중 page에 jekyll 이라는 설치형 블로그를 설치하고 구성해 보았다.
 
 \_로 시작하는 파일들, 디렉토리들이 많은데 편집 편의상 앞에 \를 달아놓았음.(실제는 없음)
+
+* TOC
+{:toc}
+---
+
 
 # Jekyll 설치 및 설정
 
@@ -57,7 +64,7 @@ tags:
 
 ## TOC(Table of Contents) 표시하기
 
-, 간단히 markdown 엔진이 kramdown이면 다음과 같이 TOC를 추가하고 싶은 곳에 추가하면 된다.
+간단히 markdown 엔진이 kramdown이면 다음과 같이 TOC를 추가하고 싶은 곳에 추가하면 된다.
 
 참고 - [How I Add a Table of Contents to my Jekyll Blog Written in Markdown](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
 
@@ -109,6 +116,7 @@ Google Analytics 가입 후 다음과 같은 Script들을 모든 페이지 상�
 ## DISQUS 설정
 
 Communication을 위한 댓글달기 SaaS 서비스, 필요성을 못 느껴 설치하지 않음.
+
 
 # 트러블슈팅
 
