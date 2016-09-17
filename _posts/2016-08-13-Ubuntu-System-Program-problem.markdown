@@ -5,6 +5,7 @@ date:   2016-08-13 23:59:00
 tags:
 - life
 - Tech
+- Linux
 ---
 
 우분투 16.04(LTS)를 노트북으로 사용중, 로그인 후 계속 발생하는 "시스템 프로그램 오류를 발견했습니다." (System program problem detected)에러 메세지를 해결하는 방법.
