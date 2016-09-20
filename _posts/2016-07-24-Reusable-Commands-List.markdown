@@ -196,7 +196,7 @@ OS 버전 확인
     # 변경 반영 및 commit, push
     $ git add --all
     $ git add ./*
-    # gitifnore에 있으나, 무시하고 등록하고 싶을 경우
+    # gitignore에 있으나, 무시하고 등록하고 싶을 경우
     $ git add -f 파일명
     $ git commit -a -m "commit message"
     # push
@@ -214,8 +214,6 @@ OS 버전 확인
 
     로컬에서 수정한 내용을 무시하고 싶을 때
     $ git checkout -- 파일명
-
-    # 설정
 
 ### 바이너리 파일 표시
 
@@ -245,6 +243,39 @@ git 설정은 로컬의 사용자 홈 디렉토리에 .gitconfig 라는 이름�
 
     # https verify false - 프록시 사용시 https 인증서 문제가 있다면 사용
     $ git config http.sslVerify "false"
+
+
+### git최신 버전을 설치하는 방법
+
+대부분의 공식 repository(yum,apt-get)에는 비교적 이전버전에 들어가 있음
+
+    # add-apt-repository 추가
+    $ sudo apt-get install python-software-properties
+    $ sudo apt-get install software-properties-common
+    # 이후 아래와 같이 설치
+    $ sudo su -
+    $ add-apt-repository ppa:git-core/ppa
+    # ---> 프록시 사용시에는 위의 명령을 반드시 sudo 없이 실행(sudo가 있을 경우 proxy는 못 탐)
+
+    $ sudo apt-get update
+    $ sudo apt-get install git
+
+
+### git push 시 다음과 같은 오류가 발생하면
+
+    $ git push origin master        
+    Username for 'xxxx': ska
+    Password for 'xxxx':
+    Counting objects: 7, done.
+    Compressing objects: 100% (6/6), done.
+    Writing objects: 100% (7/7), 15.42 MiB | 0 bytes/s, done.
+    Total 7 (delta 2), reused 0 (delta 0)
+    error: RPC failed; HTTP 403 curl 22 The requested URL returned error: 403 Forbidden
+    fatal: The remote end hung up unexpectedly
+    fatal: The remote end hung up unexpectedly
+    Everything up-to-date
+
+로컬의 gitconfig 상에 proxy 설정 등이 있는지 확인, 없다면 buffersize, 그리고 서버 설정(gitlab의 nginx설정 등) 등의 문제일 수 있음.
 
 
 ## MySQL
