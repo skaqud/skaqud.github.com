@@ -166,6 +166,32 @@ nginx는 이중화된 was의 컨테이너를 바라볼 수 있도록 아래의 �
 
 upstream에 로드밸런싱 설정시 원하는 방식을 정의한다. 세션을 고려하지 않았으므로, sticky session방식이나, ip_hash를 사용한다.
 
+위와 같이 준비되면 다음과 같이 docker-compose.yml이 있는 디렉토리에서 다음과 같이 실행해준다.
+
+    $ docker-compose up                                                                    master
+    Starting petclinic_db_1
+    Starting petclinic_petclinic_1
+    Starting petclinic_petclinic2_1
+    Starting petclinic_web_1
+    Starting petclinic_web2_1
+    Attaching to petclinic_db_1, petclinic_petclinic_1, petclinic_petclinic2_1, petclinic_web2_1, petclinic_web_1
+    ...(중략)
+
+실행을 확인하기 위해서는 ps명령을 실행한다.
+
+    $ docker-compose ps                                                                     
+    Name                      Command              State     Ports
+    -----------------------------------------------------------------------
+    petclinic_db_1           docker-entrypoint.sh mysqld   Exit 137         
+    petclinic_petclinic2_1   catalina.sh run               Exit 137         
+    petclinic_petclinic_1    catalina.sh run               Exit 137         
+    petclinic_web2_1         nginx -g daemon off;          Exit 137         
+    petclinic_web_1          nginx -g daemon off;          Exit 137         
+
+오동작 등으로 인해 컨테이너를 삭제해야 할 경우
+
+    $ docker-compose kill
+
 각 nginx 서비스는 80,90에서 각각 실행되므로, AWS의 ELB나 다른 L4를 통해 앞단에서 요청을 받아 줘야 WEB단도 이중화가 가능할 듯 하다.
 
 참고 - [실제파일](https://github.com/skaqud/template/tree/master/docker-compose/petclinic)
