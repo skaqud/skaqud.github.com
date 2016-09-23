@@ -8,7 +8,7 @@ tags:
 - Docker
 ---
 
-Docker compose로 간단한 HA환경을 구성해 보는 방법(작성중)
+Docker compose로 간단한 HA환경을 구성해 보는 방법
 
 요즈음은 대부분 서비스를 적당한 Size로 구성하고 배치하여 MicroService화 하는 방법이 대세가 되었다. Dockerfile의 경우 실제 서비스를 구성하기 위해서는 손이 좀 더 가게 되는데, Docker Compose를 이용하면 Multi-node환경에서 좀 더 편하게 서비스를 구성하고 실행할 수 있다.
 
@@ -49,6 +49,8 @@ WAS에 deploy할 petclinic war를 미리 준비한다. 해당 프로젝트를 cl
 
 위의 프로젝트를 clone한 뒤 이클립스에서든 그냥 maven을 이용하든 war파일을 생성한다.
 
+빌드시 기본적으로 hsql 버전으로 되어 있으므로, mysql 버전으로 변경하고 db 설정도 맞게 고쳐준다.
+
 # 구성
 
 기본적으로 web, was, db를 위한 컨테이너 이미지가 하나씩은 필요함. 다음과 같이 공식 이미지를 pull 받는다.
@@ -59,11 +61,20 @@ WAS에 deploy할 petclinic war를 미리 준비한다. 해당 프로젝트를 cl
 
 이후 생성한 이미지를 다음과 같은 docker-compose 설정파일을 통해 시작한다. 편의상 필요한 설정들은 conf, 필요한 binary나 설치파일들은 files 밑에 넣도록 했다.
 
-    #docker-compose.xml 파일 내용
+    #docker-compose.xml 파일
     web:
         image: nginx
         ports:
             - "80:80"
+        links:
+            - petclinic:petclinic
+            - petclinic2:petclinic2
+        volumes:
+            - ./conf/nginx.conf:/etc/nginx/nginx.conf
+    web2:
+        image: nginx
+        ports:
+            - "90:80"
         links:
             - petclinic:petclinic
             - petclinic2:petclinic2
@@ -93,11 +104,11 @@ WAS에 deploy할 petclinic war를 미리 준비한다. 해당 프로젝트를 cl
             MYSQL_ROOT_PASSWORD: petclinic
             MYSQL_DATABASE: petclinic
 
-port에 두개의 포트가 지정되어 있으면 내부:외부를 의미, links에서 이용되는 이름들은 컨테이너간 host명이라고 봐도 될 것 같다. 실제로 was에서 db연결시 해당 이름으로 연결된다.
+port에 두개의 포트가 지정되어 있으면 외부(host의 포트):내부(container의 포트)를 의미, links에서 이용되는 이름들은 컨테이너간 host명이라고 봐도 될 것 같다. 실제로 was에서 db연결시 해당 이름으로 연결된다.
 
 nginx는 이중화된 was의 컨테이너를 바라볼 수 있도록 아래의 설정파일을 nginx컨테이너에 복사하여 적용되도록 한다.
 
-    #nginx.conf 파일 내용
+    #nginx.conf 파일
 
     user  nginx;
     worker_processes  4;
@@ -132,7 +143,8 @@ nginx는 이중화된 was의 컨테이너를 바라볼 수 있도록 아래의 �
 
 
         upstream pet-app {
-              least_conn;
+              ip_hash;
+              #least_conn;
               server petclinic:8080 weight=10 max_fails=3 fail_timeout=30s;
               server petclinic2:8080 weight=10 max_fails=3 fail_timeout=30s;
         }
@@ -152,6 +164,8 @@ nginx는 이중화된 was의 컨테이너를 바라볼 수 있도록 아래의 �
         }
     }
 
+upstream에 로드밸런싱 설정시 원하는 방식을 정의한다. 세션을 고려하지 않았으므로, sticky session방식이나, ip_hash를 사용한다.
 
-참고 - 실제파일 경로
+각 nginx 서비스는 80,90에서 각각 실행되므로, AWS의 ELB나 다른 L4를 통해 앞단에서 요청을 받아 줘야 WEB단도 이중화가 가능할 듯 하다.
 
+참고 - [실제파일](https://github.com/skaqud/template/tree/master/docker-compose/petclinic)
