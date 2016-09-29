@@ -31,6 +31,6 @@ tags:
 
     #다음 파일을 연 뒤
     % sudo vi /etc/default/apport
-    #다음과 같이 수정
+    #다음과 같이 수정(1->0으로)
     #enabled=1
-    enabled=1
+    enabled=0
