@@ -5,11 +5,12 @@ date:   2016-09-21 01:47:00
 tags:
 - Tech
 - Fabric
+- devops
 ---
 
 배포 도구인 Fabric 사용법(작성중)
 
-개인적으로 Capistrano는 너무 어려웠음, 대안으로 찾은게 그나마 더 친근한(?) Python 기반의 fabric
+개인적으로 Capistrano는 너무 어려웠음, 대안으로 찾은게 그나마 더 친근한(?) Python 기반의 fabric을 선택함.
 
 참고 - [How To Use Fabric To Automate Administration Tasks And Deployments](https://www.digitalocean.com/community/tutorials/how-to-use-fabric-to-automate-administration-tasks-and-deployments)
 
@@ -17,7 +18,7 @@ fabric 설치
 - 참고:http://www.slideshare.net/ssuser0e3c90/posquit0-fabric-ssh-streamlining
 
 장 : 단순하고, 깔끔한 배포 도구, 개발자 입장에서 사용하기 쉬움
-단 : GUI 없음, python 문법에 대한 Learning curve
+단 : GUI 없음, python 문법에 대한 Learning curve - GUI는 별도로 만들고 있는 것 같긴 함.
 
 --------------------------------------------------------
 pip를 통한 설치
