@@ -13,7 +13,7 @@ tags:
 
 참고 - [Docker Swarm vs. Kubernetes](https://outofbedlam.github.io/docker/2016/03/12/DockerSwarm-vs-Kubernetes/)
 
-참고2 - [Container Trends: Orchestration Tool Choices by User Type – A Dataset from Bitnami] (http://redmonk.com/fryan/2016/08/15/container-trends-orchestration-tool-choices-by-user-type-a-dataset-from-bitnami/)
+참고2 - [Container Trends: Orchestration Tool Choices by User Type – A Dataset from Bitnami](http://redmonk.com/fryan/2016/08/15/container-trends-orchestration-tool-choices-by-user-type-a-dataset-from-bitnami/)
 
 처음에는 Kubernetes와 Swarm 뿐이었고, Kubernetes가 우세했으나, 지금 와선 잘 모르겠음.
 
