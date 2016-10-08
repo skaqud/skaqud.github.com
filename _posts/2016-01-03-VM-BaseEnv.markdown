@@ -74,6 +74,15 @@ Oh My Zsh 설치
 
 참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/
 
+테마는 agnoster 등이 적당함. 설치시 git repository 표현에 몇몇 특수문자들이 필요하며, 폰트를 별도로 설치해 주는 게 좋다.
+
+- [agnoster.zsh theme](https://gist.github.com/agnoster/371287)
+- [Powerline fonts](https://github.com/powerline/fonts)
+
+바로 위에 가서 받으면 됨.
+
+우분투 상에서 받은 otf 폰트는 /usr/share/fonts/opentype 하위에 넣으면 시스템에서 인식한다.(없을 경우 생성)
+
 
 # vim 설치 및 설정
 
