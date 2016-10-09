@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PINE64 Cluster 구성하기"
+title:  "PINE64 Cluster 구성하기(1)"
 date:   2016-10-08 23:27:00
 tags:
 - Tech
@@ -9,19 +9,19 @@ tags:
 
 64bit Single Board Computer-PINE64 Cluster 구성하기(작성중)
 
-#소개
+# 소개
 
 KickStart에서 시작된, 현재로서는 가장 저렴한 축에 드는 Single Board Computer, 관심을 가지게 된 이유는, 클라우드도 그렇고 관심이 가는 동네(docker, cloud, devops 등등)들을 테스트 해볼 테스트베드가 없어서임... AWS등은 비용문제때문에 좀 그렇고 그렇다고 엄청나게 Spec이 좋은 노트북을 구입하기도 힘들어서
 
 선택은 비용측면이 가장 컸고, 나머지는 순전히 웹상의 레퍼런스와, 커뮤니티 활성정도를 자세히 보지 않고 그냥 감으로 찍었음.(ㅡ.,ㅡ;)
 
-#구매하기
+# 구매하기
 
 관세는 2016년 부터 배송비 등을 제외하고 150달러 이내라고 함 -> 최대한 맞춰서 150달러 이내에 맞도록 주문
 
 [공식 홈](https://www.pine64.org)의 Store에서 주문이 가능하다, 결재는 Paypal로만 가능
 
-#구성과 관련된 정보들
+# 추가정보 및 구성하기
 
 
 
