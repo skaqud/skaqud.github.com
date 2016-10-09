@@ -23,6 +23,7 @@ fabric 설치
 단 : GUI 없음, python 문법에 대한 Learning curve - GUI는 별도로 만들고 있는 것 같긴 함.
 
 --------------------------------------------------------
+
 pip를 통한 설치
 
     $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
@@ -34,40 +35,45 @@ pip를 통한 설치
 혹은 아래와 같이 설치(더 간편)
 
     $ sudo apt-get install fabric
+
 --------------------------------------------------------
 
 적절한 디렉토리에 아래와 같이 fabfile.py 생성
-env.hosts = [
-        '192.168.1.9',
-        '192.168.1.10'
-]
 
-def hello():
-    print("Hello world!")
+    env.hosts = [
+            '192.168.1.9',
+            '192.168.1.10'
+    ]
 
-def host_info():
-    local('uname -a')
-    run('uname -a')
+    def hello():
+        print("Hello world!")
 
-def host_run():
-    # Create a directory (i.e. folder)
-    run("mkdir trunk")
-    run("rmdir trunk")
+    def host_info():
+        local('uname -a')
+        run('uname -a')
 
-    # Uptime
-    run("uptime")
+    def host_run():
+        # Create a directory (i.e. folder)
+        run("mkdir trunk")
+        run("rmdir trunk")
 
-    # Hostname
-    run("hostname")
+        # Uptime
+        run("uptime")
 
-    # Capture the output of "ls" command
-    result = run("ls -l")
+        # Hostname
+        run("hostname")
 
-    # Check if command failed
-    result.failed
+        # Capture the output of "ls" command
+        result = run("ls -l")
 
-실행
+        # Check if command failed
+        result.failed
 
-fab hello
+실행은 다음과 같이.
 
-fab host_info
+    $ fab hello
+
+    $ fab host_info
+
+
+Deploy 도구이지만, 의외로 다수의 서버들을 관리하는 데에도 효율적일 수 있을 것 같다.
