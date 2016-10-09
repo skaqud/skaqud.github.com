@@ -1,22 +1,18 @@
 ---
 layout: post
-title:  "docker ucp 설치 및 사용"
+title:  "PINE64 Cluster 구성하기"
 date:   2016-10-08 23:27:00
 tags:
 - Tech
-- docker
-- devops
+- 삽질
 ---
 
-(작성중)
+64bit Single Board Computer-PINE64 Cluster 구성하기(작성중)
 
-
-기본적으로 아키텍처는 다음과 같음.
-
-
+소개
 
 
 
-docker ucp 설치해보기
+구매하기
 
-docker run --rm -it --name ucp -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install -i --host-address 127.0.0.1
+관세는 2016년 부터 배송비 등을 제외하고 150달러 이내라고 함
