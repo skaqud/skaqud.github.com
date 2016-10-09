@@ -8,7 +8,7 @@ tags:
 - devops
 ---
 
-배포 도구인 Fabric 사용법(작성중)
+배포 도구인 Fabric 사용법
 
 개인적으로 Capistrano는 너무 어려웠음, 대안으로 찾은게 그나마 더 친근한(?) Python 기반의 fabric을 선택함.
 

@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "docker ucp 설치 및 사용"
+date:   2016-10-08 23:27:00
+tags:
+- Tech
+- docker
+- devops
+---
+
+(작성중)
+
+
+기본적으로 아키텍처는 다음과 같음.
+
+
+
+
+
+docker ucp 설치해보기
+
+docker run --rm -it --name ucp -v /var/run/docker.sock:/var/run/docker.sock docker/ucp install -i --host-address 127.0.0.1
