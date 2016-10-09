@@ -21,7 +21,7 @@ KickStart에서 시작된, 현재로서는 가장 저렴한 축에 드는 Single
 
 [공식 홈](https://www.pine64.org)의 Store에서 주문이 가능하다, 결재는 Paypal로만 가능
 
-# 추가정보 및 구성하기
+# 추가정보 및 계획
 
 
 
