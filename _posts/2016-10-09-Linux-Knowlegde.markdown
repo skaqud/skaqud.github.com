@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Linux 기본용어
+title: Linux Container 용어
 date: {}
 tags:
   - Tech
 published: true
 ---
 
-Linux 기본 용어에 대한 설명(작성중)
+Linux Container 관련 용어에 대한 설명(작성중)
 
 
 # 용어
