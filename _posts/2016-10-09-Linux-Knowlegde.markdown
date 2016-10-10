@@ -20,7 +20,7 @@ cgroup(Control Groups) - CPU,mem자원 사용률을 격리, 할당, 제한하는
 chroot(change root) - 보안을 위해 새로운 가상 root 디렉토리를 생성하는 명령, 상위로 이동 불가능.
 
 
-crouton - Chromium OS Universal Chroot Environment
+crouton - Chromium OS Universal Chroot Environment, 크롬북의 Linux 별도 설치 환경
 
 
 # Docker, LXC 원리
