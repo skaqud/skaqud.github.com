@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Linux Container 용어
-date: {}
+date: 2016-10-09 23:27:00
 tags:
   - Tech
-published: true
+  - Docker
 ---
 
 Linux Container 관련 용어에 대한 설명(작성중)
