@@ -7,16 +7,18 @@ tags:
   - Docker
 ---
 
-Linux Container 관련 용어에 대한 설명(작성중), docker가 뭐하는 건지는 알겠는데, 어떤 원리로 돌아가는지 용어 자체를 모르겠어서 작성
+Linux Container 관련 용어에 대한 설명(작성중)
+
+docker가 뭐하는 건지는 알겠는데, 어떤 원리로 돌아가는지 용어 자체를 모르겠어서 작성
 
 
 # 용어설명
 
-namespace - 독립되고, 가상화 된 공간을 제공하는 리눅스 기술, Docker나 LXC모두 namespace 기술을 기반으로 만들어 짐. hostname, filesystem, network, process, ipc등 알려진 컴퓨팅 자원을 모두 분할한다.
+`namespace` - 독립되고, 가상화 된 공간을 제공하는 리눅스 기술, Docker나 LXC모두 namespace 기술을 기반으로 만들어 짐. hostname, filesystem, network, process, ipc등 알려진 컴퓨팅 자원을 모두 분할한다.
 
 참고 - [Linux namespace](http://bluese05.tistory.com/11)
 
-cgroup(Control Groups) - CPU,memory 등 자원 사용률을 격리, 할당, 제한하는 Linux kernel의 기능
+`cgroup`(Control Groups) - CPU,memory 등 자원 사용률을 격리, 할당, 제한하는 Linux kernel의 기능
 
 참고 - [linux - cgroups (control groups)](http://linuxism.tistory.com/1601)
 
@@ -41,26 +43,26 @@ Docker 이미지는 유니온 파일 시스템(AUFS)을 이용해 변경된 부�
 # 그밖의 컨테이너 기술들
 
 - OpenVZ
-- libvirt
-- Docker(libcontainer)
-- systemd-nspawn : systemd-nspawn may be used to run a command or OS in a light-weight namespace container. In many ways it is similar to chroot(1), but more powerful since it fully virtualizes the file system hierarchy, as well as the process tree, the various IPC subsystems and the host and domain name.
-- LXC
 
 [OpenVZ란?](https://ko.wikipedia.org/wiki/OpenVZ)
 
-[LXC](https://ko.wikipedia.org/wiki/LXC)
+- libvirt
+
+- Docker(libcontainer)
+
+- systemd-nspawn : systemd-nspawn may be used to run a command or OS in a light-weight namespace container. In many ways it is similar to chroot(1), but more powerful since it fully virtualizes the file system hierarchy, as well as the process tree, the various IPC subsystems and the host and domain name.
 
 [systemd](https://ko.wikipedia.org/wiki/Systemd)
 
-- 시스템 관리, 로그관리, 사용자 관리 등 다양한 기능을 가진 시스템 관리도구, RHEL7 부터 기본으로 들어감, 통합 관리도구
-
 [systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
 
+- LXC
+
+[LXC](https://ko.wikipedia.org/wiki/LXC)
 
 # 참고
 
 [LXC 와 Docker 그리고 Linux 컨테이너 기술들 살펴보기](http://opennaru.tistory.com/105)
-
 
 # 기타
 
