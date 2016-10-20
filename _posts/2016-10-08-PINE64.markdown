@@ -15,21 +15,40 @@ KickStart에서 시작된, 현재로서는 가장 저렴한 축에 드는 Single
 
 선택은 비용측면이 가장 컸고, 나머지는 순전히 웹상의 레퍼런스와, 커뮤니티 활성정도를 자세히 보지 않고 그냥 감으로 찍었음.(ㅡ.,ㅡ;)
 
+비교할 만한 다른 보드들은
+
+- 라즈베리파이2,3,제로 등의 시리즈
+- 바나나파이, 오렌지파이 등 중국산 라즈베리파이 카피본들
+- 오드로이드 C2
+- [C.H.I.P](https://getchip.com/pages/chip) - 가격은 이게 가장 저렴한 편임
+
+정도일 것 같다... 일단 클러스터를 한 번 테스트하고 싶었고, Multi로 띄운 뒤 docker나 chef,ansible등도 써보고 싶어서 PINE64를 선택
+
 # 구매하기
 
 관세는 2016년 부터 배송비 등을 제외하고 150달러 이내라고 함 -> 최대한 맞춰서 150달러 이내에 맞도록 주문
 
 [공식 홈](https://www.pine64.org)의 Store에서 주문이 가능하다, 결재는 Paypal로만 가능
 
+지금만 그런지 모르겠는데 배송을 떼로 몰아서 하는듯, 주문하고 나서 2주정도 걸려 받았다.(참고로 중국에서 옴.)
+
+추가로, 각 보드별로 전원(mini usb), class10 sd카드, cat.5 utp cable이 필요하다.
+
 # 추가정보 및 계획
 
+아직 클러스터는 좀 멀었고, 우선 다음 정도를 테스트 해 볼 예정
+
+- Ubuntu Server 설치 후 속도
+
+- Remix OS 설치 및 사용속도
+
+차후 4개정도 보드를 붙여 클러스터를 구성하고 testbed로 만들어 볼 계획이다.
 
 
-
-#참고
+# 참고
 
 [PINE64 Community](https://www.pine64.pro)
 
-http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/
+[The Pine A64 is about to become the cheapest ARM 64-bit platform to run Docker](http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/)
 
-http://www.vivekjuneja.in/2016/08/29/arm-cloud-cluster/
+[Using Docker to build a Computing cluster with ARM devices](http://www.vivekjuneja.in/2016/08/29/arm-cloud-cluster/)

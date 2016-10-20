@@ -65,7 +65,7 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
     sudo sh ~/Downloads/crouton -r trusty -t xfce
     #설치(desktop없이 cli만)
     sudo sh ~/Downloads/crouton -r trusty -t extra-cli
-    
+
     #잘못 설치했을 경우 삭제
     sudo delete-chroot name
 
@@ -73,7 +73,7 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
     sudo startxfce4
     #혹은(cli일때)
     sudo startcli
-    
+
     #cli로 시작 후 환경에 접속
     sudo enter-chroot
 
@@ -119,7 +119,7 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
 
 덧. 그냥 콘솔만 띄워서 쓰고 있음, 브라우저는 어쩔 수 없이 크로미움을 설치
 
-덧2. 한글사용이 문제가 많다. 됐다 안됐다 함.... 나처럼 github에 있는 파일만 수정하기 위해서라면, cli모드로 설치한 뒤 git으로 파일을 연동하고 크롬 앱으로 문서만 작성하는 것도 나쁘지 않을 것 같다.(Text 크롬 앱 이용) 
+덧2. 한글사용이 문제가 많다. 됐다 안됐다 함.... 나처럼 github에 있는 파일만 수정하기 위해서라면, cli모드로 설치한 뒤 git으로 파일을 연동하고 크롬 앱으로 문서만 작성하는 것도 나쁘지 않을 것 같다.(Text 크롬 앱 이용)
 
 
 ## Linux 사용관련 소감
@@ -136,11 +136,10 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
 
 - C201의 경우 일부 데스크탑 환경이 정상적으로 설치되지 않음, CPU 문제인 듯, Unity, gnome 안되고, xfce, kde, lxde 는 됨. xfce가 가볍고 사용하기도 적당한 것 같음
 
-- Crouton으로 실행시 no screen found 에러가 발생할 경우
-    
-    다음과 같이 실행
-    참고 - https://github.com/dnschneid/crouton/wiki/Asus-C201
+- Crouton으로 실행시 no screen found 에러가 발생할 경우 다음과 같이 실행
 
-    sudo enter-chroot
-    sudo rm /dev/dri/card0
-    sudo mv /dev/dri/card1 /dev/dri/card0
+     참고 - https://github.com/dnschneid/crouton/wiki/Asus-C201
+
+     sudo enter-chroot
+     sudo rm /dev/dri/card0
+     sudo mv /dev/dri/card1 /dev/dri/card0
