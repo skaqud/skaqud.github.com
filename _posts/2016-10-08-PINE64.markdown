@@ -22,7 +22,7 @@ KickStart에서 시작된, 현재로서는 가장 저렴한 축에 드는 Single
 - 오드로이드 C2
 - [C.H.I.P](https://getchip.com/pages/chip) - 가격은 이게 가장 저렴한 편임
 
-정도일 것 같다... 일단 클러스터를 한 번 테스트하고 싶었고, Multi로 띄운 뒤 docker나 chef,ansible등도 써보고 싶어서 PINE64를 선택
+정도일 것 같다... 일단 클러스터를 한 번 테스트하고 싶었고, Multi로 띄운 뒤 docker나 chef,ansible등도 써보고 싶어서 PINE64를 선택, 사실 사고나서도 가격 말고는 딱히 장점이 안보인다. 레퍼런스는 당연히 라즈베리 파이 시리즈들이 많고, 오드로이드 종류가 가격만큼 성능도 좋은 것 같고.. 원하는 용도에 맞는 걸 선택하는 게 맞는 것 같다.
 
 # 구매하기
 
@@ -30,19 +30,72 @@ KickStart에서 시작된, 현재로서는 가장 저렴한 축에 드는 Single
 
 [공식 홈](https://www.pine64.org)의 Store에서 주문이 가능하다, 결재는 Paypal로만 가능
 
-지금만 그런지 모르겠는데 배송을 떼로 몰아서 하는듯, 주문하고 나서 2주정도 걸려 받았다.(참고로 중국에서 옴.)
+지금만 그런지 모르겠는데 배송을 떼로 몰아서 하는듯, 주문하고 나서 2주정도 걸려 받았다.(참고로 중국에서 옴. 받고나서 보면 Designed in Califonia, Built in China라고 되어 있음)
 
 추가로, 각 보드별로 전원(mini usb), class10 sd카드, cat.5 utp cable이 필요하다.
+
+받아보면 사이즈 자체는 라즈베리파이보다는 조금 큰 편, 정확히 일치하지는 않지만, 노트3정도 사이즈는 되는 것 같다. USBx2, 랜포트, Micro-SD 카드 slot, 이어폰 잭, 마이크로USB포트(전원용) 등이 있고, 그밖에도 수많은 slot들이 존재함.
 
 # 추가정보 및 계획
 
 아직 클러스터는 좀 멀었고, 우선 다음 정도를 테스트 해 볼 예정
 
-- Ubuntu Server 설치 후 사용성 테스트
+- Ubuntu Server 설치 및 테스트
 
-- Remix OS 설치 및 사용성 테스트
+- Remix OS 설치 및 테스트
 
 차후 4개정도 보드를 붙여 클러스터를 구성하고 testbed로 만들어 볼 계획이다.
+
+## Ubuntu Server 설치
+
+### 이미지 다운로드 및 설치
+
+[PINE64 pro](https://www.pine64.pro) 사이트에서 Linux(ubuntu 16.04 LTS) 이미지를 다운로드, 이미지는 압축된 파일을 받아서 풀기만 하면 되고, 보통 Linux 설치하듯 [rufus](https://rufus.akeo.ie/?locale=ko_KR)로 해당 SD카드에 쓰면 됨(다른 건 건드리지 말고 부팅 가능 디스크 만들기를 선택한 뒤 DD이미지를 선택하고 해당 이미지파일을 골라주면 자동으로 고정됨)
+
+OS이미지가 씌워진 SD카드를 넣고, 모니터와, 키보드를 연결한 뒤 전원 역할을 하는 MicroUSB를 연결하면 전원이 들어오면서 OS가 시작됨
+
+### 초기작업
+
+[여기](https://www.pine64.pro/getting-started-linux/)를 참고해서 사전에 다음과 같이 스크립트를 실행해 준다.(ensure your kernel/u-boot is up to date and also resize your root partition to max available space your SD card can provide 해준다고 함)
+
+    $ sudo -i
+    $ /usr/local/sbin/pine64_update_uboot.sh
+    $ /usr/local/sbin/pine64_update_kernel.sh
+    $ resize_rootfs.sh
+    $ reboot
+
+참고2 - http://forum.pine64.org/showthread.php?tid=376
+
+기본적인 작업 후 연결이 되면 하나씩 다음과 같이 사설 IP를 부여함.
+
+    $ cat /etc/network/interfaces
+    auto lo
+    iface lo inet loopback
+
+    # 무선랜카드 설정
+    allow-hotplug wlan0
+    auto wlan0
+    iface wlan0 inet static
+    address 192.168.0.xxx
+    gateway 192.168.0.1
+    netmask 255.255.255.0
+    wpa-ssid "ssid이름"
+    wpa-psk "무선랜비번"
+
+    # 유선랜카드 설정
+    auto eth0
+    iface eth0 inet static
+    address 192.168.0.xxx
+    gateway 192.168.0.1
+    netmask 255.255.255.0
+
+IP 고정 후 다음과 같이 network서비스를 재시작 해 준다.
+
+    $/etc/init.d/networking restart
+
+## Remix OS 설치
+
+동일한 사이트에서 RemixOS 이미지를 받아 동일하게 작업 한 뒤 실행, SD카드 사이즈에 따라 이미지 종류가 다르다. 설치는 잘 되는데, 안드로이드를 바로 데스크탑으로 적응하는데 좀 문제가 있고, `생각만큼 속도가 빠르지 않다. 가벼운 서버용 Linux데스크탑 환경을 설치하는 게 최선일 것 같다.`
 
 
 # 참고
