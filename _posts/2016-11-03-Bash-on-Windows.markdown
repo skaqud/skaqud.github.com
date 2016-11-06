@@ -66,9 +66,7 @@ openssh-server의 경우 cmd 상태창으로 계속 linux명령을 날리는 게
 
 서비스는 잘 시작되나, 계정으로 로그인시 access denied 가 계속 발생함, 비번이 틀린 건 아닌거 같고
 
-https://www.reddit.com/r/Windows10/comments/4vx5a3/enabling_openssh_remote_ssh_logins_via_bash_on/
-
-위의 글을 읽어보니 ssh 서버 포트를 변경하믄 된다는 얘기가 있다. (22번에 떠 있는 ssh서버는 윈도우에서 자체적으로 띄운 것인듯..충돌해서 발생하는 문제인 것 같다.)
+[reddit의 다음 글](https://www.reddit.com/r/Windows10/comments/4vx5a3/enabling_openssh_remote_ssh_logins_via_bash_on/)을 읽어보니 ssh 서버 포트를 변경하믄 된다는 얘기가 있다. (22번에 떠 있는 ssh서버는 윈도우에서 자체적으로 띄운 것인듯..충돌해서 발생하는 문제인 것 같다.)
 
 port를 2020으로 변경후 putty 등 ssh client로 접속하니 잘 된다.
 
