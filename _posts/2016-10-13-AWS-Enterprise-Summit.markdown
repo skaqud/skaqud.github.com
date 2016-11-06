@@ -3,8 +3,9 @@ layout: post
 title: AWS Summit Enterprise korea
 date: 2016-10-13 17:05:00
 tags:
-  - Tech
-  - Conference
+- Tech
+- Conference
+- AWS
 ---
 
 AWS Summit Enterprise korea, 광화문 포시즌스 호텔
