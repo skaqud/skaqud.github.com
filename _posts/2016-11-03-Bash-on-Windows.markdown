@@ -82,12 +82,10 @@ openssh-server의 경우 다음과 같이 실행 창으로 실행할 경우 창�
 
     # win키+R 누른 후(실행 창)
     bash 'sudo service ssh start'
-
-다음과 같이 입력하면 접속이 가능하다. 스크립트로 만든 뒤 윈도우 시작시 실행해주면 부팅시마다 openssh-server가 실행될 수 있을 것 같다.
-
     # win키+R 누른 후(실행 창)
     bash 'sudo /etc/init.d/ssh start'
 
+다른 bash 창이 있을 경우에는 ssh서버가 제대로 실행되나, 그렇지 않을 경우는 안됨. 실행 프로그램으로 bash도 하나 띄운 후 위의 명령을 script로 만들어 실행하면 윈도우에서 openssh-server 자동실행이 가능할 것 같다.
 
 # 결론
 
