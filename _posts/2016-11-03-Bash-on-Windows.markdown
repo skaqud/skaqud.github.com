@@ -7,8 +7,6 @@ tags:
 - 삽질
 ---
 
-(작성중)
-
 윈도우 10에서 비로소 사용 가능해진 bash(Bash on Windows) 사용법
 
 
@@ -78,14 +76,12 @@ cmd 상에서 다음과 같이 명령을 수행하면 bash 를 통해 명령을 
 
     bash -c 'vi'
 
-openssh-server의 경우 다음과 같이 실행 창으로 실행할 경우 창이 꺼지면서 접속이 되지 않는다.
+openssh-server의 경우 미리 bash창이 하나는 띄워져 있어야 아래와 같이 cmd창을 통한 명령으로 openssh-server를 시작할 수 있다.
 
     # win키+R 누른 후(실행 창)
-    bash 'sudo service ssh start'
-    # win키+R 누른 후(실행 창)
-    bash 'sudo /etc/init.d/ssh start'
+    bash -c 'sudo service ssh start'
 
-다른 bash 창이 있을 경우에는 ssh서버가 제대로 실행되나, 그렇지 않을 경우는 안됨. 실행 프로그램으로 bash도 하나 띄운 후 위의 명령을 script로 만들어 실행하면 윈도우에서 openssh-server 자동실행이 가능할 것 같다.
+윈도우 시작시 자동으로 올라오게 하고 싶다면 먼저 bash창을 하나 띄운 후 위의 스크립트를 실행하면 될 것 같다.
 
 # 결론
 
