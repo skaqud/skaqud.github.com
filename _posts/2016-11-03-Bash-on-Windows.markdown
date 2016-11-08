@@ -7,6 +7,8 @@ tags:
 - 삽질
 ---
 
+(작성중)
+
 윈도우 10에서 비로소 사용 가능해진 bash(Bash on Windows) 사용법
 
 
