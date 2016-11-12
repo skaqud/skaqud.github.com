@@ -9,7 +9,7 @@ tags:
 
 (작성중)
 
-# AWS VPC(Virtual Private Cloud) 기반의 인프라 환경 구성하기
+AWS에서 개발,검증,운영 등 새로 환경을 구성할 때 기억해야 할 사항들
 
 ## 순서
 
@@ -23,13 +23,23 @@ tags:
 
 5. 준비된 인스턴스에 어플리케이션 설치 및 테스트
 
+
+## EC2
+
+- 기본적으로 AWS에서 사용하는 인스턴스, 특정 사이즈 이상으로는 금액이 기하급수적으로 커진다.
+
+- private ip의 경우 인스턴스가 다시 시작되면(shutdown-reboot) 변경될수도 있다. 다만  reboot시에는 안바뀔수도 있음. vpc안에서는 고정됨
+
+- 종료시 instance type을 변경 가능함. 처음에는 작은 사이즈로 올려놓고 나중에 사이즈를 변경하는 전략이 가능하다. 얼마나 아낄 수 있을지는 모르겠지만.
+
+- 리전마다 지원 가능한 인스턴스의 Type이 약간씩 다르다. 예로, 한국 리전에는 현재 아직 고성능 컴퓨팅을 위한 P2인스턴스는 아직 없음. 타입은 계속 변경되는 것 같다. 예전에는 m1, m2 관련타입들이 많았는데 이젠 m3,m4밖에 안보인다.(네이밍으로 보면 버전이 올라간 것 같긴 하다.)
+
+
 ## VPC(Virtual Private Cloud)
 
 - VPC안에서의 IP는 변경되지 않음, subnet이 나뉘어도 SG,NetACL 등의 설정에 따라 PrivateIP로 통신은 가능
 
 - ELB는 Internal ELB와 External ELB로 구분, 내부에서 사용시 Internal을 사용
-
-- 또한 ELB는 v2가 새로 생겼으며, v2는 일반적으로 L7 스위치와 동일하게 동작하는 것 같다. 기존 classic lb의 경우 L4와 포지션이 비슷하다. v2의 경우 WEB앞에 두려고 할 때 2개 이상의 서브넷에서만 동작 가능, 기존 elb는 HA를 위해 권장하기는 하나 2개이상 서브넷의 사용을 강제하지는 않음.
 
 - Security Group은 80,443 이외에는 Any Open은 허용하지 않음
 Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(허용하는 용도)형태로 사용. SG는 stateful(요청의 in/out을 하나의 상태로 보아 in이 허용되면 out도 가능), network acl은 stateless함.(in/out을 별도로 각각 처리해야 함.)
@@ -45,7 +55,11 @@ Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(
 # ELB
 
 - 생성 전에 미리 security group이나 네트워크 설정은 되어 있어야 함(물리적으로 연결되는 데 이상이 없어야 함)
+
+- ELB는 v2가 새로 생겼으며, v2는 일반적으로 L7 스위치와 동일하게 동작하는 것 같다. 기존 classic lb의 경우 L4와 포지션이 비슷하다. v2의 경우 WEB앞에 두려고 할 때 2개 이상의 서브넷에서만 동작 가능, 기존 elb는 HA를 위해 권장하기는 하나 2개이상 서브넷의 사용을 강제하지는 않음.
+
 - 생성 후 Health Check의 경우
+
 : Unhealty threshold - 해당 수만큼 응답이 없을 경우 instace를 OutOfService 처리, 2->5로 수정
 : Healthy threshold - 해당 수만큼 응답이 있으면 instance를 InService 처리, 10->5로 수정
 

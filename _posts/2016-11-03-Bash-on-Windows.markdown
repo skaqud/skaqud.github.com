@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bash on Windows 사용법
+title: Bash on Windows
 date: 2016-11-03 22:51:00
 tags:
 - Tech
@@ -9,8 +9,7 @@ tags:
 
 (작성중)
 
-윈도우 10에서 비로소 사용 가능해진 bash(Bash on Windows) 사용법
-
+윈도우 10에서 비로소 사용 가능해진 Bash on Windows
 
 # 설치하기
 
@@ -27,7 +26,7 @@ tags:
 
 패치 등의 업그레이드도 잘 수행됨
 
-bash 명령 수행시 별도의(linux의 chroot같은) 영역으로 이동하게 되는데, 다음과 같이 외부의 윈도우 디렉토리로 접근 가능
+bash 명령 수행시 별도의(linux의 chroot같은) 영역으로 이동하게 되는데, 다음과 같이 외부의 윈도우상의 드라이브로 접근 가능
 
     $ cd /mnt/c/
 
@@ -89,7 +88,7 @@ openssh-server의 경우 미리 bash창이 하나는 띄워져 있어야 아래�
 
 - 몇가지 장점
 
-    : 윈도우에서 더이상 git-client를 깔 필요가 없다. 보통 윈도우 프로그램들보다 같은 역할을 하는 리눅스 프로그램들이 가볍고 다루기 쉽다.
+    : 윈도우에서 더이상 git-client를 깔 필요가 없다. 보통 윈도우 프로그램들보다 같은 역할을 하는 리눅스 프로그램들이 가볍고 효율적이다.
 
     : 리눅스에만 있던 것(find,grep...)들도 윈도우에서 가상환경 없이 실행할 수 있다. 같은 shell script를 공유할 수 있다.
 
