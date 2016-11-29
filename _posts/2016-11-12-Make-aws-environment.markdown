@@ -64,7 +64,7 @@ Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(
     : Unhealty threshold - 해당 수만큼 응답이 없을 경우 instace를 OutOfService 처리, 2->5로 수정
     : Healthy threshold - 해당 수만큼 응답이 있으면 instance를 InService 처리, 10->5로 수정
 
-인스턴스를 붙였을 경우 OutOfService가 뜨면 설정시 떼었다가 다시 붙이면 서비스 되는 경우가 있음(간혹 AWS상에서 다른 설정이 잘 맞아도 잘 안올라오는 경우가 있는 것 같음)
+- 인스턴스를 붙였을 경우 OutOfService가 뜨면 설정시 떼었다가 다시 붙이면 서비스 되는 경우가 있음(간혹 AWS상에서 다른 설정이 잘 맞아도 잘 안올라오는 경우가 있는 것 같음)
 
 ## RDS
 
