@@ -13,7 +13,7 @@ AWS에서 개발,검증,운영 등 새로 환경을 구성할 때 기억해야 �
 
 ## 순서
 
-1. 기본 OS이미지 생성 : 외부에서 접속한 뒤 ssh port변경, 보안설정 적용, 계정 생성 등의 작업을 수행
+1. 기본 OS이미지 생성 : 외부에서 접속한 뒤 ssh port변경, 보안설정 적용, 계정 생성, 이미지에 일괄 적용되어야 하는 등의 작업을 수행
 
 2. 서버 레이어 별로 subnet을 분리(용도에 따라), 외부로 접근할 필요성에 따라 Public subnet과 Private subnet으로 구분한다.
 
@@ -34,8 +34,9 @@ AWS에서 개발,검증,운영 등 새로 환경을 구성할 때 기억해야 �
 
 - 리전마다 지원 가능한 인스턴스의 Type이 약간씩 다르다. 예로, 한국 리전에는 현재 아직 고성능 컴퓨팅을 위한 P2인스턴스는 아직 없음. 타입은 계속 변경되는 것 같다. 예전에는 m1, m2 관련타입들이 많았는데 이젠 m3,m4밖에 안보인다.(네이밍으로 보면 버전이 올라간 것 같긴 하다.)
 
-
 ## VPC(Virtual Private Cloud)
+
+- VPC는 처음 접할 경우 다소 설정이 복잡하나 매뉴얼이 잘 되어 있는 편임, [AWS VPC 매뉴얼-기본 VPC 및 서브넷](http://docs.aws.amazon.com/ko_kr/AmazonVPC/latest/UserGuide/default-vpc.html), 한글보다 영문이 더 잘 되어 있음.
 
 - VPC안에서의 IP는 변경되지 않음, subnet이 나뉘어도 SG,NetACL 등의 설정에 따라 PrivateIP로 통신은 가능
 
@@ -49,10 +50,10 @@ Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(
 
 - DB의 경우 RDS를 사용하면 같은 vpc안에 구성할 수도, 다른 vpc에서 구성할 수도 있음, vpc안에 구성할 경우 DB 레이어만 별도의 서브넷으로 분리하고 was등에서만 접근할 수 있도록 SG를 구성해야 한다.
 
-- RDS에서 생성하는 Oracle의 경우 BYOL은 라이센스를 별도 입력하겠다는 의미, license가 include된 버전의 경우 시간당 0.4달러로 2배 가까이 비쌈. -> Oracle SE One, Two 가 해당 서버들임.
+- 보통은 Jumphost, Bastion host등의 인스턴스를 별도로 두어 외부에서 접속할 수 있도록 하고 그 인스턴스를 통해 VPC안의 인스턴스에 접근하도록 구성
 
 
-# ELB
+## ELB
 
 - 생성 전에 미리 security group이나 네트워크 설정은 되어 있어야 함(물리적으로 연결되는 데 이상이 없어야 함)
 
@@ -60,11 +61,28 @@ Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(
 
 - 생성 후 Health Check의 경우
 
-: Unhealty threshold - 해당 수만큼 응답이 없을 경우 instace를 OutOfService 처리, 2->5로 수정
-: Healthy threshold - 해당 수만큼 응답이 있으면 instance를 InService 처리, 10->5로 수정
+    : Unhealty threshold - 해당 수만큼 응답이 없을 경우 instace를 OutOfService 처리, 2->5로 수정
+    : Healthy threshold - 해당 수만큼 응답이 있으면 instance를 InService 처리, 10->5로 수정
 
 인스턴스를 붙였을 경우 OutOfService가 뜨면 설정시 떼었다가 다시 붙이면 서비스 되는 경우가 있음(간혹 AWS상에서 다른 설정이 잘 맞아도 잘 안올라오는 경우가 있는 것 같음)
 
-# 기타
+## RDS
+
+- OS 없이 띄워진 DB인스턴스라고 보면 됨. OS가 없어서 간단해진 점도 있으나(설치 필요X), 기존 환경에 익숙한 사람들에게 좀 생소할 수 있음, 예 oracle 의 DB parameter 설정 등도 sqlplus상에서 불가능하며 RDS 웹 콘솔에서 해야 함.
+
+- subnet group이라고 DB에 대한 접근제어를 위한 VPC 요소같은 게 따로 있다. VPC안에서는 subnet과는 별개이며, 그냥 설정만 해 주면 됨.
+
+- Aurora DB는 AWS에서 만든 Mysql 호환되는 클라우드 DB인듯. 운영중인 MySQL, MariaDB 기반 대규모 서비스에서 Scaling이나 HA를고민할 필요가 없을 것 같다.
+
+- RDS에서 생성하는 Oracle의 경우 BYOL은 라이센스를 별도 입력하겠다는 의미, license가 include된 버전의 경우 시간당 0.4달러로 2배 가까이 비쌈. -> Oracle SE One, Two 가 해당 서버들임.
+
+
+## 기타
 
 예전에는 AWS상에서 인스턴스 생성시 EC2 인스턴스가 VPC밖에 생성 가능했던 것 같은데(정확하지 않음), 현재 생성해보니 EC2생성시 자동으로 디폴트 VPC에 생성됨.
+--> "2013년 12월 4일 이후에 AWS 계정을 만든 경우에는 EC2-VPC만 지원됩니다. 이 경우 각 AWS 리전에 기본 VPC를 갖게 됩니다."라고 함.
+
+
+## Sample
+
+다음과 같은 기본 VPC환경에 대한 구성 방법
