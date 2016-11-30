@@ -1,15 +1,13 @@
 ---
 layout: post
-title: Bash on Windows
+title: Bash on Windows 10
 date: 2016-11-03 22:51:00
 tags:
 - Tech
 - 삽질
 ---
 
-(계속 보완중)
-
-윈도우 10에서 비로소 사용 가능해진 Bash on Windows
+윈도우 10에서 비로소 사용 가능해진 Bash on Windows 10
 
 # 설치하기
 

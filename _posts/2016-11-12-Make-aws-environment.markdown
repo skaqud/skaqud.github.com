@@ -7,9 +7,9 @@ tags:
 - AWS
 ---
 
-(작성중)
-
 AWS에서 개발,검증,운영 등 새로 환경을 구성할 때 기억해야 할 사항들
+
+# AWS구성요소
 
 ## 순서
 
@@ -36,7 +36,7 @@ AWS에서 개발,검증,운영 등 새로 환경을 구성할 때 기억해야 �
 
 ## VPC(Virtual Private Cloud)
 
-- VPC는 처음 접할 경우 다소 설정이 복잡하나 매뉴얼이 잘 되어 있는 편임, [AWS VPC 매뉴얼-기본 VPC 및 서브넷](http://docs.aws.amazon.com/ko_kr/AmazonVPC/latest/UserGuide/default-vpc.html), 한글보다 영문이 더 잘 되어 있음.
+- VPC는 처음 접할 경우 다소 설정이 복잡하나 매뉴얼이 잘 되어 있는 편임, [AWS VPC 매뉴얼-기본 VPC 및 서브넷](http://docs.aws.amazon.com/ko_kr/AmazonVPC/latest/UserGuide/default-vpc.html), 매뉴얼은 한글보다 영문이 더 잘 되어 있음.
 
 - VPC안에서의 IP는 변경되지 않음, subnet이 나뉘어도 SG,NetACL 등의 설정에 따라 PrivateIP로 통신은 가능
 
@@ -83,6 +83,22 @@ Network ACL은 Black List(막아야 할 곳만 막는 용도), SG는 White List(
 --> "2013년 12월 4일 이후에 AWS 계정을 만든 경우에는 EC2-VPC만 지원됩니다. 이 경우 각 AWS 리전에 기본 VPC를 갖게 됩니다."라고 함.
 
 
-## Sample
+# Example
 
-다음과 같은 기본 VPC환경에 대한 구성 방법
+다음과 같은 간단한 1 public+1 private subnet을 가진 VPC환경에 대한 구성 방법, 매뉴얼은 다음이 가장 가까울 것 같다.
+
+[시나리오 2: 퍼블릭 서브넷과 프라이빗 서브넷이 있는 VPC(NAT)](http://docs.aws.amazon.com/ko_kr/AmazonVPC/latest/UserGuide/VPC_Scenario2.html)
+
+다음과 같은 순서로 작업해준다.
+
+- AWS 콘솔에서 VPC 대쉬보드를 띄워 Your VPCs 메뉴에서 VPC를 하나 생성한다. 생성시 CIDR block에 따라 안의 서브넷에서 사용 가능한 ip갯수가 결정된다.
+
+- 해당 VPC안의 서브넷을 두 개 생성한다. 편의상 서브넷은 CIDR을 10.0.0.0/16, public subnet은 10.0.10.0/24 private subnet은 10.0.20.0/24 로 만든다.
+
+- public subnet에서의 외부 통신을 위한 Internet Gateway를 생성한다. vpc안에서 외부로 통신하기 위해 생성되는 Gateway라고 생각하면 되며, 단순히 태그만 입력하면 된다.
+
+- 서브넷끼리의 통신을 위한 Route Tables 을 설정한다. public subnet의 경우 미리 생성해 준 igw(Internet Gateway)를 보도록 하고, Private subnet의 경우 외부와 직접 연결되지 않도록 public subnet과만 연결되도록 설정한다.
+
+- 보안을 위해 Network ACL 혹은 SG(Security Group)을 설정한다. 섞어서 설정할 경우 나중에 관리가 힘드니, 경우나 상황에 따라 설정해 사용한다. ACL의 경우 H/W 방화벽에 가깝고, in/out bound를 별도로 설정해줘야 하며 stateless라 들어온 요청이 나가도록 설정되어 있지 않으면 연결이 성립하지 않는다. 서비스포트 이외의 임시포트(Ephermeral port)를 사용할 경우 일일히 설정해 줘야 한다. SG의 경우 S/W 방화벽에 가까우며, statuful 하며 들어온 요청이 outbound에 없어도 연결이 성립한다. 꼭 동시에 설정해야 한다면, ACL의 경우 black list, SG의 경우 white list로 역할을 나누어 사용하는 게 바람직하다.
+
+- Public subnet에 jumphost를 하나 생성하고, EIP를 부여하여 해당 jumphost를 통해서만 다른 인스턴스에 접근할 수 있도록 한다.
