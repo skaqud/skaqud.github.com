@@ -7,6 +7,8 @@ tags:
 - Tech
 ---
 
+숙제
+
 # SaaS화 하기 쉬운SW
 - SaaS로 옮기기 쉬운 SW의 종류(ERP,CRM,백오피스...)?
 - SaaS를 위한 SW의 쉬운 패키징 방법
