@@ -8,7 +8,7 @@ tags:
 - Devops
 ---
 
-Saltstack 설치 및 구성방법
+Saltstack 설치 및 구성방법(작성중)
 
 # 환경 준비
 
@@ -103,6 +103,22 @@ salt-key -A
     salt '* ' network.ip_addrs
     # grains 정보 가져오기
     salt '* ' grains.items
+    salt '* ' grains.item host
+
+    # 상태 가져오기
+    salt '* ' status.meminfo
+
+    # 원격 실행
+    salt '* ' pkg.list_pkgs
+
+    salt '* ' cmd.run 'echo Hello!!'
+
+    salt '* ' service.status salt
+    salt '* ' service.start salt
+
+
+
+
 
 Halite Web UI 설치
 
@@ -139,11 +155,27 @@ halite 설치 및 실행
 
 
 
+Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 script들을 제공
+
+https://github.com/saltstack-formulas
 
 
+아래와 같이  MariaDB를 설치할 수 있음.
+
+[공식 Guide:Salt Fomular](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)
+
+
+[MariaDB DevOps: Installing MariaDB with SaltStack](https://mariadb.com/resources/blog/mariadb-devops-installing-mariadb-saltstack)
+
+
+sudo mkdir -p /srv/salt/
+cd /srv/salt/
+git clone https://github.com/GeoffMontee/mariadb-saltstack-formula.git
 
 
 
 # 참고
 
 - [SaltStack – IT automation infrastructure management tools](http://www.yongbok.net/blog/saltstack-it-automation-infrastructure-management-tools/)
+
+- [Saltstack 너란 녀석. - Grains와 Pillar (2)](http://bluese05.tistory.com/43)
