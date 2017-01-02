@@ -117,7 +117,7 @@ salt-key -A
     salt '* ' service.start salt
 
 
-
+## Saltstack GUI 도구 설치
 
 
 Halite Web UI 설치
@@ -142,10 +142,12 @@ Halite Web UI 설치
 
 
 salt user 추가
+
     $ useradd salt
     $ passwd salt
 
 halite 설치 및 실행
+
     $ git clone https://github.com/saltstack/halite /opt/halite
 
     $ apt-get install -y python-gevent
@@ -154,23 +156,39 @@ halite 설치 및 실행
     $ ./server_bottle.py -d -C -l debug -s gevent
 
 
+## Formular를 통한 어플리케이션 자동설치
 
-Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 script들을 제공
+Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 자동 script들을 제공. Chef의 supermarket이나, Ansible의 Galaxy처럼 아직 별도의 site가 있는 건 아니며 양도 적은 편.
 
-https://github.com/saltstack-formulas
-
-
-아래와 같이  MariaDB를 설치할 수 있음.
+[공식 Home:Salt Fomular](https://github.com/saltstack-formulas)
 
 [공식 Guide:Salt Fomular](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)
 
+위의 Home에서 nginx, tomcat, mariadb 를 clone
 
-[MariaDB DevOps: Installing MariaDB with SaltStack](https://mariadb.com/resources/blog/mariadb-devops-installing-mariadb-saltstack)
+    #nginx
+    git clone https://github.com/saltstack-formulas/nginx-formula.git
+    #tomcat
+    git clone https://github.com/saltstack-formulas/tomcat-formula.git
+    #mysql
+    git clone https://github.com/saltstack-formulas/mysql-formula.git
+
+다음 내용을 salt-master 설정에 추가 - 위의 파일들을 GitFS를 통해 minion에 공유하게 해도 되는 것 같음.
+
+    file_roots:
+      base:
+        - /srv/salt
+        - /srv/formulas/nginx-formula
+        - /srv/formulas/tomcat-formula
+        - /srv/formulas/mariadb-formula
+
+Salt-master 재시작
+
+이후
 
 
-sudo mkdir -p /srv/salt/
-cd /srv/salt/
-git clone https://github.com/GeoffMontee/mariadb-saltstack-formula.git
+pillar - Saltstack에서 static한 값들을 저장하는 global 영역
+
 
 
 
