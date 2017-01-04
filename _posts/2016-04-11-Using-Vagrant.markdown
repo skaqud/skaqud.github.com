@@ -11,17 +11,18 @@ tags:
 # vagrant+Virtualbox 설치 #
 
 - Vagrant - 최신 버전 1.8.1(https://www.vagrantup.com/downloads.html)
+
 - Virtualbox - 최신 버전 5.0.20(https://www.virtualbox.org/wiki/Downloads)
 
 다음과 같은 명령을 실행하여 로컬 환경에 linux를 설치
 
 로컬 환경에 vagrant 디렉토리 생성, 디렉토리 이름은 상관 없으나(마음대로 생성 가능), 실행시키는 명령의 기본 디렉토리가 되므로, 앞으로 실행할 명령은 항상 다음 디렉토리 바로 아래에서 수행해야 합니다.
 
-    mkdir ~/vagrant/centos
+    $ mkdir ~/vagrant/centos
 
 해당 디렉토리 안에서 다음과 같이 실행하면 Vagrantfile이 생성됨
 
-    #vagrant init
+    $ vagrant init
     A `Vagrantfile` has been placed in this directory. You are now
     ready to `vagrant up` your first virtual environment! Please read
     the comments in the Vagrantfile as well as documentation on
@@ -30,14 +31,14 @@ tags:
 다음과 같이 로컬에 box를 추가
 
     ubuntu의 경우
-    #vagrant box add ubuntu/trusty64
+    $ vagrant box add ubuntu/trusty64
 
     centos의 경우(선택하라고 나올 경우 virtualbox 버전 선택)
-    #vagrant box add centos/7
+    $ vagrant box add centos/7
 
 다음과 같이 실행시 다음처럼 나오면 성공
 
-    # vagrant box list
+    $ vagrant box list
     centos/7        (virtualbox, 1603.01)
     ubuntu/trusty64 (virtualbox, 20160516.0.0)
 
@@ -50,7 +51,7 @@ tags:
 
 이후 다음과 같이 살행하여 VM을 실행시켜 줍니다.(시간이 다소 소요됨)
 
-    ➜  temp vagrant up
+    $ vagrant up
     Bringing machine 'default' up with 'virtualbox' provider...
     ==> default: Importing base box 'centos/7'...
     ==> default: Matching MAC address for NAT networking...
@@ -88,22 +89,22 @@ tags:
 
 이후 실행된 VM에 다음과 같이 접속할 수 있습니다.(반드시 아까 생성한 디렉토리에서 실행)
 
-    ➜  temp vagrant ssh
-    -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+    $ vagrant ssh
     [vagrant@localhost ~]$
+
+물론 별도로 ssh를 통해 접속할수도 있습니다. 기본 계정은 vagrant/vagrant 이며 ssh포트는 기본으로 2222를 사용합니다. 이후 vm이 늘어날 경우 2200부터 순서대로 부여합니다.
+
 
 # 참고
 
 Vagrant 소개
 
-- http://taewan.kim/blog/2016/02/06/vagrant_intro/
+- [내 친구 Vagrant를 소개합니다.](http://taewan.kim/blog/2016/02/06/vagrant_intro/)
 
-- http://ppiazi.tistory.com/entry/Vagrant-VirtualBox-가상머신-관리-도구-소개
-
-- http://bcho.tistory.com/806
+- [Vagrant-VirtualBox-가상머신-관리-도구-소개](http://ppiazi.tistory.com/entry/Vagrant-VirtualBox-가상머신-관리-도구-소개)
 
 Vagrant 설치 및 사용법 관련
 
-- http://manseok.blogspot.kr/2014/09/vagrant.html
+- [Vagrant 기본 사용법](http://manseok.blogspot.kr/2014/09/vagrant.html)
 
-- http://rangken.github.io/blog/2015/vagrant-1/
+- [Vagrant 1.기본 설정 & 기본 명령어](http://rangken.github.io/blog/2015/vagrant-1/)

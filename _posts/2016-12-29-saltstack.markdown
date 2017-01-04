@@ -156,13 +156,42 @@ halite 설치 및 실행
     $ ./server_bottle.py -d -C -l debug -s gevent
 
 
+
 ## Formular를 통한 어플리케이션 자동설치
+
+
+### 간단한 설치 테스트
+
+간단한 state 실행 테스트를 위해 다음과 같이 수행
+
+/etc/salt/master 설정의 경우 수정 후 salt-master 데몬을 한 번 재시작해 주어야 함
+
+minion도 마찬가지로 서비스 모드로 실행하며, 재시작 가능
+
+    service salt-minion restart
+
+pillar는 설정 후나 변경 후에 한 번씩 refresh가 필요함.
+
+    salt '* ' saltutil.refresh_pillar
+
+
+우선은 salt의 base가 되는 디렉토리를 지정해야 함.
+
+/etc/salt/master 파일 안의 file_roots를 지정한다.
+
+
+
+
+
+
+
 
 Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 자동 script들을 제공. Chef의 supermarket이나, Ansible의 Galaxy처럼 아직 별도의 site가 있는 건 아니며 양도 적은 편.
 
 [공식 Home:Salt Fomular](https://github.com/saltstack-formulas)
 
 [공식 Guide:Salt Fomular](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)
+
 
 위의 Home에서 nginx, tomcat, mariadb 를 clone
 
@@ -197,3 +226,5 @@ pillar - Saltstack에서 static한 값들을 저장하는 global 영역
 - [SaltStack – IT automation infrastructure management tools](http://www.yongbok.net/blog/saltstack-it-automation-infrastructure-management-tools/)
 
 - [Saltstack 너란 녀석. - Grains와 Pillar (2)](http://bluese05.tistory.com/43)
+
+- [Saltstack documentation](https://docs.saltstack.com/en/latest/) - 처음에 개념을 잡기 좀 힘들었는데, 중간부분에 Tutorial을 따라 해 보면서 감을 잡을 수 있었음.
