@@ -10,6 +10,10 @@ tags:
 
 Saltstack 설치 및 구성방법(작성중)
 
+* TOC
+{:toc}
+---
+
 # 환경 준비
 
 Vagrant를 통해 VM을 3대 띄울 예정, 1대는 master로 나머지 2대는 minion으로 구성.
@@ -32,7 +36,7 @@ base image는 Vagrant에서 바로 다운로드(ubuntu/trusty)
 
 IP, CPU, Memory 부분만 다르게 하여 세대의 VM을 구성함.
 
-    #Vagrantfile
+    #vi Vagrantfile
     Vagrant.require_version ">= 1.6.0"
     VAGRANTFILE_API_VERSION = "2"
     VMHOSTNAME="test1"
@@ -119,6 +123,7 @@ salt-key -A
 
 ## Saltstack GUI 도구 설치
 
+참고의 wiki를 따라가보면, 오픈소스 중에 유망(?)한 건 두가지인듯 싶다. Halite,Saltpad 
 
 Halite Web UI 설치
 
@@ -157,12 +162,11 @@ halite 설치 및 실행
 
 
 
-## Formular를 통한 어플리케이션 자동설치
+## WEB-WAS-DB 어플리케이션 자동설치
 
+### 기본 Salt설정 및 사용관련
 
-### 간단한 설치 테스트
-
-간단한 state 실행 테스트를 위해 다음과 같이 수행
+간단한 state 실행 테스트를 위해 다음과 같이 수행. 설치하고 삭제 하는 등의 행위를 state로 정의하며, state를 apply한다. pkg.installed에서 보듯이 "이미 설치된 상태 자체"를 전달한다.
 
 /etc/salt/master 설정의 경우 수정 후 salt-master 데몬을 한 번 재시작해 주어야 함
 
@@ -174,49 +178,41 @@ pillar는 설정 후나 변경 후에 한 번씩 refresh가 필요함.
 
     salt '* ' saltutil.refresh_pillar
 
+salt의 base가 되는 디렉토리를 지정해야 함. 마찬가지로 pillar도 base가 있는듯
 
-우선은 salt의 base가 되는 디렉토리를 지정해야 함.
-
-/etc/salt/master 파일 안의 file_roots를 지정한다.
-
+/etc/salt/master 파일 안의 file_roots를 지정한다. 여러 라인으로 지정할 수 있으나, 이름등이 겹치면 안될 것 같음
 
 
+### Salt 디렉토리 구성
+
+기본적인 Saltstack 프로젝트는 아래와 같이 구성된다.
+
+    $ tree
+    .
+    ├── pillar                -- TBD
+    │   └── _ blank            
+    └── salt  
+        ├── common.sls        -- 일반용도sls, salt '* ' state.apply common처럼 별도설치 가능
+        ├── nettools          -- 네트웍관련 sls, 별도 디렉토리를 만들 경우 init.sls 를 바로 찾음
+        │   ├── config        -- 관련 설정을 위한 디렉토리
+        │   └── init.sls      -- salt '* ' state.apply nettools 시 이 sls를 보게 됨
+        ├── tomcat
+        │   ├── init.sls
+        │   └── settings.sls  -- 공용 변수(map)을 위한 공간을 가진 sls
+        └── top.sls           -- 기본적으로 state를 주지 않을 경우 top.sls가 설치된다.
 
 
 
 
 
-Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 자동 script들을 제공. Chef의 supermarket이나, Ansible의 Galaxy처럼 아직 별도의 site가 있는 건 아니며 양도 적은 편.
+
+### Fomular
+
+Chef의 recipe와 같이 formula라는 이름으로 오픈소스 패키지들을 설치할 수 있는 자동 script들을 제공. Chef의 supermarket이나, Ansible의 Galaxy처럼 아직 별도의 site가 있는 건 아니며 양도 적은 편. Chef 등에 비하면 아주 간단하게 구성되어 있으나, 초보자가 바로 보기엔 적합하지 않다.
 
 [공식 Home:Salt Fomular](https://github.com/saltstack-formulas)
 
 [공식 Guide:Salt Fomular](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)
-
-
-위의 Home에서 nginx, tomcat, mariadb 를 clone
-
-    #nginx
-    git clone https://github.com/saltstack-formulas/nginx-formula.git
-    #tomcat
-    git clone https://github.com/saltstack-formulas/tomcat-formula.git
-    #mysql
-    git clone https://github.com/saltstack-formulas/mysql-formula.git
-
-다음 내용을 salt-master 설정에 추가 - 위의 파일들을 GitFS를 통해 minion에 공유하게 해도 되는 것 같음.
-
-    file_roots:
-      base:
-        - /srv/salt
-        - /srv/formulas/nginx-formula
-        - /srv/formulas/tomcat-formula
-        - /srv/formulas/mariadb-formula
-
-Salt-master 재시작
-
-이후
-
-
-pillar - Saltstack에서 static한 값들을 저장하는 global 영역
 
 
 
