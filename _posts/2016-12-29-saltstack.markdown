@@ -75,11 +75,26 @@ SaltStack 저장소 등록 및 설치
 
 Saltstack 설치
 
-    master
-    apt-get update && apt-get install -y salt-master salt-syndic
-    minion
-    apt-get update && apt-get install -y salt-minion
+OS Repository의 버전은 적어도 1년 이전의 버전임, 최신버전이 필요할 경우 별도의 os repository를 등록 후 설치해야 하거나, salt document를 참고
 
+    #master
+    $ apt-get update && apt-get install -y salt-master salt-syndic
+    #minion
+    $ apt-get update && apt-get install -y salt-minion
+
+위는 공식 repository, 아래는 자체 Repository를 통한 설치
+
+    #자체Repository를 통한 설치(ubuntu,최신버전으로)
+    wget -O - https://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -\
+    /etc/apt/sources.list.d/saltstack.list
+    deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main
+    이후 apt-get update 명령 한 번 수행 후 설치는 동일
+
+    버전을 확인해서 목표로 하는 버전이 맞는지 확인
+    $ salt --version
+    salt 2016.11.1 (Carbon)
+
+수동설치 참고 - https://repo.saltstack.com/#ubuntu
 
 Saltstack 실행
 
@@ -97,7 +112,6 @@ Saltstack 실행
 
     salt-key -L
     salt-key -A
-
 
 몇가지 명령
 
