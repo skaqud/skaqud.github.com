@@ -72,14 +72,14 @@ SD카드를 넣고 라즈베리파이에 전원을 넣어 부팅한다. 보드�
 
 IP등 변경시 정상적으로 적용하기 위해서는 다음과 같이 network서비스를 재시작한다.
 
-    sudo /etc/init.d/networking restart
+    $ sudo /etc/init.d/networking restart
 
 그밖의 명령
 
     #무선랜down
-    sudo ifdown wlan0
+    $ sudo ifdown wlan0
     #무선랜up
-    sudo ifup wlan0
+    $ sudo ifup wlan0
 
 # 기타 활용
 
@@ -88,9 +88,9 @@ IP등 변경시 정상적으로 적용하기 위해서는 다음과 같이 netwo
 참고 - [라즈베리파이 활용기-NAS로 활용하기(1)](http://ghost9087.tistory.com/2)
 
     # samba 설치
-    sudo apt-get install samba samba-common-bin
+    $ sudo apt-get install samba samba-common-bin
     # samba.conf 파일 수정
-    sudo vi /etc/samba/smb.conf
+    $ sudo vi /etc/samba/smb.conf
 
     #Share Definitions 하위의 내용을 다음과 같이 수정
     [profiles]
@@ -112,17 +112,17 @@ IP등 변경시 정상적으로 적용하기 위해서는 다음과 같이 netwo
 
 참고 - [라즈베리파이 활용기-NAS로 활용하기(2)](http://ghost9087.tistory.com/3)
 
-    sudo apt-get install transmission-daemon
+    $ sudo apt-get install transmission-daemon
     #설치 후 바로 실행되는데 멈춘 후
-    /etc/init.d/transmission-daemon stop
+    $ /etc/init.d/transmission-daemon stop
     #설정파일 수정
-    /etc/transmission-daemon/settings.json
+    $ /etc/transmission-daemon/settings.json
     #수정한 항목
     #download-dir
     #incomplete-dir
     #rpc-password
     #다시 시작
-    /etc/init.d/transmission-daemon start
+    $ /etc/init.d/transmission-daemon start
 
 이후 http://localhost:9091 로 접속(transmission/YOURPASSWORD)
 

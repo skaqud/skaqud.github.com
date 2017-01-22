@@ -39,3 +39,10 @@ Kitematic을 통해 CLI에서와는 다르게 Docker 명령을 알 필요 없이
 # 결론
 
 - 앞으로 mac, window, linux 관계 없이 웬만한 서버형 솔루션 설치에는 docker가 필수적일 것 같다. 사실 그동안의 핑계는 "Linux에서밖에 안돼요" 가 가장 컸던 듯, windows 서버 환경에서 서비스 운영을 위한 부분이 어느 정도 검증된다면, 더 이상 핑계를 대고 docker로 바꾸는 걸 피하기 힘들 것 같다.
+
+# 추가
+
+2016.12.18 현재 윈도우버전에서 기동시 에러 발생함...ㅜ.ㅜ
+
+참고
+https://blog.elmore.be/docker-for-windows-start-up-error/
