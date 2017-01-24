@@ -85,8 +85,8 @@ OS Repository의 버전은 적어도 1년 이전의 버전임, 최신버전이 �
 위는 공식 repository, 아래는 자체 Repository를 통한 설치
 
     #자체Repository를 통한 설치(ubuntu,최신버전으로)
-    wget -O - https://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -\
-    /etc/apt/sources.list.d/saltstack.list
+    $ wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+    $ vi /etc/apt/sources.list.d/saltstack.list
     deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main
     이후 apt-get update 명령 한 번 수행 후 설치는 동일
 

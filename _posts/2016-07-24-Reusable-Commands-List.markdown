@@ -194,16 +194,15 @@ OS 버전 확인
 ### 일반 명령
 
     # 변경 반영 및 commit, push
-    $ git add --all
+    $ git add --all(-A)
     $ git add ./*
     # gitignore에 있으나, 무시하고 등록하고 싶을 경우
     $ git add -f 파일명
     $ git commit -a -m "commit message"
     # push
     $ git push origin master
-    # u옵션은 이후 push시 remote와 branch를 저장(이후로는 merge만 하면 됨)
+    # u옵션은 이후 push시 remote와 branch를 저장(이후로는 git push만 하면 됨)
     $ git push -u origin master
-
 
     #development 브랜치로 변경
     $ git checkout development
@@ -211,9 +210,16 @@ OS 버전 확인
     $ git branch
     # 상태보기
     $ git status
+    $ git log
 
     로컬에서 수정한 내용을 무시하고 싶을 때
-    $ git checkout -- 파일명
+    $ git checkout -- <파일명>
+
+    전체를 무시하고 싶을 경우
+    $ git fetch origin
+    $ git reset --hard origin/master
+
+참고 - [git - 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html)
 
 ### 바이너리 파일 표시
 
