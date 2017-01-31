@@ -110,7 +110,7 @@ MySQL의 경우 DB생성, User생성, 권한 부여를 아래와 같이 처리�
         - host: localhost
         - user: petclinic
 
-    petclinic_user:
+    petclinic_remoteuser:
       mysql_user.present:
         - name: petclinic
         - host: '%'
