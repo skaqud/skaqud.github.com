@@ -8,7 +8,7 @@ tags:
 - Devops
 ---
 
-Saltstack 설치 및 구성방법(작성중)
+Saltstack 설치 및 구성방법
 
 * TOC
 {:toc}
@@ -138,7 +138,7 @@ Saltstack 실행
 
 참고의 wiki를 따라가보면, 오픈소스 중에 유망(?)한 건 두가지인듯 싶다. Halite,Saltpad
 
-Halite Web UI 설치
+### Halite 설치
 
     $ vi /etc/salt/master
 
@@ -175,9 +175,58 @@ halite 설치 및 실행
 
 실제로 master, minion, 실행 이력, grains등이 조회되고, 웹을 통해 실행도 가능하다. 하지만, 생각처럼 기능이 많지 않아 관리도구로 사용하기 부적절해 보인다.
 
-Saltpad 설치하기
+### Saltpad 설치
 
-(작성중)
+아직 정상동작 확인은 못함, nginx 설정에서 api url로 요청시 301에러가 난다.(작성중)
+
+설치는 [github홈](https://github.com/Lothiraldan/saltpad/blob/master/docs/installation/nginx-across-internet-cors.md)을 참고, 조금 복잡하게 되어 있는데, salt-api를 써서 salt와 통신하고, nginx를 통해 웹서비스를 하는 방식인 듯 하다. 계정은 동일하게 OS걸 사용.
+
+    # master 설정에 추가
+    $ vi /etc/salt/master
+    rest_cherrypy:
+      port: 8000
+      host: 127.0.0.1
+      disable_ssl: True
+
+    # salt-api 설치 후 다음과 같이 확인
+    $ curl -i http://localhost:8000/
+    $ curl -i -H accept=application/json -d username=salt -d password=salt -d eauth=pam http://localhost:8000/login
+
+    # saltpad 다운로드
+    $ wget https://github.com/Lothiraldan/saltpad/releases/download/v0.3.1/dist.zip
+    # 적절한 곳에 압축을 풀고(계정도 만들어야 하니 /home/salt)
+    # 설정파일을 수정
+    $ cat /home/salt/saltpad/static/settings.json
+    {
+        "API_URL": "localhost:8000",
+        "SECURE_HTTP": false,
+        "FLAVOUR": "rest_tornado"
+    }
+    # nginx를 설치 후 다음과 같이 설정을 추가
+    server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    # Saltpad specific
+    root /home/salt/saltpad/;
+    index index.html;
+
+    server_name 192.168.10.10;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    # Salt-api specific
+    location /api/ {
+        proxy_pass       http://localhost:8000/;
+        proxy_set_header Host      $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    https를 추가하기 위해서는 let's encrypt의 인증서를 받아 https로 설치하면 될 듯
+    다만, 위의 /api/ 경로 호출시 301에러가 발생함
+
 
 # 참고
 
@@ -186,3 +235,5 @@ Saltpad 설치하기
 - [Saltstack 너란 녀석. - Grains와 Pillar (2)](http://bluese05.tistory.com/43)
 
 - [Saltstack documentation](https://docs.saltstack.com/en/latest/) - 처음에 개념을 잡기 좀 힘들었는데, 중간부분에 Tutorial을 따라 해 보면서 감을 잡을 수 있었음.
+
+- [Github-Saltpad](https://github.com/Lothiraldan/saltpad)

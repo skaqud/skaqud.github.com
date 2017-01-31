@@ -93,6 +93,35 @@ tar 압축풀기 : 다운로드 파일을 hash검사도 가능
     {%- set tomcat_version = 'apache-tomcat-8.5.9' %}
     {%- set tomcat_tar = tomcat_version + '.tar.gz' %}
 
+일반적으로 많이 사용되는 web, was, db(apache, mysql, postgres, rabbitmq...등등)의 경우 기본적인 행위에 대한 state들이 존재함([매뉴얼](https://docs.saltstack.com/en/latest/ref/states/all/index.html)참고)
+
+MySQL의 경우 DB생성, User생성, 권한 부여를 아래와 같이 처리할 수 있다. 만약 아래와 같은데도 접속에 문제가 있다면 my.cnf의 listen설정을 보면 된다.
+
+    petclinic:
+      mysql_database.present:
+        - name: petclinic
+      mysql_user.present:
+        - name: petclinic
+        - host: localhost
+        - password: "petclinic"
+      mysql_grants.present:
+        - database: petclinic.*
+        - grant: ALL PRIVILEGES
+        - host: localhost
+        - user: petclinic
+
+    petclinic_user:
+      mysql_user.present:
+        - name: petclinic
+        - host: '%'
+        - password: "petclinic"
+      mysql_grants.present:
+        - database: petclinic.*
+        - grant: ALL PRIVILEGES
+        - host: '%'
+        - user: petclinic
+
+
 
 ### state 작성시 주의사항
 
