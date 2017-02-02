@@ -53,7 +53,7 @@ salt의 base가 되는 디렉토리를 지정해야 함. 마찬가지로 pillar�
 
 ### state 작성방법
 
-다양한 명령들이 있으나, 실제로 다음정도의 명령들만 알아도, 일반적으로 사용하는 데에는 별 문제가 없을 듯 하다.
+다양한 명령들이 있으나, 실제로 다음정도의 명령들만 알아도, 일반적으로 사용하는 데에는 별 문제가 없을 듯 하다. 실제 코드는 [여기](https://github.com/skaqud/skaTemplate/tree/master/saltstack/salt)를 참고
 
 커맨드 실행 : 사전 조건을 걸어 명령을 수행
 
@@ -62,6 +62,14 @@ salt의 base가 되는 디렉토리를 지정해야 함. 마찬가지로 pillar�
         - name: curl -s -L -o {{ tomcat.salt_tomcat_filedir }}/{{ tomcat.tomcat_tar }} {{ tomcat.downloadurl }}
         - unless: test -f {{ tomcat.salt_tomcat_filedir }}/{{ tomcat.tomcat_tar }}
 
+path, classpath등 미리 환경을 설정 후 실행해야 할 때
+
+    startup-tomcat:
+      cmd.run:
+        - env:
+          - JAVA_HOME: "{{ tomcat.java_home }}"
+        - name: {{ tomcat.tomcat_home }}/bin/startup.sh
+        - unless: test -n `ps -ef | grep java | awk '{print $2}'`
 
 tar 압축풀기 : 다운로드 파일을 hash검사도 가능
 
@@ -89,9 +97,9 @@ tar 압축풀기 : 다운로드 파일을 hash검사도 가능
 
 지역 변수를 다음과 같이 파일 안에서 설정 가능, jinja에서 쓰는 map도 가능한 듯 하며, 전역변수로 pillar라는 형태로 사용할 수도 있다.
 
-    {\%\- set tomcat_home = '/app/tomcat' \%}
-    {\%\- set tomcat_version = 'apache-tomcat-8.5.9' \%}
-    {\%\- set tomcat_tar = tomcat_version + '.tar.gz' \%}
+    set tomcat_home = '/app/tomcat'
+    set tomcat_version = 'apache-tomcat-8.5.9'
+    set tomcat_tar = tomcat_version + '.tar.gz'
 
 일반적으로 많이 사용되는 web, was, db(apache, mysql, postgres, rabbitmq...등등)의 경우 기본적인 행위에 대한 state들이 존재함([매뉴얼](https://docs.saltstack.com/en/latest/ref/states/all/index.html)참고)
 
