@@ -82,15 +82,32 @@ OS Repository의 버전은 적어도 1년 이전의 버전임, 최신버전이 �
     #minion
     $ apt-get update && apt-get install -y salt-minion
 
-위는 공식 repository, 아래는 자체 Repository를 통한 설치
+위는 공식 repository 를 통한 설치..(LTS의 경우 버전이 낮다.)
 
-    #자체Repository를 통한 설치(ubuntu,최신버전으로)
+최신 버전 설치를 위해서는 다음과 같이 수행
+
+ubuntu의 경우
+
+    $ apt-get install -y python-software-properties software-properties-common
     $ wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
     $ vi /etc/apt/sources.list.d/saltstack.list
     deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main
-    이후 apt-get update 명령 한 번 수행 후 설치는 동일
 
-    버전을 확인해서 목표로 하는 버전이 맞는지 확인
+이후 apt-get update 명령 한 번 수행 후 설치는 동일
+
+    apt-get update
+    apt-get install -y salt-master salt-syndic
+    apt-get install -y salt-minion
+
+CentOS의 경우
+
+    $ sudo yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm
+
+    $ sudo yum install salt-master
+    $ sudo yum install salt-minion
+
+버전을 확인해서 목표로 하는 버전이 맞는지 확인
+
     $ salt --version
     salt 2016.11.1 (Carbon)
 
