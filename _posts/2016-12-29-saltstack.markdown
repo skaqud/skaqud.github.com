@@ -75,14 +75,12 @@ SaltStack 저장소 등록 및 설치
 
 Saltstack 설치
 
-OS Repository의 버전은 적어도 1년 이전의 버전임, 최신버전이 필요할 경우 별도의 os repository를 등록 후 설치해야 하거나, salt document를 참고
+OS Repository(LTS)의 버전은 적어도 꽤 오래전 버전임, 최신버전이 필요할 경우 별도의 os repository를 등록 후 설치해야 하거나, salt document를 참고
 
     #master
     $ apt-get update && apt-get install -y salt-master salt-syndic
     #minion
     $ apt-get update && apt-get install -y salt-minion
-
-위는 공식 repository 를 통한 설치..(LTS의 경우 버전이 낮다.)
 
 최신 버전 설치를 위해서는 다음과 같이 수행
 
