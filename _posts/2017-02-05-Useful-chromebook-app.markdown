@@ -23,7 +23,7 @@ UI도 좋고 다 좋은데 한글 입력에 문제가 있음. 설정도 보고 �
 구글드라이브로 바로 저장 가능, 기능이 정말 단순하나 한글 입력 잘 되고, 가볍다.
 File system for dropbox와 연결해서 쓰면 금상첨화, crouton으로 linux하나 설치한 뒤 git client로 SD카드에 clone하면 코딩을 할 수도, 문서를 편집할 수도 있음.(컴파일은 안됨)
 
-java나 c++은 좀 심하고, node.js 정도면 돌릴수도 있지 않을까 싶다.
+java나 c++은 좀 힘들 것 같고, python이나 node.js 정도면 돌릴수도 있지 않을까 싶다.
 
 ### File System for dropbox
 
@@ -31,6 +31,10 @@ dropbox 를 통해 md 문서를 공유하기 위해 사용. 그냥 Dropbox 앱�
 
 
 ### Workflowy
+
+가까운 시일 내에 한 번 써보려고 한다.
+
+[할일관리와 메모, 워크플로이(WorkFlowy) 하나만으로 가능](http://seoulrain.net/2017/01/26/workflowyreview/)
 
 ### 그밖에
 
