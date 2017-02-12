@@ -204,7 +204,7 @@ OS 버전 확인
     # u옵션은 이후 push시 remote와 branch를 저장(이후로는 git push만 하면 됨)
     $ git push -u origin master
 
-    #development 브랜치로 변경
+    # development 브랜치로 변경
     $ git checkout development
     # 브랜치 정보 보기
     $ git branch
@@ -212,14 +212,16 @@ OS 버전 확인
     $ git status
     $ git log
 
-    로컬에서 수정한 내용을 무시하고 싶을 때
+    # 로컬에서 수정한 내용을 무시하고 싶을 때
     $ git checkout -- <파일명>
 
-    전체를 무시하고 싶을 경우
+    # 전체를 무시하고 싶을 경우
     $ git fetch origin
     $ git reset --hard origin/master
 
 참고 - [git - 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html)
+
+## Git 기타
 
 ### 바이너리 파일 표시
 
@@ -266,6 +268,18 @@ git 설정은 로컬의 사용자 홈 디렉토리에 .gitconfig 라는 이름�
     $ sudo apt-get update
     $ sudo apt-get install git
 
+### git clone시 - 하위 디렉토리만 하기
+
+기본적으로는 Repository 이름이 생기면서 하위로 다운로드 되므로, 원하는 디렉토리 아래 받고자 할 때 아래와 같이 수행한다.
+(sparse checkout을 하라고 하는데, 특정 디렉토리만 받을 거 아니면 아래와 같이 하면 된다.)
+
+    $ cd /
+    $ git init srv
+    $ cd srv
+    $ git remote add -f origin https://github.com/blackmaz/saltstack_test.git
+    $ git pull origin master
+
+Sparse Checkout은 [여기](https://www.lesstif.com/pages/viewpage.action?pageId=20776761)를 참고
 
 ### git push 시 다음과 같은 오류가 발생하면
 
