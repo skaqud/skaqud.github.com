@@ -9,7 +9,7 @@ tags:
 
 64bit Single Board Computer-PINE64 Cluster 구성하기
 
-다음 글은 [여기로]()
+다음 글은 [여기로](https://skaqud.github.io/2017/02/23/PINE64-Personal-Cluster/)
 
 # 소개
 
