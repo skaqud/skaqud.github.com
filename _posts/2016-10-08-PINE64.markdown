@@ -7,7 +7,9 @@ tags:
 - 삽질
 ---
 
-64bit Single Board Computer-PINE64 Cluster 구성하기(작성중)
+64bit Single Board Computer-PINE64 Cluster 구성하기
+
+다음 글은 [여기로]()
 
 # 소개
 
