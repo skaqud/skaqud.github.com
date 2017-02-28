@@ -59,20 +59,53 @@ master는 2GB 이기도 하고, desktop환경도 한 번 설치해 보고 싶기
     sudo /usr/local/sbin/install_mate_desktop.sh
 
 
-
-
 ### 클러스터 서버 정리하기
 
 검색 필요, 굳이 케이스까진 필요 없을 것 같은데, 그냥 놔두면 등짝감이라. 뭔가 4개의 보드,전원,네트워크 선을 정리할 방법이 필요
 
-인터넷 상에는 레고로 케이스 제작하거나, 아크릴로 자작하기도 하고, 육각나사를 사서 보드 네 귀퉁이를 연결하는 방법도 있는 것 같음.
+인터넷 상에는 레고로 케이스 제작하거나, 아크릴로 자작하기도 하고, 육각나사(육각볼트 라고도 함)를 사서 보드 네 귀퉁이를 연결하는 방법도 있는 것 같음. 보다가 이런 걸 찾았음.
 
 http://sylvi.tistory.com/10
 
-위처럼 볼트형 지지대(10mm) + 너트형 지지대(10mm) + 볼트형 지지대(25mm)를 연결하면 될 듯
+위처럼 볼트형 지지대(10mm) + 너트형 지지대(10mm) + 볼트형 지지대(25mm)를 연결해서 동일하게 탑을 쌓았음(라즈베리파이용 방열판도 주문해서 달아줌)
 
 
+### 클러스터 환경 설치
 
+보드 클러스터를 위한 방법을 몇가지 찾아봤으나, 일단 가장 간단하게 테스트할 수 있는 docker swarm을 이용하기로 함
+
+4개의 보드에 docker를 설치. arm용으로도 ubuntu repository에 올라가 있음. 설치된 버전은 1.12.6이다.
+
+
+    apt-get install docker.io
+
+    docker version
+    1.12.6
+
+swarm 설정
+
+공식 - https://docs.docker.com/engine/swarm/
+
+https://outofbedlam.github.io/docker/2016/07/20/docker/
+
+    #initialization
+    docker swarm init --listen-addr 0.0.0.0:2377
+    #or
+    docker swarm init --auto-accept manager --auto-accept worker --listen-addr 0.0.0.0:2377
+    # check node list
+    docker node ls
+    ID                           HOSTNAME               STATUS  AVAILABILITY  MANAGER STATUS
+    8b28b2fmswfshu013q166akmu *  localhost.localdomain  Ready   Active        Leader
+    #check token
+    docker swarm join-token -q worker
+    SWMTKN-1-3sn6mt4gztdb4vsovgnn2q0lpnzkgp0fdzl5qmiclehgqv6h1f-24hye5qd4pv0sjqk1gqiwzq34
+    # add worker node
+    docker swarm join --token SWMTKN-1-3sn6mt4gztdb4vsovgnn2q0lpnzkgp0fdzl5qmiclehgqv6h1f-24hye5qd4pv0sjqk1gqiwzq34 192.168.1.11:2377
+
+
+portainer 테스트
+
+    docker run -d -p 9000:9000 --name portainer portainer/portainer -H tcp://localhost:2375
 
 # 참고
 
