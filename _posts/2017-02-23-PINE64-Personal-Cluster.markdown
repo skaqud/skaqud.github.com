@@ -69,24 +69,28 @@ http://sylvi.tistory.com/10
 
 위처럼 볼트형 지지대(10mm) + 너트형 지지대(10mm) + 볼트형 지지대(25mm)를 연결해서 동일하게 탑을 쌓았음(라즈베리파이용 방열판도 주문해서 달아줌)
 
+완성화면
+
+![Image of my pine64 cluster](./_images/my_pine64_cluster.jpg)
+
 
 ### 클러스터 환경 설치
 
-보드 클러스터를 위한 방법을 몇가지 찾아봤으나, 일단 가장 간단하게 테스트할 수 있는 docker swarm을 이용하기로 함
+클러스터를 위한 방법을 몇가지 찾아봤으나, 일단 가장 간단하게 테스트할 수 있는 docker swarm을 이용하기로 함
 
-4개의 보드에 docker를 설치. arm용으로도 ubuntu repository에 올라가 있음. 설치된 버전은 1.12.6이다.
+설치 자체는 간단함, 4개의 보드에 docker를 설치. arm용으로도 ubuntu repository에 올라가 있음. 설치된 버전은 1.12.6
 
-
+    #docker install
     apt-get install docker.io
-
+    # check version
     docker version
     1.12.6
 
-swarm 설정
+swarm 설정하기, 다음과 같이 swarm을 설정해준다.
 
-공식 - https://docs.docker.com/engine/swarm/
+참고 - [공식 홈](https://docs.docker.com/engine/swarm/)
 
-https://outofbedlam.github.io/docker/2016/07/20/docker/
+참고2 - [도커 1.12 내장 오케스트레이션과 서비스 생성](https://outofbedlam.github.io/docker/2016/07/20/docker/)
 
     #initialization
     docker swarm init --listen-addr 0.0.0.0:2377
@@ -102,10 +106,15 @@ https://outofbedlam.github.io/docker/2016/07/20/docker/
     # add worker node
     docker swarm join --token SWMTKN-1-3sn6mt4gztdb4vsovgnn2q0lpnzkgp0fdzl5qmiclehgqv6h1f-24hye5qd4pv0sjqk1gqiwzq34 192.168.1.11:2377
 
+Swarm GUI 작업을 위해 portainer를 설치하여 테스트
+
 
 portainer 테스트
 
     docker run -d -p 9000:9000 --name portainer portainer/portainer -H tcp://localhost:2375
+
+
+
 
 # 참고
 
