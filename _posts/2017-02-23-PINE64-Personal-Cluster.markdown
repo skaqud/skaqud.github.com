@@ -8,7 +8,7 @@ tags:
 - 삽질
 ---
 
-PINE64로 개인용 클러스터 테스트환경 구성하기(작성중)
+PINE64로 개인용 클러스터 테스트환경 구성하기
 
 PINE64 보드 4개를 연결하여, 개인적으로 테스트하기 위한 환경을 구성하는 과정을 정리함.
 
@@ -58,6 +58,7 @@ master는 2GB 이기도 하고, desktop환경도 한 번 설치해 보고 싶기
 
     sudo /usr/local/sbin/install_mate_desktop.sh
 
+xrdp를 설치하면 윈도우 remote desktop으로 연결도 가능함.
 
 ### 클러스터 서버 정리하기
 
@@ -74,7 +75,7 @@ http://sylvi.tistory.com/10
 ![Image of my pine64 cluster](https://cloud.githubusercontent.com/assets/2344830/23509080/eb6fe5f8-ff97-11e6-9c9f-79a09e83a757.jpg)
 
 
-### 클러스터 환경 설치
+### 클러스터 환경 설치(swarm)
 
 클러스터를 위한 방법을 몇가지 찾아봤으나, 일단 가장 간단하게 테스트할 수 있는 docker swarm을 이용하기로 함
 
@@ -109,13 +110,21 @@ swarm 설정하기, 다음과 같이 swarm을 설정해준다.
 Swarm GUI 작업을 위해 portainer를 설치하여 테스트
 
 
+### 클러스터 관리도구 설치(portainer)
+
 portainer 테스트
 
-    docker run -d -p 9000:9000 --name portainer portainer/portainer -H tcp://localhost:2375
+portainer는 가벼운 swarm, docker 관리 GUI도구다. 비슷한 툴로는 Rancher, shipyard 등이 있다. 가벼워 보여서 일단 설치
 
+token의 존재 유무 등 실행시 TLS로 연결하는 부분은 좀 번거롭다. 다음과 같이 실행하면 바로 연결됨
 
+    docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+
+이후 해당 서버의 9000번 포트로 접근하면 바로 설치한 swarm을 관리할 수 있다.
 
 
 # 참고
 
-[PINE64 wiki](http://wiki.pine64.org/index.php/Main_Page)
+- [PINE64 wiki](http://wiki.pine64.org/index.php/Main_Page)
+- [공식 홈](https://docs.docker.com/engine/swarm/)
+- [도커 1.12 내장 오케스트레이션과 서비스 생성](https://outofbedlam.github.io/docker/2016/07/20/docker/)
