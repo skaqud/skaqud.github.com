@@ -71,7 +71,7 @@ http://sylvi.tistory.com/10
 
 완성화면
 
-![Image of my pine64 cluster](https://raw.githubusercontent.com/skaqud/skaqud.github.com/master/_posts/_images/my_pine64_cluster.jpg)
+![Image of my pine64 cluster](https://cloud.githubusercontent.com/assets/2344830/23509080/eb6fe5f8-ff97-11e6-9c9f-79a09e83a757.jpg)
 
 
 ### 클러스터 환경 설치
