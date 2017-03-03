@@ -9,7 +9,9 @@ tags:
 
 서버/인프라 실전 구축 가이드([알라딘링크](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=65965808)) 에 대한 소감 및 정리내용
 
-# 소감
+개인적으로 관심이 있는 부분만 좀 상세히 읽었음.
+
+## 소감
 
 전작인 대규모 서비스를 지탱하는 기술 -> 에서 약간 최신 트렌드에 맞게 업데이트한 느낌, 경험을 바탕으로 한 얘기라, 컨셉을 잡는 데는 도움이 되나, 언급한 오픈소스나 툴들은 실제로 사용할 수 없는 경우도 있음. 다 알려주지는 않았겠지만, 다수의 필자가 작성했고, 전체가 이어지기에 핵심적인 부분이 빠진 것 같은 느낌도 든다.(실제로 사용해보지 않은 것들이 많아 그런 느낌일 수도 있을 것 같다.)
 
@@ -20,32 +22,28 @@ tags:
 
 ### 가상화, 프로비저닝
 
-Vagrant - 개인용 가상화 도구
-
-Chef-solo, knife-solo - Chef-solo는 단일 node에서 실행 가능한 인프라스트럭처 Code, 이며 knife-solo를 통해 원격으로 실행 가능
-
-Serverspec - 같은 ruby기반이며, 서버 인프라 Code 를 테스트해 주는 프레임워크/오픈소스
-
-워커(werker)
+- Vagrant - 개인용 가상화 도구
+- Chef-solo, knife-solo - Chef-solo는 단일 node에서 실행 가능한 인프라스트럭처 Code, 이며 knife-solo를 통해 원격으로 실행 가능
+- Serverspec - 같은 ruby기반이며, 서버 인프라 Code 를 테스트해 주는 프레임워크/오픈소스
+- werker - 인프라 코드를 위한 CI도구, github과 연계된다, travisCI, circleCI등과 유사
 
 ### 클러스터링 도구
 
-아파치 메소스
+- Dokku - 간단한 docker 기반의 pass도구
+- Flynn - docker 기반 클러스터 관리 도구
+- apache mesos - 집중형 클러스터 관리 도구, mesos-master와 slave로 구성 
+- serf - 분산형 클러스터 관리 도구, master가 없다. consu(from harshicorp)
 
 
+## 인프라의 코드화, CI
 
-
-# 인프라의 코드화, CI
-
-Infrastructure as Code -> 테스트 주도 인프라 -> 인프라 CI(지속적인 통합)
+흐름 : Infrastructure as Code -> 테스트 주도 인프라 -> 인프라 CI(지속적인 통합)
 
 인프라를 코드로 작성하는 것의 중요성 
 
 - 시스템의 가독성이 높아진다. : 하드웨어보다 알아보기 쉽다.
 - 시스템 버전 관리 가능
 - 응용프로그램 등의 개발 방법론을 하드웨어에도 적용 가능하다
-
-## 인프라CI 구성방법 
 
 
 ## Immutable Infrastructure 
