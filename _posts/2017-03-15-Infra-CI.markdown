@@ -1,0 +1,30 @@
+---
+layout: post
+title: 인프라CI 구성하기
+date: 2017-03-15 23:11:00
+tags:
+- Cloud
+- Tech
+- 삽질
+---
+
+서버/인프라 실전 구축 가이드에 나온 것처럼, 인프라CI코드를 github에 commit하고 wercker를 통해 빌드하여 serverspec을 통해 테스트.(작성중)
+
+
+
+
+## 참고 
+
+
+[Using Vagrant to deploy AWS EC2 Instances](http://www.tothenew.com/blog/using-vagrant-to-deploy-aws-ec2-instances/)
+
+
+
+
+[vagrant-aws github 사이트](https://github.com/mitchellh/vagrant-aws)
+
+sample
+https://github.com/patrickdlee/vagrant-examples/tree/master/example7
+
+
+https://masutaka.net/chalow/2014-09-14-1.html
