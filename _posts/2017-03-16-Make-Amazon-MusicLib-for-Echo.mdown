@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Amazon Echo 사용 팁
+title: Amazon Echo 사용 팁 
 date: 2017-03-16 22:57:00
 tags:
 - 삽질
@@ -9,4 +9,10 @@ tags:
 
 
 Amazon Echo 사용팁
+
+# 연동하기
+
+Amazon Echo 구입 후 Music Library를 사용하기 위해(한국에서는 서비스가 안되므로) 미국 계정으로 음악을 구입하는 과정
+
+자세한 내용은 이곳을 참고 - [아마존뮤직/프라임뮤직 활성화 및 연동시키기](http://blueidblues.tistory.com/18)
 
