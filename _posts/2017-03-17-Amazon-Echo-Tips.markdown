@@ -10,19 +10,40 @@ tags:
 아마존 에코 사용팁
 
 
+# 연동하기
 
-## 참고 
+Amazon Echo 구입 후 Music Library를 사용하기 위해(한국에서는 서비스가 안되므로) 미국 계정으로 음악을 구입하는 과정
 
+자세한 내용은 이곳을 참고 - [아마존뮤직/프라임뮤직 활성화 및 연동시키기](http://blueidblues.tistory.com/18)
 
-[Using Vagrant to deploy AWS EC2 Instances](http://www.tothenew.com/blog/using-vagrant-to-deploy-aws-ec2-instances/)
+하였고, 오늘 성공한 방법임(프라임 Trial 불필요)
 
+- 카드로 기프트카드(1$) 구매하여 나에게 발송
+- 폰에서 퍼핀 브라우저(puffin-VPN이 기본적으로 적용되는 브라우저)를 통해 해당 기프트카드를 내 계정에 등록
+- 아마존 사이트에서 song-digital music으로 검색 후 1$ 이하의 아무 음악이나 구입
+- 결재시 미국 주소를 입력(알고 있던 배대지 이용), 신용카드 정보가 없다는 에러메세지가 나오나 gift card balance로 구입 가능함
+- 이후로 Music Library로 접근 가능하다.
 
+이후로 원하는 음악을 올리고, Echo에 음성 명령을 통해 들을 수 있다.
 
+# 시간대 변경
 
-[vagrant-aws github 사이트](https://github.com/mitchellh/vagrant-aws)
+http://makelism.tistory.com/entry/에코닷-Echo-Dot-2세대를-지르다-2-한국-시간-설정-및-ESP-후기
 
-sample
-https://github.com/patrickdlee/vagrant-examples/tree/master/example7
+Device Location 의 zip code만 96271로 변경
 
+# 자주쓰는 명령 
 
-https://masutaka.net/chalow/2014-09-14-1.html`
+playlist 재생
+
+    echo, play my playlist "listname"
+    echo, playlist "listname"
+
+페어
+
+    echo, pair
+
+참고
+
+[에코 명령어 모음](http://blueidblues.tistory.com/24)
+[명령어모음2](http://m.blog.naver.com/moonz/220402002091)
