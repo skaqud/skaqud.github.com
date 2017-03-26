@@ -34,16 +34,24 @@ Device Location 의 zip code만 96271로 변경
 
 # 자주쓰는 명령 
 
-playlist 재생
+사실 국내에선 별로 쓸데가 없다.
 
+    #play music
     echo, play my playlist "listname"
     echo, playlist "listname"
+    #pairing
+    echo, pair.
+    echo, Bluetooth.
+    echo, connect to my phone.
+    #Timer
+    echo, set a repeating alarm for weekdays at 7 a.m.
+    #news
+    echo, what's in the news
+    #Definition
+    echo, what's the definition of [word]
 
-페어
+# 참고
 
-    echo, pair
-
-참고
-
-[에코 명령어 모음](http://blueidblues.tistory.com/24)
-[명령어모음2](http://m.blog.naver.com/moonz/220402002091)
+- [에코 명령어 모음](http://blueidblues.tistory.com/24)
+- [명령어모음2](http://m.blog.naver.com/moonz/220402002091)
+- [The complete list of Alexa commands so far](https://www.cnet.com/how-to/the-complete-list-of-alexa-commands/)
