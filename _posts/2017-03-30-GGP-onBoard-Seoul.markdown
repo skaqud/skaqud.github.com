@@ -14,7 +14,7 @@ Google Cloud On board 후기
 [행사소개](https://cloudplatformonline.com/gcp-kr-googlecloudonboard.html?utm_medium=email&utm_source=kronboard&utm_term=outbound-team&utm_content=email1-sbc&utm_campaign=2017-gc-field-eventsgcp-partner-other-apac_onboard_korea_sbc)
 
 개인적인 생각이나, 클라우드 서비스에서는 그동안 IaaS 기반의 AWS가 강세였고, 이를 구글도 잘 알고 있었을 거라고 봄. 해서 절치부심하여 기존 앱엔진 기반의 서비스를 보완하고, 띄우기 위해 기획된 행사였던 것 같다. AWS행사처럼 밥도 잘 주고. AWS에서만 되던 것들을 GCP에 많이 보완한 듯 하고, Bigtable, tensorflow, kubernetes등 구글의 오픈소스로 공개한 원천기술과, Vision API등 구글만이 가지고 있는 것도 많이 녹여낸 것 같다. 
-사실 Compute Engine과 같은 IaaS도 GCP안에 있는지 처음 알게 된 듯. Cloud shell등 구글의 덕력이 느껴지는 포인트가 중간중간에 있었음. 
+사실 Compute Engine과 같은 IaaS도 GCP안에 있는지 처음 알게 된 듯(앱엔진인 PaaS만 있는지 알고 있었음.). Cloud shell등 구글의 덕력이 느껴지는 포인트가 중간중간에 있었음. 
 
 -----
 
@@ -50,6 +50,7 @@ Google Cloud On board 후기
 - 구글 VIDEO API - 비디오 Frame 마다 정보를 인식하여 그 정보를 추출.
   - 오이 분류기 개인 개발자
   - 버즈아트 - 미술작품들을 VISION API에 넣고 인덱싱, 후 판매
+
 
 모듈 2. - 구글 클라우드 플랫폼 소개
 이준호 솔루션스 아키텍트, GCP 공인 트레이너
