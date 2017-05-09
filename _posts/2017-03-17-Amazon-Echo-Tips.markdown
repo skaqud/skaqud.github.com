@@ -10,7 +10,7 @@ tags:
 아마존 에코 사용팁
 
 
-# 연동하기
+# Amazon 계정 연동하기
 
 Amazon Echo 구입 후 Music Library를 사용하기 위해(한국에서는 서비스가 안되므로) 미국 계정으로 음악을 구입하는 과정
 
@@ -26,15 +26,17 @@ Amazon Echo 구입 후 Music Library를 사용하기 위해(한국에서는 서�
 
 이후로 원하는 음악을 올리고, Echo에 음성 명령을 통해 들을 수 있다.
 
+뭔가가 꼬여서 잘 안된다면, 계정을 별도로 하나 만드는 게 가장 시간을 절약하는 길이다. 이게 뭐라고 고민하고 있는건지 싶기도 하고.
+
 # 시간대 변경
 
 http://makelism.tistory.com/entry/에코닷-Echo-Dot-2세대를-지르다-2-한국-시간-설정-및-ESP-후기
 
 Device Location 의 zip code만 96271로 변경
 
-# 자주쓰는 명령 
+# 자주쓰는 명령
 
-사실 국내에선 별로 쓸데가 없다.
+사실 국내에선 별로 쓸데가 없다. 굳이 쓸데를 찾자면 영어공부?
 
     #play music
     echo, play my playlist "listname"

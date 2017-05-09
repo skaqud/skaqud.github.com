@@ -65,6 +65,8 @@ CPU가 ARM계열이라 동작하지 않는 프로그램들이 꽤 있음, crouto
     sudo sh ~/Downloads/crouton -r trusty -t xfce
     #설치(desktop없이 cli만)
     sudo sh ~/Downloads/crouton -r trusty -t extra-cli
+    #설치(ubuntu 16.04, cli만) - 2017.05 재설치시 추가
+    sudo sh ~/Downloads/crouton -r xenial -t core
 
     #잘못 설치했을 경우 삭제
     sudo delete-chroot name
@@ -143,3 +145,11 @@ language-support 를 실행시킨 뒤 Korean 언어를 설치해준다.
      sudo enter-chroot
      sudo rm /dev/dri/card0
      sudo mv /dev/dri/card1 /dev/dri/card0
+
+
+## 참고
+
+- [crouton in github](https://github.com/dnschneid/crouton)
+- [poin2블로그-crouton으로 리눅스 사용하기](http://blog.poin2.com/2015/09/크롬북에서-crouton-사용하기/)
+- [도시바 크롬북2 우분투 설치 14.04](http://bookstorycabin.tistory.com/entry/도시바-크롬북2-chromebook-2-우분투-ubuntu-설치-1404)
+- [How to Manage the Crouton Linux System on Your Chromebook](http://www.howtogeek.com/210047/how-to-manage-the-crouton-linux-system-on-your-chromebook/)
