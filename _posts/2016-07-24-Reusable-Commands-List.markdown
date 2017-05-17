@@ -218,6 +218,8 @@ OS 버전 확인
     # 전체를 무시하고 싶을 경우
     $ git fetch origin
     $ git reset --hard origin/master
+    # 워킹트리 전체를 마지막 커밋 상태로 돌림
+    $ git reset --hard HEAD
 
 참고 - [git - 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html)
 
