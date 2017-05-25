@@ -1,18 +1,35 @@
 ---
 layout: post
-title: Docker swarm 적용 및 사용기
-date: 2017-05-06 22:19:00
+title: GCP사용기
+date: 2017-05-07 22:23:00
 tags:
 - Tech
-- Docker
+- GCP
 ---
 
-별로 거창한 의도는 아니고, Docker Swarm을 어떻게 써먹을지에 대한 고민을 하다가
-[요 문서](https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html)를 참고해서 trafiek, portainer를 부드럽게 연결해서 사용도를 더 고민해 보고 싶었음. 덧붙여 Prometheus 등의 모니터링 도구도.
+GCP 무료 Credit 소진을 위한 사용기, 써본게 AWS뿐이라, AWS와 비교를 많이 하게 될 듯 하다
+
+# 소감
+
+- 결재 과정이 개인적으로 좀 까다로웠음, 오류가 나서 카드 등록 다시하고, 갑자기 Google Payment 계정이 블락되어 풀고, 귀찮아서 처음 계정 만들고 VM띄우기까지 한달 걸림.
+
+- 가입시에는 300$, 1년 한도 무료라고 되어 있으나, 아직 모르겠다. 청구 세부정보에는 그냥 여태 쓴 (결제할) 비용이 보임
+
+- 메뉴는 AWS에 비해 익숙하지 않아서, 좀 찾기 힘든 편인 듯. vm생성 후 방화벽 설정시 네트워크 메뉴까지 가서 하위에서 설정해야 함.
+
+- 고객의 비용 절감을 위한 노력이 엿보임, VM을 생각보다 안쓰고 있으니, 사이즈를 줄이라는 메세지가 뜬다.
+
+- Google Cloud Shell은 정말 geek한 아이디어 인듯 싶다. 누르는 순간 vm이 생성되어 해당 임시 vm을 통해 내 인스턴스에 붙어 작업할 수 있게 된다. 방화벽이고 뭐고, 편함
+
+  - 참고 : Cloud Shell로 작업하기 - [Cloud Shell Examples](https://cloud.google.com/shell/docs/examples)
+
+  - 그냥 작업 가능한 임시 호스트로 이해하면 될 것 같음, tmux로 세션이 보존된다고 하나, 끊긴 뒤 20분 후면 삭제된다고 함.
+
+  - 구동시 vm를 띄워야 해서 시간이 좀 걸림. 별도의 shell prompt를 띄울 필요가 없다는 건데, 신기하긴 한데, 활용도는 글쎄.
 
 
+# 추가로 확인할 사항
 
-
-# 참고
-
-- [Docker Swarm을 이용한 쉽고 빠른 분산 서버 관리](https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html)
+- VPC생성, 설정 등
+- AppEngine으로 배포하고 사용해 보기
+- Container Engine 사용해 보기
