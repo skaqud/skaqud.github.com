@@ -10,7 +10,7 @@ tags:
 한빛출판사의 Amazon Web Service in action 를 읽고
 
 
-![Amazon Web Service in action 표지](https://user-images.githubusercontent.com/2344830/27011262-039af6c2-4ef3-11e7-8187-ab229ccf8911.JPG =250x)
+![Amazon Web Service in action 표지](https://user-images.githubusercontent.com/2344830/27011443-8459bb38-4ef6-11e7-8746-ed600eb266d3.png)
 
 
 서버, 인프라, 클라우드, 백엔드 등에는 익숙하지만, AWS에 대해 생소한 사람들이 Tutorial로 사용할 수 있을 정도로(?) 친절한 책이다. 어느 정도는 클라우드, 인프라에 대한 지식을, 또 어느정도는 백엔드 레벨의 개발 지식을 필요로 하는 책이다. 주로 GUI를 통한 사용보다는 CloudFormation등 CLI, API를 통한 Infrastructure as Code 방식의 사용에 관해 설명하고 있어, 실제로 github에 있는 코드를 내려받아 실습해 보면서 읽는 방식이 내용을 이해하는 데 도움이 될 것 같다.
