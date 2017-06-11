@@ -97,6 +97,16 @@
     
       
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -109,7 +119,7 @@
       A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
     </p>
     <!--p>
-      &copy; 2016. All rights reserved.
+      &copy; 2017. All rights reserved.
     </p-->
   </div>
 </div>
@@ -200,16 +210,16 @@ netmask 255.255.255.0
 
 <p>IP등 변경시 정상적으로 적용하기 위해서는 다음과 같이 network서비스를 재시작한다.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo /etc/init.d/networking restart
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo /etc/init.d/networking restart
 </code></pre>
 </div>
 
 <p>그밖의 명령</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#무선랜down
-sudo ifdown wlan0
+$ sudo ifdown wlan0
 #무선랜up
-sudo ifup wlan0
+$ sudo ifup wlan0
 </code></pre>
 </div>
 
@@ -220,9 +230,9 @@ sudo ifup wlan0
 <p>참고 - <a href="http://ghost9087.tistory.com/2">라즈베리파이 활용기-NAS로 활용하기(1)</a></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># samba 설치
-sudo apt-get install samba samba-common-bin
+$ sudo apt-get install samba samba-common-bin
 # samba.conf 파일 수정
-sudo vi /etc/samba/smb.conf
+$ sudo vi /etc/samba/smb.conf
 
 #Share Definitions 하위의 내용을 다음과 같이 수정
 [profiles]
@@ -246,17 +256,17 @@ sudo vi /etc/samba/smb.conf
 
 <p>참고 - <a href="http://ghost9087.tistory.com/3">라즈베리파이 활용기-NAS로 활용하기(2)</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install transmission-daemon
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install transmission-daemon
 #설치 후 바로 실행되는데 멈춘 후
-/etc/init.d/transmission-daemon stop
+$ /etc/init.d/transmission-daemon stop
 #설정파일 수정
-/etc/transmission-daemon/settings.json
+$ /etc/transmission-daemon/settings.json
 #수정한 항목
 #download-dir
 #incomplete-dir
 #rpc-password
 #다시 시작
-/etc/init.d/transmission-daemon start
+$ /etc/init.d/transmission-daemon start
 </code></pre>
 </div>
 
@@ -284,27 +294,27 @@ sudo vi /etc/samba/smb.conf
     
       <li>
         <h7>
-          <a href="/2016/09/07/Docker-run-with-docker-compose/">
-            Docker Compose로 HA환경 구성하기
-            <small>07 Sep 2016</small>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
-            Ubuntu(Unity,Xfce)테마 변경하기
-            <small>04 Sep 2016</small>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/08/22/Build-Docker-Container/">
-            Docker 이미지를 빌드하기
-            <small>22 Aug 2016</small>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
           </a>
         </h7>
       </li>

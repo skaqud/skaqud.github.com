@@ -97,6 +97,16 @@
     
       
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -109,7 +119,7 @@
       A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
     </p>
     <!--p>
-      &copy; 2016. All rights reserved.
+      &copy; 2017. All rights reserved.
     </p-->
   </div>
 </div>
@@ -134,19 +144,24 @@
   <h1 class="post-title">VM 기본환경 구성하기</h1>
   <span class="post-date">03 Jan 2016</span>
   <ul id="markdown-toc">
-  <li><a href="#repository-" id="markdown-toc-repository-">Repository 설정</a></li>
-  <li><a href="#section" id="markdown-toc-section">기본 어플리케이션 설치</a></li>
+  <li><a href="#section" id="markdown-toc-section">환경설정</a>    <ul>
+      <li><a href="#repository-" id="markdown-toc-repository-">Repository 설정</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">기본 어플리케이션 설치</a></li>
+    </ul>
+  </li>
   <li><a href="#shell-" id="markdown-toc-shell-">Shell 환경설정</a></li>
   <li><a href="#vim---" id="markdown-toc-vim---">vim 설치 및 설정</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">환경설정</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">환경설정</a></li>
       <li><a href="#vundle-nerdtree-" id="markdown-toc-vundle-nerdtree-">Vundle, NERDTree 설치</a></li>
     </ul>
   </li>
 </ul>
 
+<hr />
+
 <p>vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임</p>
 
-<p>다음과 같은 내용들을 포함합니다.(ubuntu 14,16 버전 대상)</p>
+<p>다음과 같은 내용들을 포함합니다.(ubuntu 14,16 버전 대상, 이 문서는 지속적으로 보완중입니다.)</p>
 
 <ul>
   <li>repository 설정</li>
@@ -156,7 +171,9 @@
   <li>그밖에?</li>
 </ul>
 
-<h1 id="repository-">Repository 설정</h1>
+<h1 id="section">환경설정</h1>
+
+<h2 id="repository-">Repository 설정</h2>
 
 <p>repository를 daumkakao쪽 서버로 변경</p>
 
@@ -173,51 +190,65 @@ apt-get update
 
 <p>http://ftp.neowiz.com/ 로 변경해도 됨.</p>
 
-<h1 id="section">기본 어플리케이션 설치</h1>
+<h2 id="section-1">기본 어플리케이션 설치</h2>
 
 <p>git, wget, telnet, curl, tmux(multi screen terminal) 등 설치</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>apt-get install git wget telnet curl tmux
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get install git wget telnet curl tmux
 </code></pre>
 </div>
 
 <p>zsh 설치(fish는 적응하기가 좀 힘듬)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>apt-get install zsh
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get install zsh
 </code></pre>
 </div>
 
 <p>기본 쉘 변경</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>chsh -s /usr/bin/zsh
+<div class="highlighter-rouge"><pre class="highlight"><code>$ chsh -s /usr/bin/zsh
 </code></pre>
 </div>
 
-<p>ubuntu, centos에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
-별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 부득이하게</p>
+<p>ubuntu, centos 에서 git은 최신 바이너리가 아닌 경우가 많음(항상 공식 repository에 버전업이 늦다.)
+별도로 설치해야 할 경우 컴파일이 가장 빠르지만, 다음과 같이 수동으로 ppa를 추가한 뒤 설치한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo add-apt-repository ppa:git-core/ppa
+$ sudo apt-get update
+$ sudo apt-get install git
+</code></pre>
+</div>
 
 <h1 id="shell-">Shell 환경설정</h1>
 
 <p>zsh 설치</p>
 
-<p>apt-get install zsh</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get install zsh
+</code></pre>
+</div>
 
 <p>Oh My Zsh 설치</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</td>
-      <td>sh</td>
-    </tr>
-  </tbody>
-</table>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+</code></pre>
+</div>
 
 <p>참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/</p>
 
+<p>테마는 agnoster 등이 적당함. 설치시 git repository 표현에 몇몇 특수문자들이 필요하며, 폰트를 별도로 설치해 주는 게 좋다.</p>
+
+<ul>
+  <li><a href="https://gist.github.com/agnoster/371287">agnoster.zsh theme</a></li>
+  <li><a href="https://github.com/powerline/fonts">Powerline fonts</a></li>
+</ul>
+
+<p>바로 위에 가서 받으면 됨.</p>
+
+<p>우분투 상에서 받은 otf 폰트는 /usr/share/fonts/opentype 하위에 넣으면 시스템에서 인식한다.(없을 경우 생성)</p>
+
 <h1 id="vim---">vim 설치 및 설정</h1>
 
-<h2 id="section-1">환경설정</h2>
+<h2 id="section-2">환경설정</h2>
 
 <p>로컬의 .vimrc 안에 다음과 같은 내용을 넣음.</p>
 
@@ -252,8 +283,8 @@ nmap &lt;F7&gt; :NERDTree&lt;CR&gt;
 
 <p>아래와 같이 vundle 설치</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir ~/.vim/bundle
+$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #.vimrc 파일 생성(참고2 링크에 있음)
 #vim command mode에서 다음과 같이 입력
 :PluginInstall
@@ -263,8 +294,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 <p>vundle을 이용해 NERDTree 설치</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>:PluginSearch NERD
-#vimrc에 아래 내용 추가
-echo "Plugin 'The-NERD-Tree'" &gt;&gt; ~/.vimrc
+# .vimrc에 아래 내용 추가
+$ echo "Plugin 'The-NERD-Tree'" &gt;&gt; ~/.vimrc
 # 설치
 :PluginInstall
 </code></pre>
@@ -282,27 +313,27 @@ echo "Plugin 'The-NERD-Tree'" &gt;&gt; ~/.vimrc
     
       <li>
         <h7>
-          <a href="/2016/09/07/Docker-run-with-docker-compose/">
-            Docker Compose로 HA환경 구성하기
-            <small>07 Sep 2016</small>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
-            Ubuntu(Unity,Xfce)테마 변경하기
-            <small>04 Sep 2016</small>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/08/22/Build-Docker-Container/">
-            Docker 이미지를 빌드하기
-            <small>22 Aug 2016</small>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
           </a>
         </h7>
       </li>

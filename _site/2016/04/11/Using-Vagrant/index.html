@@ -97,6 +97,16 @@
     
       
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -109,7 +119,7 @@
       A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
     </p>
     <!--p>
-      &copy; 2016. All rights reserved.
+      &copy; 2017. All rights reserved.
     </p-->
   </div>
 </div>
@@ -138,21 +148,25 @@
 <h1 id="vagrantvirtualbox-">vagrant+Virtualbox 설치</h1>
 
 <ul>
-  <li>Vagrant - 최신 버전 1.8.1(https://www.vagrantup.com/downloads.html)</li>
-  <li>Virtualbox - 최신 버전 5.0.20(https://www.virtualbox.org/wiki/Downloads)</li>
+  <li>
+    <p>Vagrant - 최신 버전 1.8.1(https://www.vagrantup.com/downloads.html)</p>
+  </li>
+  <li>
+    <p>Virtualbox - 최신 버전 5.0.20(https://www.virtualbox.org/wiki/Downloads)</p>
+  </li>
 </ul>
 
 <p>다음과 같은 명령을 실행하여 로컬 환경에 linux를 설치</p>
 
 <p>로컬 환경에 vagrant 디렉토리 생성, 디렉토리 이름은 상관 없으나(마음대로 생성 가능), 실행시키는 명령의 기본 디렉토리가 되므로, 앞으로 실행할 명령은 항상 다음 디렉토리 바로 아래에서 수행해야 합니다.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir ~/vagrant/centos
+<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir ~/vagrant/centos
 </code></pre>
 </div>
 
 <p>해당 디렉토리 안에서 다음과 같이 실행하면 Vagrantfile이 생성됨</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#vagrant init
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant init
 A `Vagrantfile` has been placed in this directory. You are now
 ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
@@ -163,16 +177,16 @@ the comments in the Vagrantfile as well as documentation on
 <p>다음과 같이 로컬에 box를 추가</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>ubuntu의 경우
-#vagrant box add ubuntu/trusty64
+$ vagrant box add ubuntu/trusty64
 
 centos의 경우(선택하라고 나올 경우 virtualbox 버전 선택)
-#vagrant box add centos/7
+$ vagrant box add centos/7
 </code></pre>
 </div>
 
 <p>다음과 같이 실행시 다음처럼 나오면 성공</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vagrant box list
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant box list
 centos/7        (virtualbox, 1603.01)
 ubuntu/trusty64 (virtualbox, 20160516.0.0)
 </code></pre>
@@ -189,7 +203,7 @@ config.vm.box = "centos/7"
 
 <p>이후 다음과 같이 살행하여 VM을 실행시켜 줍니다.(시간이 다소 소요됨)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>➜  temp vagrant up
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant up
 Bringing machine 'default' up with 'virtualbox' provider...
 ==&gt; default: Importing base box 'centos/7'...
 ==&gt; default: Matching MAC address for NAT networking...
@@ -229,11 +243,12 @@ Bringing machine 'default' up with 'virtualbox' provider...
 
 <p>이후 실행된 VM에 다음과 같이 접속할 수 있습니다.(반드시 아까 생성한 디렉토리에서 실행)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>➜  temp vagrant ssh
--bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vagrant ssh
 [vagrant@localhost ~]$
 </code></pre>
 </div>
+
+<p>물론 별도로 ssh를 통해 접속할수도 있습니다. 기본 계정은 vagrant/vagrant 이며 ssh포트는 기본으로 2222를 사용합니다. 이후 vm이 늘어날 경우 2200부터 순서대로 부여합니다.</p>
 
 <h1 id="section">참고</h1>
 
@@ -241,13 +256,10 @@ Bringing machine 'default' up with 'virtualbox' provider...
 
 <ul>
   <li>
-    <p>http://taewan.kim/blog/2016/02/06/vagrant_intro/</p>
+    <p><a href="http://taewan.kim/blog/2016/02/06/vagrant_intro/">내 친구 Vagrant를 소개합니다.</a></p>
   </li>
   <li>
-    <p>http://ppiazi.tistory.com/entry/Vagrant-VirtualBox-가상머신-관리-도구-소개</p>
-  </li>
-  <li>
-    <p>http://bcho.tistory.com/806</p>
+    <p><a href="http://ppiazi.tistory.com/entry/Vagrant-VirtualBox-가상머신-관리-도구-소개">Vagrant-VirtualBox-가상머신-관리-도구-소개</a></p>
   </li>
 </ul>
 
@@ -255,10 +267,10 @@ Bringing machine 'default' up with 'virtualbox' provider...
 
 <ul>
   <li>
-    <p>http://manseok.blogspot.kr/2014/09/vagrant.html</p>
+    <p><a href="http://manseok.blogspot.kr/2014/09/vagrant.html">Vagrant 기본 사용법</a></p>
   </li>
   <li>
-    <p>http://rangken.github.io/blog/2015/vagrant-1/</p>
+    <p><a href="http://rangken.github.io/blog/2015/vagrant-1/">Vagrant 1.기본 설정 &amp; 기본 명령어</a></p>
   </li>
 </ul>
 
@@ -270,27 +282,27 @@ Bringing machine 'default' up with 'virtualbox' provider...
     
       <li>
         <h7>
-          <a href="/2016/09/07/Docker-run-with-docker-compose/">
-            Docker Compose로 HA환경 구성하기
-            <small>07 Sep 2016</small>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
-            Ubuntu(Unity,Xfce)테마 변경하기
-            <small>04 Sep 2016</small>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/08/22/Build-Docker-Container/">
-            Docker 이미지를 빌드하기
-            <small>22 Aug 2016</small>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
           </a>
         </h7>
       </li>

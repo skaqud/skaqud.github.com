@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      AWS S3 파일서버로 사용하기 &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">AWS S3 파일서버로 사용하기</h1>
+  <span class="post-date">14 Mar 2017</span>
+  <p>S3를 대용량 바이너리 파일을 저장하는 공간으로 설정하고 사용하는 방법</p>
+
+<p>S3는 AWS console을 통해서 접근 가능하며, 그 이외의 경우 별도의 클라이언트 프로그램들을 사용하거나, IAM에서 계정을 생성하고 권한을 부여하여 accesskey,secretkey를 생성하여 python, java등의 언어로 접근할 수도 있다. CDN처럼 활용할 수도 있고, 인스턴스에 마운트 한 뒤 NAS처럼 사용할 수도 있다.(속도 때문에 권장하지 않을 수도..) 현존하는 가장(?인지는 모르겠음) 가성비가 좋은 편인 파일 관리서비스라고 보면 될 것 같다.</p>
+
+<p>참고 - <a href="http://blog.leedoing.com/39">AWS S3FS vs EBS Performance</a></p>
+
+<h2 id="section">사용하기 위한 절차</h2>
+
+<ul>
+  <li>S3에서 bucket을 생성</li>
+  <li>권한 부여(IAM) : IAM에 접속하여 Group과 User를 생성한 뒤 Access key ID, Secret access key를 확인(Role로도 가능하나 User가 더 간단함)
+    <ul>
+      <li>권한은 가급적이면 다운로드만 할 경우 Read만 부여(AmazonS3ReadOnlyAccess)</li>
+    </ul>
+  </li>
+  <li>해당 Access key와 Secret key를 통해 서버에 연결하고, 파일을 올리거나, 내려받는 작업을 수행함</li>
+</ul>
+
+<h2 id="section-1">연결방법</h2>
+
+<h3 id="gui--">GUI 클라이언트로 연결</h3>
+
+<p>다음과 같은 다양한 GUI 클라이언트가 있음, 권한만 있다면, 일단 GUI FTP 클라이언트 처럼 사용 가능</p>
+
+<ul>
+  <li>CloudBerry Explorer: http://www.cloudberrylab.com/free-amazon-s3-explorer-cloudfront-IAM.aspx (FTP Client와 유사)</li>
+  <li>Bucket Explorer: http://www.bucketexplorer.com</li>
+</ul>
+
+<h3 id="cli--">CLI 클라이언트로 연결</h3>
+
+<p>다음과 같이 설치 및 설정.(ubuntu 14,16에서)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># install
+$ apt-get -y install awscli
+</code></pre>
+</div>
+
+<p>설정시 AccessKey, SecretKey, resion정보는 꼭 필요하다. 다른 형태로도 입력 가능함.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># configure - 해당 값을 입력
+$ aws aws configure
+AWS Access Key ID [None]: xxxx
+AWS Secret Access Key [None]: xxxxx 
+Default region name [None]: ap-northeast-1
+Default output format [None]:
+
+# s3에서 파일을 로컬로 copy
+$ aws s3 cp s3://my-bucket-for-fileserver/petclinic.war ./petclinic.war
+</code></pre>
+</div>
+
+<p>이외 많은 작업들을 할 수 있다. 업데이트 정도는 sync로 처리해도 될 듯 하다.</p>
+
+<h3 id="saltstack-">Saltstack으로 연결</h3>
+
+<p>pillar에 다음 내용을 추가한 뒤</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>s3.keyid: AKIAIW2OXXXXXXXXXXXXXXX
+s3.key: avSB4Ks2LxxxxxxxxxxxxxxxxxxxxxxxxxxxxC
+s3.role_arn: arn:aws:iam::1145xxxxxx:user/s3xxxx
+s3.service_url: s3-ap-northeast-1.amazonaws.com
+s3.verify_ssl: False
+s3.location: ap-northeast-1
+</code></pre>
+</div>
+
+<p>다음과 같이 받을 수 있다고 함</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>s3test:
+  file.managed:
+    - name: /root/petclinic.war
+    - source: s3://my-bucket-for-fileserver/petclinic.war
+    - skip_verify: True
+    #    - source_hash: sha512=해쉬값
+</code></pre>
+</div>
+
+<p>위의 방법이 문제가 있어 salt가 awscli툴을 호출하여 파일을 다운로드 하도록 처리</p>
+
+<p>pillar에 추가</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>s3.keyid: xxxx
+s3.key: xxxx
+s3.region: ap-northeast-1
+s3.bucket: my-bucket-for-fileserver
+</code></pre>
+</div>
+
+<p>state에 추가(인증 정보를 env에 set)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>install_awscli:
+  pkg:
+    - installed
+    - name: awscli
+
+make_s3_credential1:
+   environ.setenv:
+     - name: AWS_SECRET_ACCESS_KEY
+     - value: 
+     - update_minion: True
+
+make_s3_credential2:
+   environ.setenv:
+     - name: AWS_ACCESS_KEY_ID
+     - value: 
+     - update_minion: True
+
+s3_filedownload:
+  cmd.run:
+    - name: aws s3 cp s3:/// ./ --region=
+</code></pre>
+</div>
+
+<h3 id="java-">Java로 연결</h3>
+
+<p>다음 문서를 참고하면 될 것 같습니다.</p>
+
+<p><a href="https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/dev/UploadObjSingleOpJava.html">AWS SDK for Java를 사용하여 객체 업로드</a></p>
+
+<h2 id="section-2">참고</h2>
+
+<ul>
+  <li><a href="http://blog.jeonghwan.net/브라우져에서-아마존-s3-파일-업로드/">브라우져에서 아마존 S3 파일 업로드</a></li>
+  <li><a href="http://blog.leedoing.com/21">AWS S3 Client Tool 및 CLI 정리</a></li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

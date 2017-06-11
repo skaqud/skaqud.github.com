@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      책-서버/인프라 실전 구축 가이드 &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">책-서버/인프라 실전 구축 가이드</h1>
+  <span class="post-date">26 Feb 2017</span>
+  <p>서버/인프라 실전 구축 가이드(<a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=65965808">알라딘링크</a>) 에 대한 소감 및 정리내용</p>
+
+<p>개인적으로 관심이 있는 부분만 좀 상세히 읽었음.</p>
+
+<h2 id="section">소감</h2>
+
+<p>전작인 대규모 서비스를 지탱하는 기술 -&gt; 에서 약간 최신 트렌드에 맞게 업데이트한 느낌, 경험을 바탕으로 한 얘기라, 컨셉을 잡는 데는 도움이 되나, 언급한 오픈소스나 툴들은 실제로 사용할 수 없는 경우도 있음. 다 알려주지는 않았겠지만, 다수의 필자가 작성했고, 전체가 이어지기에 핵심적인 부분이 빠진 것 같은 느낌도 든다.(실제로 사용해보지 않은 것들이 많아 그런 느낌일 수도 있을 것 같다.)</p>
+
+<p>인프라의 코드화나, 인프라 CI에 대한 얘기는 아직은 메인 인프라 환경이 온전히 클라우드 기반으로 가지 않았다면 좀 비현실적으로 들릴 수 있다.</p>
+
+<h2 id="section-1">관련도구들</h2>
+
+<h3 id="section-2">가상화, 프로비저닝</h3>
+
+<ul>
+  <li>Vagrant - 개인용 가상화 도구</li>
+  <li>Chef-solo, knife-solo - Chef-solo는 단일 node에서 실행 가능한 인프라스트럭처 Code, 이며 knife-solo를 통해 원격으로 실행 가능</li>
+  <li>Serverspec - 같은 ruby기반이며, 서버 인프라 Code 를 테스트해 주는 프레임워크/오픈소스</li>
+  <li>werker - 인프라 코드를 위한 CI도구, github과 연계된다, travisCI, circleCI등과 유사</li>
+</ul>
+
+<h3 id="section-3">클러스터링 도구</h3>
+
+<ul>
+  <li>Dokku - 간단한 docker 기반의 pass도구</li>
+  <li>Flynn - docker 기반 클러스터 관리 도구</li>
+  <li>apache mesos - 집중형 클러스터 관리 도구, mesos-master와 slave로 구성</li>
+  <li>serf - 분산형 클러스터 관리 도구, master가 없다. consu(from harshicorp)</li>
+</ul>
+
+<h2 id="ci">인프라의 코드화, CI</h2>
+
+<p>흐름 : Infrastructure as Code -&gt; 테스트 주도 인프라 -&gt; 인프라 CI(지속적인 통합)</p>
+
+<p>인프라를 코드로 작성하는 것의 중요성</p>
+
+<ul>
+  <li>시스템의 가독성이 높아진다. : 하드웨어보다 알아보기 쉽다.</li>
+  <li>시스템 버전 관리 가능</li>
+  <li>응용프로그램 등의 개발 방법론을 하드웨어에도 적용 가능하다</li>
+</ul>
+
+<h2 id="immutable-infrastructure">Immutable Infrastructure</h2>
+
+<ul>
+  <li>서버 설치 후 상태의 변경이 없도록 하자는 월 채드 파울러의 주장, 서버는 언제든 다시 재구성 할 수 있어야 하고 버릴 수도 있어야 한다.(모든 상태를 변경하는 작업에 대해 서버를 재설치하는 과정으로 대체)</li>
+  <li>상태가 없는 서버들만 가능, DB/파일서버 등과 같이 데이터를 가진 서버들은 적용 불가</li>
+  <li>가상화, 클라우드, Docker 등의 가상화 도구와, Chef, puppet 등의 Provisioning 도구의 발전과 함께 한다.</li>
+</ul>
+
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

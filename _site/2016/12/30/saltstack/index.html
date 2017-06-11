@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      saltstack(1) &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">saltstack(1)</h1>
+  <span class="post-date">30 Dec 2016</span>
+  <p>Saltstack 설치 및 구성방법</p>
+
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">환경 준비</a>    <ul>
+      <li><a href="#vagrant-vm" id="markdown-toc-vagrant-vm">Vagrant로 VM시작</a></li>
+      <li><a href="#saltstack-" id="markdown-toc-saltstack-">Saltstack 설치</a></li>
+      <li><a href="#saltstack-gui--" id="markdown-toc-saltstack-gui--">Saltstack GUI 도구 설치</a>        <ul>
+          <li><a href="#halite-" id="markdown-toc-halite-">Halite 설치</a></li>
+          <li><a href="#saltpad-" id="markdown-toc-saltpad-">Saltpad 설치</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">참고</a></li>
+</ul>
+<hr />
+
+<h1 id="section">환경 준비</h1>
+
+<p>Vagrant를 통해 VM을 3대 띄울 예정, 1대는 master로 나머지 2대는 minion으로 구성.</p>
+
+<p>base image는 Vagrant에서 바로 다운로드(ubuntu/trusty)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>VM1 - salt-master, 2cpu, 1GB ram
+VM2 - salt-minion1, 1cpu, 512MB ram
+VM3 - salt-minion2, 1cpu, 512MB ram
+각각의 OS는 ubuntu 14.04 LTS
+</code></pre>
+</div>
+
+<p>설치는 <a href="http://www.yongbok.net/blog/saltstack-it-automation-infrastructure-management-tools/">이 글:”SaltStack – IT automation infrastructure management tools”</a>을 참고하였으며, 다음과 같은 작업들을 수행할 예정</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>salt-master, minion 설치 및 연결
+GUI도구 설치 및 검토(Halite, Saltpad)
+간단한 WEB-WAS-DB구성 자동설치,이중화 테스트 state 작성 - 다음
+</code></pre>
+</div>
+
+<h2 id="vagrant-vm">Vagrant로 VM시작</h2>
+
+<p>IP, CPU, Memory 부분만 다르게 하여 세대의 VM을 구성함.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#vi Vagrantfile
+Vagrant.require_version "&gt;= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+VMHOSTNAME="test1"
+VMIP="192.168.10.10"
+
+Vagrant.configure (VAGRANTFILE_API_VERSION) do | config |
+    config.vm.box = "ubuntu/trusty64"
+        config.vm.hostname = VMHOSTNAME
+        # network setting
+    config.vm.network :private_network, ip: VMIP
+
+    config.vm.provider :virtualbox do | vb |
+        vb.name = VMHOSTNAME
+        vb.gui = false
+        vb.cpus = 2
+        vb.memory = 1024
+     end
+end
+</code></pre>
+</div>
+
+<h2 id="saltstack-">Saltstack 설치</h2>
+
+<p>host 정보를 등록</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vi /etc/hosts
+192.168.10.10 salt-master
+192.168.100.100 minion1
+192.168.100.200 minion2
+</code></pre>
+</div>
+
+<p>SaltStack 저장소 등록 및 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-get install -y python-software-properties software-properties-common
+echo deb http://ppa.launchpad.net/saltstack/salt/ubuntu `lsb_release -sc` main &gt; /etc/apt/sources.list.d/saltstack.list
+wget -q -O- "http://keyserver.ubuntu.com:11371/pks/lookup?op=get&amp;search=0x4759FA960E27C0A6" | apt-key add -
+</code></pre>
+</div>
+
+<p>Saltstack 설치</p>
+
+<p>OS Repository(LTS)의 버전은 적어도 꽤 오래전 버전임, 최신버전이 필요할 경우 별도의 os repository를 등록 후 설치해야 하거나, salt document를 참고</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#master
+$ apt-get update &amp;&amp; apt-get install -y salt-master salt-syndic
+#minion
+$ apt-get update &amp;&amp; apt-get install -y salt-minion
+</code></pre>
+</div>
+
+<p>최신 버전 설치를 위해서는 다음과 같이 수행</p>
+
+<p>ubuntu의 경우</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get install -y python-software-properties software-properties-common
+$ wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+$ vi /etc/apt/sources.list.d/saltstack.list
+deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main
+</code></pre>
+</div>
+
+<p>이후 apt-get update 명령 한 번 수행 후 설치는 동일</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-get update
+apt-get install -y salt-master salt-syndic
+apt-get install -y salt-minion
+</code></pre>
+</div>
+
+<p>CentOS의 경우</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo yum install https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm
+
+$ sudo yum install salt-master
+$ sudo yum install salt-minion
+</code></pre>
+</div>
+
+<p>버전을 확인해서 목표로 하는 버전이 맞는지 확인</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ salt --version
+salt 2016.11.1 (Carbon)
+</code></pre>
+</div>
+
+<p>수동설치 참고 - https://repo.saltstack.com/#ubuntu</p>
+
+<p>Saltstack 실행</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#master
+#서비스로
+$ service salt-master start
+#혹은 FG 모드로
+$ salt-master -l info
+
+#minion(실행 전 master 설정을 해야 함 /etc/salt/minion 파일)
+$ salt-minion -l info
+$ service salt-minion start
+</code></pre>
+</div>
+
+<p>이후 서버에서 아래와 같이 승인 필요</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>salt-key -L
+salt-key -A
+</code></pre>
+</div>
+
+<p>몇가지 명령</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>salt '* ' test.ping
+salt '* ' network.ip_addrs
+# grains 정보 가져오기
+salt '* ' grains.items
+salt '* ' grains.item host
+# 상태 가져오기
+salt '* ' status.meminfo
+# 원격 실행
+salt '* ' pkg.list_pkgs
+salt '* ' cmd.run 'echo Hello!!'
+salt '* ' service.status salt
+salt '* ' service.start salt
+# 일반적으로 작성한 state를 실행
+# - state_name.sls 혹은 state_name/init.sls가 실행
+salt '* ' state.apply state_name
+# 아무것도 주지 않으면 최상위의 top.sls가 실행된다.
+salt '* ' state.apply
+</code></pre>
+</div>
+
+<h2 id="saltstack-gui--">Saltstack GUI 도구 설치</h2>
+
+<p>참고의 wiki를 따라가보면, 오픈소스 중에 유망(?)한 건 두가지인듯 싶다. Halite,Saltpad</p>
+
+<h3 id="halite-">Halite 설치</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ vi /etc/salt/master
+</code></pre>
+</div>
+
+<p>아래 설정을 추가</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>external_auth:   # 외부 인증 설정
+  pam:
+    salt:           # Halite 시스템 사용자
+      - .*
+      - '@runner'
+      - '@wheel'
+
+halite:              # halite에 대한 서버 설정
+  level: 'debug'
+  server: 'gevent'   # cherrypy, paste, gevent 중 택일
+  host: '0.0.0.0'
+  port: '8080'
+  cors: False
+</code></pre>
+</div>
+
+<p>salt user 추가</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ useradd salt
+$ passwd salt
+</code></pre>
+</div>
+
+<p>halite 설치 및 실행</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git clone https://github.com/saltstack/halite /opt/halite
+
+$ apt-get install -y python-gevent
+$ cd /opt/halite/halite
+#시작
+$ ./server_bottle.py -d -C -l debug -s gevent
+</code></pre>
+</div>
+
+<p>실제로 master, minion, 실행 이력, grains등이 조회되고, 웹을 통해 실행도 가능하다. 하지만, 생각처럼 기능이 많지 않아 관리도구로 사용하기 부적절해 보인다.</p>
+
+<h3 id="saltpad-">Saltpad 설치</h3>
+
+<p>아직 정상동작 확인은 못함, nginx 설정에서 api url로 요청시 301에러가 난다.(작성중)</p>
+
+<p>설치는 <a href="https://github.com/Lothiraldan/saltpad/blob/master/docs/installation/nginx-across-internet-cors.md">github홈</a>을 참고, 조금 복잡하게 되어 있는데, salt-api를 써서 salt와 통신하고, nginx를 통해 웹서비스를 하는 방식인 듯 하다. 계정은 동일하게 OS걸 사용.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># master 설정에 추가
+$ vi /etc/salt/master
+rest_cherrypy:
+  port: 8000
+  host: 127.0.0.1
+  disable_ssl: True
+
+# salt-api 설치 후 다음과 같이 확인
+$ curl -i http://localhost:8000/
+$ curl -i -H accept=application/json -d username=salt -d password=salt -d eauth=pam http://localhost:8000/login
+
+# saltpad 다운로드
+$ wget https://github.com/Lothiraldan/saltpad/releases/download/v0.3.1/dist.zip
+# 적절한 곳에 압축을 풀고(계정도 만들어야 하니 /home/salt)
+# 설정파일을 수정
+$ cat /home/salt/saltpad/static/settings.json
+{
+    "API_URL": "localhost:8000",
+    "SECURE_HTTP": false,
+    "FLAVOUR": "rest_tornado"
+}
+# nginx를 설치 후 다음과 같이 설정을 추가
+server {
+listen 80 default_server;
+listen [::]:80 default_server ipv6only=on;
+
+# Saltpad specific
+root /home/salt/saltpad/;
+index index.html;
+
+server_name 192.168.10.10;
+
+location / {
+    try_files $uri /index.html;
+}
+
+# Salt-api specific
+location /api/ {
+    proxy_pass       http://localhost:8000/;
+    proxy_set_header Host      $host;
+    proxy_set_header X-Real-IP $remote_addr;
+}
+
+https를 추가하기 위해서는 let's encrypt의 인증서를 받아 https로 설치하면 될 듯
+다만, 위의 /api/ 경로 호출시 301에러가 발생함
+</code></pre>
+</div>
+
+<h1 id="section-1">참고</h1>
+
+<ul>
+  <li>
+    <p><a href="http://www.yongbok.net/blog/saltstack-it-automation-infrastructure-management-tools/">SaltStack – IT automation infrastructure management tools</a></p>
+  </li>
+  <li>
+    <p><a href="http://bluese05.tistory.com/43">Saltstack 너란 녀석. - Grains와 Pillar (2)</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.saltstack.com/en/latest/">Saltstack documentation</a> - 처음에 개념을 잡기 좀 힘들었는데, 중간부분에 Tutorial을 따라 해 보면서 감을 잡을 수 있었음.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/Lothiraldan/saltpad">Github-Saltpad</a></p>
+  </li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

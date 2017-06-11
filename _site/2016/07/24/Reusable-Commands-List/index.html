@@ -97,6 +97,16 @@
     
       
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -109,7 +119,7 @@
       A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
     </p>
     <!--p>
-      &copy; 2016. All rights reserved.
+      &copy; 2017. All rights reserved.
     </p-->
   </div>
 </div>
@@ -151,9 +161,15 @@
       <li><a href="#docker" id="markdown-toc-docker">Docker</a></li>
       <li><a href="#git" id="markdown-toc-git">GIT</a>        <ul>
           <li><a href="#section-4" id="markdown-toc-section-4">일반 명령</a></li>
+        </ul>
+      </li>
+      <li><a href="#git-" id="markdown-toc-git-">Git 기타</a>        <ul>
           <li><a href="#section-5" id="markdown-toc-section-5">바이너리 파일 표시</a></li>
           <li><a href="#gitignore-" id="markdown-toc-gitignore-">gitignore 표시</a></li>
           <li><a href="#section-6" id="markdown-toc-section-6">설정</a></li>
+          <li><a href="#git---" id="markdown-toc-git---">git최신 버전을 설치하는 방법</a></li>
+          <li><a href="#git-clone-----" id="markdown-toc-git-clone-----">git clone시 - 하위 디렉토리만 하기</a></li>
+          <li><a href="#git-push-----" id="markdown-toc-git-push-----">git push 시 다음과 같은 오류가 발생하면</a></li>
         </ul>
       </li>
       <li><a href="#mysql" id="markdown-toc-mysql">MySQL</a></li>
@@ -165,7 +181,9 @@
   </li>
 </ul>
 
-<p>자주 사용하는 명령들의 모음</p>
+<hr />
+
+<p>자주 사용하는 명령들의 모음(이 문서는 지속적으로 보완중입니다.)</p>
 
 <h1 id="linux">Linux</h1>
 
@@ -190,13 +208,13 @@ tar xzvpf filename.tar.gz public_html/
 <h3 id="find">find명령</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#find공백이 들어간 파일명 검색
-find ./ -name "* *"
+$ find ./ -name "* *"
 # 수정한지 20일 이상된 파일만 삭제 ( -exec rm {} \; )
-find . -mtime +20 -type f -ls -exec rm {} \;
+$ find . -mtime +20 -type f -ls -exec rm {} \;
 # 확장자가 .htm* .gif, .js, .css 인 것만 퍼미션을 644(rw-r--r--)로
-find . -name "*.htm*" -o -name "*.gif" -o -name "*.js" -o -name "*.css" -exec chmod 644 {} \;
+$ find . -name "*.htm*" -o -name "*.gif" -o -name "*.js" -o -name "*.css" -exec chmod 644 {} \;
 # 파일 크기가 300KB 이상( -size +300k )인 파일만
-find . -size +300k -ls
+$ find . -size +300k -ls
 #*..
 </code></pre>
 </div>
@@ -206,9 +224,9 @@ find . -size +300k -ls
 <p>awk, xargs등의 명령은 ps, netstat 등과 연결하여 현재 떠있는 프로세스ID를 알아내거나, 그 프로세스들에 특정 작업을 하는 등 운영작업에 많이 사용됨.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#특정 user의 process를 무조건 kill하는 명령
-ps -ef | grep user | awk '{print($1)}' | xargs kill -9
+$ ps -ef | grep user | awk '{print($1)}' | xargs kill -9
 #구분자를 :로 하여 첫번째 필드를 출력
-awk ‘FS=”:” {print $1}’ /etc/passwd
+$ awk ‘FS=”:” {print $1}’ /etc/passwd
 </code></pre>
 </div>
 
@@ -238,8 +256,16 @@ echo "Postgresql is UP!"
 
 <p>Linux 폐쇄망에서의 터널링 사례1</p>
 
-<p>A-|-B-C-인터넷
-위와 같은 상황에서 A는 직접적으로 인터넷을 사용할 수 없는데, A와 B가 SSH를 통해 연결할 수 있고, B에서 C의 특정 포트를 통해 인터넷을 사용할 수 있다고 하면(프록시) A는 B를 터널링하여 C를 통해 인터넷 환경에 접근할 수 있다. 주로 기업 환경에서 보안때문에 막혀 있는 경우 apt, yum등 패키지 업데이트나 패치 등을 위해 사용하기도 한다.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>A-</td>
+      <td>-B-C-인터넷</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위와 같은 상황에서 A는 직접적으로 인터넷을 사용할 수 없는데, A와 B가 SSH를 통해 연결할 수 있고, B에서 C의 특정 포트를 통해 인터넷을 사용할 수 있다고 하면(프록시) A는 B를 터널링하여 C를 통해 인터넷 환경에 접근할 수 있다. 주로 기업 환경에서 보안때문에 막혀 있는 경우 apt, yum등 패키지 업데이트나 패치 등을 위해 사용하기도 한다.</p>
 
 <p>ssh USERID@B서버IP -N -L 28080:C서버IP:C서버포트</p>
 
@@ -256,19 +282,19 @@ echo "Postgresql is UP!"
 <p>SSH로그인자동화(공개키를 이용한)</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#키 생성-rsa알고리즘으로 생성한다는 의미
-ssh-keygen -t rsa
+$ ssh-keygen -t rsa
 #타겟 서버로 복사
-scp ~/.ssh/id_rsa.pub vagrant@192.168.33.12:
+$ scp ~/.ssh/id_rsa.pub vagrant@192.168.33.12:
 #혹은 다음과 같이 복사함.
-ssh-copy-id vagrant@192.168.33.12
+$ ssh-copy-id vagrant@192.168.33.12
 #해당 서버에 접속하여 허용 키 목록에 등록
-cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+$ cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 #권한 설정
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/id_rsa
-chmod 644 ~/.ssh/id_rsa.pub  
-chmod 644 ~/.ssh/authorized_keys
-chmod 644 ~/.ssh/known_hosts
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/id_rsa
+$ chmod 644 ~/.ssh/id_rsa.pub  
+$ chmod 644 ~/.ssh/authorized_keys
+$ chmod 644 ~/.ssh/known_hosts
 #위의 작업을 해 준 계정에만 해당됨.(위에서는 vagrant)
 </code></pre>
 </div>
@@ -277,21 +303,21 @@ chmod 644 ~/.ssh/known_hosts
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#ubuntu
 #보안상의 이유로 바뀌어 있는 경우가 있음
-cat /etc/issue
+$ cat /etc/issue
 #그럴 경우 아래와 같이 수행
-cat /etc/*release*
+$ cat /etc/*release*
 #혹은
-lsb_release -a
+$ lsb_release -a
 </code></pre>
 </div>
 
 <p>저장소(Repository)서버 변경(ubuntu) - 기본적으로 설정되어 있는 repository의 경우 대부분 서버가 외국이라, 속도가 상당히 드린 편임, 아래와 같이 국내서버로 변경한다.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo vi /etc/apt/sources.list
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo vi /etc/apt/sources.list
 :%s/archive.ubuntu.com/ftp.daumkakao.com/g
 :%s/security.ubuntu.com/ftp.daumkakao.com/g
 :%s/extras.ubuntu.com/ftp.daumkakao.com/g
-apt-get update
+$ apt-get update
 </code></pre>
 </div>
 
@@ -310,21 +336,21 @@ dpkg --get-selections | grep jdk
 RPM명령(CentOS,RHEL계열)
 
 #설치된 rpm 조회
-rpm -qa | grep chef
+$ rpm -qa | grep chef
 #(위에서 이름을 확인 후)설치된 rpm 삭제
-rpm -e chef-12.4.1-1.el7.x86_64
-rpm 설치
-rpm -ivh chef-12.5.1-1.el7.x86_64.rpm
-rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
+$ rpm -e chef-12.4.1-1.el7.x86_64
+#rpm 설치
+$ rpm -ivh chef-12.5.1-1.el7.x86_64.rpm
+$ rpm -Uvh chef-12.5.1-1.el7.x86_64.rpm
 </code></pre>
 </div>
 
 <h2 id="section-2">운영시 유용한 명령들</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>* 로그 크기 확인하기(일정 크기가 넘는 로그파일 확인)
-du -k | awk '{if (length($1) &gt; 5) print}'
+$ du -k | awk '{if (length($1) &gt; 5) print}'
 * 특정 계정에 속한 프로세스 kill 하기
-ps -ef | grep 계정 | grep -v grep | awk '{print $2}' | xargs kill -9
+$ ps -ef | grep 계정 | grep -v grep | awk '{print $2}' | xargs kill -9
 </code></pre>
 </div>
 
@@ -334,26 +360,26 @@ ps -ef | grep 계정 | grep -v grep | awk '{print $2}' | xargs kill -9
 
 <p>빌드</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker build -t ska/myapp:1.0 .
-docker build -t ska/java_web:1.0 .
+<div class="highlighter-rouge"><pre class="highlight"><code>$ docker build -t ska/myapp:1.0 .
+$ docker build -t ska/java_web:1.0 .
 </code></pre>
 </div>
 
 <p>실행</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d --name myapp -p 8080 ska/myapp:1.0
-docker run -i --name myapp -t ska/myapp:1.0 /bin/bash
-docker run -d --name java_web -p 8080 ska/java_web:1.0
-docker run -i --name java_web -t ska/java_web:1.0 /bin/bash
+<div class="highlighter-rouge"><pre class="highlight"><code>$ docker run -d --name myapp -p 8080 ska/myapp:1.0
+$ docker run -i --name myapp -t ska/myapp:1.0 /bin/bash
+$ docker run -d --name java_web -p 8080 ska/java_web:1.0
+$ docker run -i --name java_web -t ska/java_web:1.0 /bin/bash
 
 #사용하지 않는 컨테이너 확인
-docker ps -a | grep Exited | awk '{print $1}'
+$ docker ps -a | grep Exited | awk '{print $1}'
 #사용하지 않는 컨테이너 전부 삭제
-docker rm $(docker ps -a | grep Exited | awk '{print $1}')
+$ docker rm $(docker ps -a | grep Exited | awk '{print $1}')
 #사용하지 않는 이미지 확인
-docker images | grep none | awk '{print $3}'
+$ docker images | grep none | awk '{print $3}'
 #사용하지 않는 이미지 전부 삭제
-docker rmi $(docker images | grep none | awk '{print $3}')
+$ docker rmi $(docker images | grep none | awk '{print $3}')
 </code></pre>
 </div>
 
@@ -362,31 +388,38 @@ docker rmi $(docker images | grep none | awk '{print $3}')
 <h3 id="section-4">일반 명령</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># 변경 반영 및 commit, push
-git add --all
-git add ./*
-# gitifnore에 있으나, 무시하고 등록하고 싶을 경우
-git add -f 파일명
-
-git commit -a -m "commit message"
+$ git add --all(-A)
+$ git add ./*
+# gitignore에 있으나, 무시하고 등록하고 싶을 경우
+$ git add -f 파일명
+$ git commit -a -m "commit message"
 # push
-git push origin master
-# u옵션은 이후 push시 remote와 branch를 저장(이후로는 merge만 하면 됨)
-git push -u origin master
+$ git push origin master
+# u옵션은 이후 push시 remote와 branch를 저장(이후로는 git push만 하면 됨)
+$ git push -u origin master
 
-
-#development 브랜치로 변경
-git checkout development
+# development 브랜치로 변경
+$ git checkout development
 # 브랜치 정보 보기
-git branch
+$ git branch
 # 상태보기
-git status
+$ git status
+$ git log
 
-로컬에서 수정한 내용을 무시하고 싶을 때
-git checkout -- 파일명
+# 로컬에서 수정한 내용을 무시하고 싶을 때
+$ git checkout -- &lt;파일명&gt;
 
-# 설정
+# 전체를 무시하고 싶을 경우
+$ git fetch origin
+$ git reset --hard origin/master
+# 워킹트리 전체를 마지막 커밋 상태로 돌림
+$ git reset --hard HEAD
 </code></pre>
 </div>
+
+<p>참고 - <a href="https://rogerdudler.github.io/git-guide/index.ko.html">git - 간편 안내서</a></p>
+
+<h2 id="git-">Git 기타</h2>
 
 <h3 id="section-5">바이너리 파일 표시</h3>
 
@@ -407,16 +440,66 @@ git checkout -- 파일명
 <p>git 설정은 로컬의 사용자 홈 디렉토리에 .gitconfig 라는 이름으로 저장됨. 파일을 직접 수정해도 되나, 정확히 format을 모르므로, 아래와 같이 명령어 사용하는 게 편함.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#글로벌 설정, email, username
-git config --global user.name "...."
-git config --global user.email ......
+$ git config --global user.name "...."
+$ git config --global user.email ......
 
 # 프록시 설정
-git config http.proxy http://xx.xx.xx.xx:8888
+$ git config http.proxy http://xx.xx.xx.xx:8888
 
 # https verify false - 프록시 사용시 https 인증서 문제가 있다면 사용
-git config http.sslVerify "false"
+$ git config http.sslVerify "false"
 </code></pre>
 </div>
+
+<h3 id="git---">git최신 버전을 설치하는 방법</h3>
+
+<p>대부분의 공식 repository(yum,apt-get)에는 비교적 이전버전에 들어가 있음</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># add-apt-repository 추가
+$ sudo apt-get install python-software-properties
+$ sudo apt-get install software-properties-common
+# 이후 아래와 같이 설치
+$ sudo su -
+$ add-apt-repository ppa:git-core/ppa
+# ---&gt; 프록시 사용시에는 위의 명령을 반드시 sudo 없이 실행(sudo가 있을 경우 proxy는 못 탐)
+
+$ sudo apt-get update
+$ sudo apt-get install git
+</code></pre>
+</div>
+
+<h3 id="git-clone-----">git clone시 - 하위 디렉토리만 하기</h3>
+
+<p>기본적으로는 Repository 이름이 생기면서 하위로 다운로드 되므로, 원하는 디렉토리 아래 받고자 할 때 아래와 같이 수행한다.
+(sparse checkout을 하라고 하는데, 특정 디렉토리만 받을 거 아니면 아래와 같이 하면 된다.)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /
+$ git init srv
+$ cd srv
+$ git remote add -f origin https://github.com/blackmaz/saltstack_test.git
+$ git pull origin master
+</code></pre>
+</div>
+
+<p>Sparse Checkout은 <a href="https://www.lesstif.com/pages/viewpage.action?pageId=20776761">여기</a>를 참고</p>
+
+<h3 id="git-push-----">git push 시 다음과 같은 오류가 발생하면</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git push origin master        
+Username for 'xxxx': ska
+Password for 'xxxx':
+Counting objects: 7, done.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 15.42 MiB | 0 bytes/s, done.
+Total 7 (delta 2), reused 0 (delta 0)
+error: RPC failed; HTTP 403 curl 22 The requested URL returned error: 403 Forbidden
+fatal: The remote end hung up unexpectedly
+fatal: The remote end hung up unexpectedly
+Everything up-to-date
+</code></pre>
+</div>
+
+<p>로컬의 gitconfig 상에 proxy 설정 등이 있는지 확인, 없다면 buffersize, 그리고 서버 설정(gitlab의 nginx설정 등) 등의 문제일 수 있음.</p>
 
 <h2 id="mysql">MySQL</h2>
 
@@ -438,13 +521,13 @@ Drop schema ReviewDB cascade;
 
 <p>tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 좀 까다로움, 그래서 아래와 같이 tar를 특정위치에 풀고 update-alternatives 로 시스템에서 인식되도록 함.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>wget ......install_file_path/jdk-8u66-linux-x64.gz
-tar zxvf jdk-8u66-linux-x64.gz
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget ......install_file_path/jdk-8u66-linux-x64.gz
+$ tar zxvf jdk-8u66-linux-x64.gz
 
 -ubuntu
-update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_66/bin/javac 1
-update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_66/bin/java 1
-update-alternatives --install /usr/bin/javaws javaws /opt/jdk1.8.0_66/bin/javaws 1
+$ update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_66/bin/javac 1
+$ update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_66/bin/java 1
+$ update-alternatives --install /usr/bin/javaws javaws /opt/jdk1.8.0_66/bin/javaws 1
 </code></pre>
 </div>
 
@@ -452,7 +535,7 @@ update-alternatives --install /usr/bin/javaws javaws /opt/jdk1.8.0_66/bin/javaws
 
 <div class="highlighter-rouge"><pre class="highlight"><code>바로 활용할 수 있는 단순 웹 서버(보통 python은 다 설치되어 있음)
 #run SimpleHTTPServer
-python -m SimpleHTTPServer 8080
+$ python -m SimpleHTTPServer 8080
 </code></pre>
 </div>
 
@@ -462,9 +545,9 @@ python -m SimpleHTTPServer 8080
 tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 있지 않아서 터미널상에서 바로 쓸 수 있는 멀티Screen도구일 것 같음.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#설치
-apt-get install tmux
+$ apt-get install tmux
 #실행(실행시 아래 상태창이 생김)
-tmux
+$ tmux
 # 새 창띄우기 - 순서대로 0부터 번호가 부여된 창이 생성됨
 Ctrl+B 누르고 C
 # 창 이동
@@ -481,33 +564,33 @@ Ctrl+B 누르고 %
 <h2 id="proxy-">Proxy 설정</h2>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>#env에 추가(wget,curl 등 cli 기반 도구의 경우)
-export http_proxy="http://xx.xx.xx.xx:8888"
-export https_proxy="http://xx.xx.xx.xx:8888"
+$ export http_proxy="http://xx.xx.xx.xx:8888"
+$ export https_proxy="http://xx.xx.xx.xx:8888"
 
 #proxy setting(로그인쉘에 추가-bash의 경우)
-echo 'export http_proxy="http://xx.xx.xx.xx:8888"' &gt;&gt; ~/.bash_profile
-echo 'export https_proxy="https://xx.xx.xx.xx:8888"' &gt;&gt; ~/.bash_profile
+$ echo 'export http_proxy="http://xx.xx.xx.xx:8888"' &gt;&gt; ~/.bash_profile
+$ echo 'export https_proxy="https://xx.xx.xx.xx:8888"' &gt;&gt; ~/.bash_profile
 
 #apt proxy setting(ubuntu 패키지 관리자)
-echo 'Acquire::http::proxy "http://xx.xx.xx.xx:8888/";' &gt;&gt; /etc/apt/apt.conf
-echo 'Acquire::https::proxy "http://xx.xx.xx.xx:8888/";' &gt;&gt; /etc/apt/apt.conf
+$ echo 'Acquire::http::proxy "http://xx.xx.xx.xx:8888/";' &gt;&gt; /etc/apt/apt.conf
+$ echo 'Acquire::https::proxy "http://xx.xx.xx.xx:8888/";' &gt;&gt; /etc/apt/apt.conf
 
 #yum proxy setting(centos 패키지 관리자)
-echo 'proxy=http://xx.xx.xx.xx:8888' &gt;&gt; /etc/yum.conf
+$ echo 'proxy=http://xx.xx.xx.xx:8888' &gt;&gt; /etc/yum.conf
 
 #WINDOWS일 경우
-set HTTP_PROXY="http://xx.xx.xx.xx:8888"
-set HTTPS_PROXY="http://xx.xx.xx.xx:8888"
+$ set HTTP_PROXY="http://xx.xx.xx.xx:8888"
+$ set HTTPS_PROXY="http://xx.xx.xx.xx:8888"
 
 #git(gitconfig) 설정
-git config http.proxy http://xx.xx.xx.xx:8888
+$ git config http.proxy http://xx.xx.xx.xx:8888
 
 #docker proxy 설정
 참고 - http://nknu.net/running-docker-behind-a-proxy-on-ubuntu-14-04/
 
 /etc/defaults/docker
 파일 수정
-export http_proxy="http://xx.xx.xx.xx:8888/"
+$ export http_proxy="http://xx.xx.xx.xx:8888/"
 
 ### gpg proxy 설정
 http-proxy="http://xx.xx.xx.xx:8888/"
@@ -530,27 +613,27 @@ http.proxyHost=PROXYHTTP
     
       <li>
         <h7>
-          <a href="/2016/09/07/Docker-run-with-docker-compose/">
-            Docker Compose로 HA환경 구성하기
-            <small>07 Sep 2016</small>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
-            Ubuntu(Unity,Xfce)테마 변경하기
-            <small>04 Sep 2016</small>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/08/22/Build-Docker-Container/">
-            Docker 이미지를 빌드하기
-            <small>22 Aug 2016</small>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
           </a>
         </h7>
       </li>

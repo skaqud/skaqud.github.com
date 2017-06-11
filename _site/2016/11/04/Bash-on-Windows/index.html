@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Bash on Windows 10 &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Bash on Windows 10</h1>
+  <span class="post-date">04 Nov 2016</span>
+  <p>윈도우 10에서 비로소 사용 가능해진 Bash on Windows 10</p>
+
+<h1 id="section">설치하기</h1>
+
+<p>이전까지 Windows에 bash를 설치하는 방법은 조금 복잡했으나, 윈도우 1주년 업데이트 후 좀 간단해진 것 같음, 우선 최신 업데이트까지 설치한 뒤,설정 &gt; 업데이트 및 복구 창에서 개발자용 메뉴를 누른 뒤 개발자 모드로 변경</p>
+
+<p>이후 제어판의 프로그램 제거 - Windows 기능 켜기/끄기를 누르면 나오는 창에서 “Windows용 Linux 하위 시스템(베타)”를 선택하면 커맨드창에서 bash를 사용할 수 있다.</p>
+
+<h1 id="section-1">사용기, 팁</h1>
+
+<p>패키지 관리자를 통한 패키지 목록 업데이트는 잘 수행됨</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-get update
+apt-get upgrade
+</code></pre>
+</div>
+
+<p>패치 등의 업그레이드도 잘 수행됨</p>
+
+<p>bash 명령 수행시 별도의(linux의 chroot같은) 영역으로 이동하게 되는데, 다음과 같이 외부의 윈도우상의 드라이브로 접근 가능</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /mnt/c/
+</code></pre>
+</div>
+
+<p>git client의 경우 윈도우 어플리케이션은 아무래도 무겁고 느린 감이 있어서 다음과 같이 설치</p>
+
+<p>그냥 git 설치시 버전이 조금 낮다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ apt-get install git
+# 설치 후
+$ git --version
+  git version 1.9.1
+</code></pre>
+</div>
+
+<p>git 최신버전 설치 및 git clone 수행</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ add-apt-repository ppa:git-core/ppa
+$ apt-get update
+$ apt-get install git-core
+$ git --version
+  git version 2.10.2
+</code></pre>
+</div>
+
+<p>openssh-server의 경우 cmd 상태창으로 계속 linux명령을 날리는 게 불편하기도 하고, 윈도우에서 간혹 ssh를 써야 할 경우도 있어서 되는지 테스트 해 봤는데, 설치가 되어 있어서 기동해봤더니 잘 되지 않음</p>
+
+<p>아래와 같은 내용을 찾아서</p>
+
+<p><a href="http://superuser.com/questions/1111591/how-can-i-ssh-into-bash-on-ubuntu-on-windows-10">How can I SSH into “Bash on Ubuntu on Windows 10”?</a></p>
+
+<p>다음과 같이 실행</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 우선 설치되어 있는 서버를 제거 후 재설치
+$ apt-get remove openssh-server
+$ apt-get install openssh-server
+# vi /etc/ssh/sshd_config하여 아래와 같은 내용들을 확인
+  PermitRootLogin no
+  AllowUsers yourusername
+  PasswordAuthentication yes
+  UsePrivilegeSeparation no
+# 수정 후 서비스 재시작
+$ service ssh --full-restart
+</code></pre>
+</div>
+
+<p>서비스는 잘 시작되나, 계정으로 로그인시 access denied 가 계속 발생함, 비번이 틀린 건 아닌거 같고</p>
+
+<p><a href="https://www.reddit.com/r/Windows10/comments/4vx5a3/enabling_openssh_remote_ssh_logins_via_bash_on/">reddit의 다음 글</a>을 읽어보니 ssh 서버 포트를 변경하믄 된다는 얘기가 있다. (22번에 떠 있는 ssh서버는 윈도우에서 자체적으로 띄운 것인듯..충돌해서 발생하는 문제인 것 같다.)</p>
+
+<p>port를 2020으로 변경후 putty 등 ssh client로 접속하니 잘 된다.</p>
+
+<p>cmd 상에서 다음과 같이 명령을 수행하면 bash 를 통해 명령을 실행할 수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bash -c 'vi'
+</code></pre>
+</div>
+
+<p>openssh-server의 경우 미리 bash창이 하나는 띄워져 있어야 아래와 같이 cmd창을 통한 명령으로 openssh-server를 시작할 수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># win키+R 누른 후(실행 창)
+bash -c 'sudo service ssh start'
+</code></pre>
+</div>
+
+<p>윈도우 시작시 자동으로 올라오게 하고 싶다면 먼저 bash창을 하나 띄운 후 위의 스크립트를 실행하면 될 것 같다.</p>
+
+<h1 id="section-2">결론</h1>
+
+<ul>
+  <li>
+    <dl>
+      <dt>몇가지 장점</dt>
+      <dd>
+        <p>윈도우에서 더이상 git-client를 깔 필요가 없다. 보통 윈도우 프로그램들보다 같은 역할을 하는 리눅스 프로그램들이 가볍고 효율적이다.</p>
+      </dd>
+      <dd>
+        <p>리눅스에만 있던 것(find,grep…)들도 윈도우에서 가상환경 없이 실행할 수 있다. 같은 shell script를 공유할 수 있다.</p>
+      </dd>
+      <dd>
+        <p>윈도우에서 ssh를 위해 별도의 도구를 깔 필요가 없다.</p>
+      </dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>단점</dt>
+      <dd>
+        <p>윈도우와 bash상에서 설치된 도구들이 각각 별도로 실행된다. 윈도우에서는 bash에 설치한 git client를 바로 접근할 수 없고 그 반대도 안됨.</p>
+      </dd>
+      <dd>
+        <p>개발이나 테스트용이 아닌, Mac과 같은 Unix based 시스템과 같은 안정성은 아직 기대하기 힘듬.</p>
+      </dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>기타</dt>
+      <dd>
+        <p>윈도우의 디폴트 ssh서버는 윈도우의 로그인 계정과 연결되며, 접속시 cmd창이 뜬다. putty 로 접속해서 dir치고 있는 모습이 좀 생경하다.(?)</p>
+      </dd>
+      <dd>
+        <p>윈도우 대비 mac의 가장 큰 장점인, 손쉬운 cli기반 개발환경, OS패키지 관리자 사용 등에 위협이 될 것 같다. 2016 젠더 맥북프로 대신에 저렴이 윈도우 노트북을 개발용 머신으로..</p>
+      </dd>
+    </dl>
+  </li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

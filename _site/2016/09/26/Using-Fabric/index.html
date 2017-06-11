@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Fabric 사용법 &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Fabric 사용법</h1>
+  <span class="post-date">26 Sep 2016</span>
+  <p>배포 도구인 Fabric 사용법</p>
+
+<p>개인적으로 Capistrano는 너무 어려웠음, 대안으로 찾은게 그나마 더 친근한(?) Python 기반의 fabric을 선택함.</p>
+
+<p>참고 - <a href="https://www.digitalocean.com/community/tutorials/how-to-use-fabric-to-automate-administration-tasks-and-deployments">How To Use Fabric To Automate Administration Tasks And Deployments</a></p>
+
+<p>–&gt; 배포 도구이기도 하지만, 다수의 서버들을 관리하는 관리자용 도구로도 사용할 수 있음 그에 대한 내용</p>
+
+<h2 id="section">설치방법</h2>
+
+<ul>
+  <li>
+    <p>참고:<a href="http://www.slideshare.net/ssuser0e3c90/posquit0-fabric-ssh-streamlining">Fabric을 이용한 ssh streamlining</a></p>
+  </li>
+  <li>
+    <p>장 : 단순하고, 깔끔한 배포 도구, 개발자 입장에서 사용하기 쉬움</p>
+  </li>
+  <li>
+    <p>단 : GUI 없음, python 문법에 대한 Learning curve - GUI는 별도의 오픈소스가 있는 듯.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>pip를 통한 설치</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+$ curl -O https://bootstrap.pypa.io/get-pip.py
+$ [sudo] python get-pip.py
+$ gcc install
+$ pip install pycrypto fabric
+</code></pre>
+</div>
+
+<p>혹은 아래와 같이 설치(더 간편)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install fabric
+</code></pre>
+</div>
+
+<hr />
+
+<p>아래와 같이 간략히 테스트 해 볼 수 있음.</p>
+
+<p>적절한 디렉토리에 아래와 같이 fabfile.py 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>env.hosts = [
+        '192.168.1.9',
+        '192.168.1.10'
+]
+
+def hello():
+    print("Hello world!")
+
+def host_info():
+    local('uname -a')
+    run('uname -a')
+
+def host_run():
+    # Create a directory (i.e. folder)
+    run("mkdir trunk")
+    run("rmdir trunk")
+
+    # Uptime
+    run("uptime")
+
+    # Hostname
+    run("hostname")
+
+    # Capture the output of "ls" command
+    result = run("ls -l")
+
+    # Check if command failed
+    result.failed
+</code></pre>
+</div>
+
+<p>실행은 다음과 같이.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ fab hello
+
+$ fab host_info
+</code></pre>
+</div>
+
+<p>Deploy 도구이지만, 의외로 다수의 서버들을 관리하는 데에도 효율적일 수 있을 것 같다.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

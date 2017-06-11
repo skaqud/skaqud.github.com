@@ -97,6 +97,16 @@
     
       
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
 
     <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
     <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
@@ -109,7 +119,7 @@
       A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
     </p>
     <!--p>
-      &copy; 2016. All rights reserved.
+      &copy; 2017. All rights reserved.
     </p-->
   </div>
 </div>
@@ -190,6 +200,8 @@ sudo sh ~/Downloads/crouton -r list
 sudo sh ~/Downloads/crouton -r trusty -t xfce
 #설치(desktop없이 cli만)
 sudo sh ~/Downloads/crouton -r trusty -t extra-cli
+#설치(ubuntu 16.04, cli만) - 2017.05 재설치시 추가
+sudo sh ~/Downloads/crouton -r xenial -t core
 
 #잘못 설치했을 경우 삭제
 sudo delete-chroot name
@@ -275,15 +287,23 @@ ibus-setup-hangul
     <p>C201의 경우 일부 데스크탑 환경이 정상적으로 설치되지 않음, CPU 문제인 듯, Unity, gnome 안되고, xfce, kde, lxde 는 됨. xfce가 가볍고 사용하기도 적당한 것 같음</p>
   </li>
   <li>
-    <p>Crouton으로 실행시 no screen found 에러가 발생할 경우</p>
+    <p>Crouton으로 실행시 no screen found 에러가 발생할 경우 다음과 같이 실행</p>
 
-    <p>다음과 같이 실행
-  참고 - https://github.com/dnschneid/crouton/wiki/Asus-C201</p>
+    <p>참고 - https://github.com/dnschneid/crouton/wiki/Asus-C201</p>
 
     <p>sudo enter-chroot
-  sudo rm /dev/dri/card0
-  sudo mv /dev/dri/card1 /dev/dri/card0</p>
+   sudo rm /dev/dri/card0
+   sudo mv /dev/dri/card1 /dev/dri/card0</p>
   </li>
+</ul>
+
+<h2 id="section-3">참고</h2>
+
+<ul>
+  <li><a href="https://github.com/dnschneid/crouton">crouton in github</a></li>
+  <li><a href="http://blog.poin2.com/2015/09/크롬북에서-crouton-사용하기/">poin2블로그-crouton으로 리눅스 사용하기</a></li>
+  <li><a href="http://bookstorycabin.tistory.com/entry/도시바-크롬북2-chromebook-2-우분투-ubuntu-설치-1404">도시바 크롬북2 우분투 설치 14.04</a></li>
+  <li><a href="http://www.howtogeek.com/210047/how-to-manage-the-crouton-linux-system-on-your-chromebook/">How to Manage the Crouton Linux System on Your Chromebook</a></li>
 </ul>
 
 </div>
@@ -294,27 +314,27 @@ ibus-setup-hangul
     
       <li>
         <h7>
-          <a href="/2016/09/07/Docker-run-with-docker-compose/">
-            Docker Compose로 HA환경 구성하기
-            <small>07 Sep 2016</small>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/09/04/Change-Theme-On-Ubuntu/">
-            Ubuntu(Unity,Xfce)테마 변경하기
-            <small>04 Sep 2016</small>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
           </a>
         </h7>
       </li>
     
       <li>
         <h7>
-          <a href="/2016/08/22/Build-Docker-Container/">
-            Docker 이미지를 빌드하기
-            <small>22 Aug 2016</small>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
           </a>
         </h7>
       </li>

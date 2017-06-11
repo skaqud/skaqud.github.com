@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      notitle &middot; 雜夫's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-81856790-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p><BR><BR></p>
+    <p>아키텍트==雜夫</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/archive/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags/">Tags</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/tags2/">Tag=reuse</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud/archive/">Archive</a>
+    <a class="sidebar-nav-item" href="https://github.com/skaqud/tags/">Tags</a-->
+    <!--a class="sidebar-nav-item" href="https://github.com/skaqud">GitHub project</a-->
+    <!--span class="sidebar-nav-item">Currently v0.0.1</span-->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, hosted on <a href="https://pages.github.com" target="_blank">Github Pages</a>. Theme is from <a href="https://github.com/poole/lanyon" target="_blank">@lanyon</a>.
+    </p>
+    <!--p>
+      &copy; 2017. All rights reserved.
+    </p-->
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">雜夫's Blog</a>
+            <small>development architecture integration operation</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">notitle</h1>
+  <span class="post-date">25 Dec 2016</span>
+  <p>숙제</p>
+
+<h1 id="saas--sw">SaaS화 하기 쉬운SW</h1>
+<ul>
+  <li>SaaS로 옮기기 쉬운 SW의 종류(ERP,CRM,백오피스…)?</li>
+  <li>SaaS를 위한 SW의 쉬운 패키징 방법</li>
+  <li>SaaS화 하기 위해 최적화된 아키텍처 구성은?</li>
+</ul>
+
+<h2 id="saas-">왜 SaaS를 쓰는가?(장단점)</h2>
+
+<h3 id="section">장점</h3>
+<ul>
+  <li>사용 편의성, 보안문제가 없을 경우 도입이 더 쉽다. 편리한 업그레이드 - 시간 단축</li>
+  <li>단기일 경우 유지보수/운영비용의 절감</li>
+  <li>사용자의 어플리케이션 사용방식과 패턴을 이해 가능</li>
+</ul>
+
+<h3 id="section-1">단점</h3>
+<ul>
+  <li>고객별 Customizing 이 어려움</li>
+  <li>제품개발의 비용이 기존 제품보다 더 크다(Multi-tenant이므로)</li>
+  <li>법/규제문제</li>
+  <li>성능 이슈 발생 가능</li>
+  <li>어플리케이션 간 통합 및 연계의 어려움</li>
+</ul>
+
+<h2 id="saas---sw">SaaS화 하기 쉬운 SW</h2>
+<ul>
+  <li>고객의 중요한 Data가 없는 SW : 예) 은행의 경우(Account,원장)</li>
+  <li>(비즈니스 자체가 아닌)도구성 서비스</li>
+  <li>접근, 사용 편의성이 더 중요시되는 경우</li>
+  <li>고객에게 아예 새로운 비즈니스를 제공하거나, 아예 비즈니스를 제공하지 않음</li>
+</ul>
+
+<p>기타. SW들이 SaaS화 되어가고 있는 원인
+- 기술의 발전 - 네트워크, 컴퓨팅 자원의 발전 - Rich Client가 브라우저에서 가능해 짐
+- 버전 관리, 설치, 업그레이드 편의성 - 유지보수/운영비용 절감
+- 클라우드 기반 환경 - 유연성, Scalable 아키텍처</p>
+
+<h2 id="saas--">SaaS를 위한 설치,관리도구</h2>
+<p>설정관리 도구(Configuration management Tool), 클라우드 관리 도구, 배포도구 등 서비스의 설치, 배포, 운영 등에 관여하는 소프트웨어 형태, 각각 설치Script를 작성, 배포, 공유 가능한 생태계(eco-system)을 가지고 있어, 사용자들이 쉽게 활용할 수 있도록 하고 있음. 컨설팅이나, 일정 수준 이상의 사용일 경우 비용을 받는 형태의 비즈니스 모델을 가지고 있음.</p>
+
+<h3 id="chef">Chef</h3>
+<p>가장 많이 쓰여지는 도구, AWS에 opswork로 addon되어 있음, 기능이 많이 들어가서 예전 버전에 비해 많이 무거워짐, Chef-solo로 단일 서버에서도 쓸 수 있음, Server-Client구성시 무겁고 방법이 어렵다. 기반 언어는 Ruby임, 25node 이상일 경우 유료</p>
+
+<h3 id="puppet">puppet</h3>
+<p>Chef에 이어 많이 쓰이는 도구, 많은 부분에서 Chef와 유사, 기반언어는 Ruby</p>
+
+<h3 id="ansible">Ansible</h3>
+<p>Agent-less구조가 가능한 비교적 신규 도구, Chef,puppet에 비해 해당 부분이 강점일수 있으나, 약점이 될 수도 있을 듯. 기반 언어는 Python. 최근에 Redhat에 인수됨. GUI가 있는 Ansible Tower의 경우만 유료.</p>
+
+<h3 id="saltstack">Saltstack</h3>
+<p>자세히 모릅니다…ㅡ.,ㅡ;</p>
+
+<p>이외로 Docker, CFEngine, Fabric, Capistrano 등(개인적으로는 Docker가 가장 발전된 형태라고 생각)</p>
+
+<h2 id="section-2">참고</h2>
+<p><a href="http://www.slideshare.net/SeongBokLee/saas-59305888">SaaS동향</a>
+<a href="http://www.slideshare.net/DanielHyeon/isv-saa-s-27491146">ISV관점의 SaaS분석</a>
+<a href="https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software">Comparison of open-source configuration management software</a></p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h7>
+          <a href="/2017/05/08/using-GCP/">
+            GCP사용기
+            <small>08 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/05/07/Docker-swarm/">
+            Docker swarm 적용 및 사용기
+            <small>07 May 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+      <li>
+        <h7>
+          <a href="/2017/04/06/mac-tips/">
+            Mac사용팁
+            <small>06 Apr 2017</small>
+          </a>
+        </h7>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
