@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 완벽한 IT인프라 구축을 위한 Docker리뷰
+title: 완벽한 IT인프라 구축을 위한 Docker 소감
 date: 2017-06-28 22:03:00
 tags:
 - Tech
