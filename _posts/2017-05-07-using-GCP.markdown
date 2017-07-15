@@ -31,6 +31,8 @@ GCP 무료 Credit 소진을 위한 사용기, 써본게 AWS뿐이라, AWS와 비
 
 # 추가로 확인할 사항
 
+- 무료 credit 비용문제로 테스트 보류
+
 - VPC생성, 설정 등
 - AppEngine으로 배포하고 사용해 보기
 - Container Engine 사용해 보기
