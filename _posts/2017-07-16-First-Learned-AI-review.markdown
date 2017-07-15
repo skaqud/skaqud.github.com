@@ -7,7 +7,7 @@ tags:
 - Review
 ---
 
-한빛출판사의 [처음 배우는 인공지능](http://www.hanbit.co.kr/store/books/look.php?p_code=B1908490055) 을 읽고
+AI입문서, 한빛출판사의 [처음 배우는 인공지능](http://www.hanbit.co.kr/store/books/look.php?p_code=B1908490055) 을 읽고
 
 ![처음 배우는 인공지능 표지](https://user-images.githubusercontent.com/2344830/28241284-87468fec-69cc-11e7-9297-e30be26cce03.jpg)
 
