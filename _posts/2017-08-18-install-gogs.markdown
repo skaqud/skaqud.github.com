@@ -6,10 +6,12 @@ tags:
 - Tech
 ---
 
+gitlab과 유사한 설치형 형상관리 오픈소스 gogs 설치 및 설정.
 
 # gogs 설치 및 환경설정(nginx-gogs-mysql)
 
-참고 
+*참고* 
+
 - https://gogs.io/docs/installation
 - https://gogs.io/docs/intro/faqs
 
