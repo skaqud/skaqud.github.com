@@ -58,3 +58,19 @@ nginx.conf 파일 server 영역 안에 추가
    nohup ./gogs web &
 
 
+## webhook 설정, slack연결
+
+gogs에 push, issue 생성 등의 이벤트시 slack의 원하는 채널에 메세지가 공유되는 형태로 설정 가능
+
+*gogs 설정*
+
+gogs의 Repository의  setting > Webhooks 에서
+
+Payload URL, Channel 정보를 맞게 입력해야 함
+
+*slack 설정*
+
+slack에서 메세지 받아들이는 설정 추가
+
+알려진 App들은 Manage > Apps에서 설정 가능하나, 그렇지 않은 경우 Incoming Webhooks를 통해 전송받게 되는 듯 하다. Incoming Webhooks 라는 Custom Integration을 추가한 뒤 메세지를 보낼 채널을 선택하고 Webhook URL을 확인하여 gogs의 Payload URL에 입력해준다.
+
