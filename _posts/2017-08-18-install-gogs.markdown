@@ -12,16 +12,17 @@ gitlab과 유사한 설치형 형상관리 오픈소스 gogs 설치 및 설정.
 
 *참고* 
 
-- https://gogs.io/docs/installation
-- https://gogs.io/docs/intro/faqs
+- [설치](https://gogs.io/docs/installation)
+- [FAQ](https://gogs.io/docs/intro/faqs)
+
 
 ## 연결할 DB설정 - database 생성(mysql)
 
-CREATE DATABASE gogs CHARACTER SET utf8mb4
---계정 생성 및 권한부여
-create user gogs@localhost identified by 'gUser2953!';
-grant all privileges on gogs.* to gogs@localhost;
-flush privileges;
+    CREATE DATABASE gogs CHARACTER SET utf8mb4
+    --계정 생성 및 권한부여
+    create user gogs@localhost identified by 'gUser2953!';
+    grant all privileges on gogs.* to gogs@localhost;
+    flush privileges;
 
 ## 설치
 
@@ -31,7 +32,7 @@ flush privileges;
     $ cd gogs
     $ ./gogs web
 
-    이후 http://localhost:3000 에 브라우저로 접속하여 초기 설정
+이후 http://localhost:3000 에 브라우저로 접속하여 초기 설정, 설정은 그냥 맞는 정보를 넣는 정도로 쉬운편(DB정보,접속 정보 등)
 
 
 ## nginx 설정, 연결
@@ -47,28 +48,26 @@ flush privileges;
 
 nginx를 통해 push 시 413 Request Entity Too Large 에러 발생해서 다음과 같이 수정
 
-nginx.conf 파일 server 영역 안에 추가
-- client_max_body_size 20M; 추가
+    # nginx.conf 파일 server 영역 안에 추가
+    client_max_body_size 20M; 추가
 
 
 ## gogs의 설정 변경
     
-   custom/conf/app.ini 파일의 다음 부분 수정
-   ROOT_URL         = http://www.abc.com/gogs 
+    #custom/conf/app.ini 파일의 다음 부분 수정
+    ROOT_URL         = http://www.abc.com/gogs 
 
-   이후 재기동
-   nohup ./gogs web &
+이후 재기동
+nohup ./gogs web &
 
 
 ## webhook 설정, slack연결
 
 gogs에 push, issue 생성 등의 이벤트시 slack의 원하는 채널에 메세지가 공유되는 형태로 설정 가능
 
-*gogs 설정*
+*gogs설정*
 
-gogs의 Repository의  setting > Webhooks 에서
-
-Payload URL, Channel 정보를 맞게 입력해야 함
+gogs의 Repository의  setting > Webhooks 에서 Payload URL, Channel 정보를 맞게 입력해야 함
 
 *slack 설정*
 
