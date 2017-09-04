@@ -117,6 +117,8 @@ vagrant-ubuntu-trusty-64:
 salt '*' pillar.items
 salt '*' state.apply test
 
+아래는 테스트용 코드임
+
     /srv/salt/test# cat init.sls
     touch /tmp/foo:
       cmd.run:
