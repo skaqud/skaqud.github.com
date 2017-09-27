@@ -1,0 +1,41 @@
+---
+layout: post
+title: Python 개발관련 참고
+date: 2017-09-24 11:04:00
+tags:
+- Tech
+- Development
+- Reference
+---
+
+현재 진행중인 Python api proxy 개발관련 참고사항
+
+# 개발참고
+
+minimal http server
+- https://gist.github.com/bradmontgomery/2219997
+
+logging 추가하는 부분
+- http://gyus.me/?p=418
+
+python hmac method(api인증)
+- https://www.jokecamp.com/blog/examples-of-creating-base64-hashes-using-hmac-sha256-in-different-languages/#python
+
+
+request 모듈에 대한 설명
+- http://dgkim5360.tistory.com/entry/python-requests
+
+python httprequesthandler
+- https://mafayyaz.wordpress.com/2013/02/08/writing-simple-http-server-in-python-with-rest-and-json/
+
+
+# 트러블슈팅
+
+intelliJ에서 외부 디렉토리가 있는데, 참조하지 못할 경우
+
+- pip등으로 다시 설치해 본다.
+  - virtualenv로 라이브러리 디펜던시 문제 없이 개발이나 테스트 가능(사용해 보기)
+- IntelliJ에서 해당 프로젝트의 디렉토리를 source root로 변경한다.
+  - Project View(?)에서 해당 프로젝트, 디렉토리에서 오른쪽 마우스 클릭 > Mark Directory As 메뉴에서 souce root로 지정
+
+윈도우에서는 설치 후 파이썬 설치 디렉토리와 Script 디렉토리까지 path에 넣어야 함
