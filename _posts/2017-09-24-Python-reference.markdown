@@ -39,3 +39,19 @@ intelliJ에서 외부 디렉토리가 있는데, 참조하지 못할 경우
   - Project View(?)에서 해당 프로젝트, 디렉토리에서 오른쪽 마우스 클릭 > Mark Directory As 메뉴에서 souce root로 지정
 
 윈도우에서는 설치 후 파이썬 설치 디렉토리와 Script 디렉토리까지 path에 넣어야 함
+
+
+
+# python unittest
+
+참고 - [python 테스트 시작하기](https://www.slideshare.net/hosunglee948/python-52222334)
+참고2 - [예제로 배우는 Python프로그래밍](http://pythonstudy.xyz/python/article/21-유닛-테스트)
+
+tests디렉토리 하위에 테스트코드가 있을 경우 cli에서 실행은 다음과 같이 
+
+    python -m tests.testName
+
+
+
+
+
