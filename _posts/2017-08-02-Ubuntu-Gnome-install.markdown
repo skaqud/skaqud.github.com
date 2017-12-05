@@ -12,7 +12,8 @@ Ubuntu Gnome 초기 설치 및 세팅방법들, 참고로 17이후 버전에서�
 # 설치 및 환경구성
 
 gnome tweak tool 설치 후
-apt-get install gnome-tweak-tool
+
+    apt-get install gnome-tweak-tool
 
 아래 링크의 내용을 참고하여 테마 등의 설정을 변경
 
@@ -30,32 +31,34 @@ apt-get install gnome-tweak-tool
 알려진 테마는 Paper, Arc, Moka 등이 많이 쓰임 - icon은 Paper, Theme는 Arc로..
 
 Paper 테마 설치
+
     $ sudo add-apt-repository ppa:snwh/pulp
     $ sudo apt-get update
     $ sudo apt-get install paper-gtk-theme paper-icon-theme
 
 Numix 테마 설치
+
     $ sudo add-apt-repository ppa:numix/ppa
     $ sudo apt-get install numix-gtk-theme numix-icon-the me-circle numix-icon-theme
     $ sudo apt-get update
 
 
 
-#팁, 단축키
+# 팁, 단축키
 
-다중 데스크탑 이동
-Ctrl + alt + 위,아래
+    #다중 데스크탑 이동
+    Ctrl + alt + 위,아래
 
-터미널 실행
-Ctrl + alt + T(Terminator 설치시 해당 프로그램이 실행됨.)
+    #터미널 실행
+    Ctrl + alt + T(Terminator 설치시 해당 프로그램이 실행됨.)
 
-Terminator
-Ctrl-Shift-E: 수직분할
-Ctrl-Shift-O: 수평분할
-Ctrl-Shift-P/N : 이전/다음 창 이동(분할된 상태에서)
-Ctrl + alt + 화살표: 창의 spilt상태에서 크기를 조절 가능
+    #Terminator
+    Ctrl-Shift-E: 수직분할
+    Ctrl-Shift-O: 수평분할
+    Ctrl-Shift-P/N : 이전/다음 창 이동(분할된 상태에서)
+    Ctrl + alt + 화살표: 창의 spilt상태에서 크기를 조절 가능
 
-#유틸, 프로그램
+# 유틸, 프로그램
 
 Atom - Sublime text의 경우 한글 입력에 문제가 있음. linux라 램이 좀 널널해서, Atom이 그렇게 느린 느낌이 들지 않는다.
 
