@@ -23,8 +23,8 @@ gnome tweak tool 설치 후
 
 필수라고 하는 dock-plank 설치
 
-  $ sudo add-apt-repository ppa:ricotz/docky
-  $ sudo apt-get update && sudo apt-get install plank
+    $ sudo add-apt-repository ppa:ricotz/docky
+    $ sudo apt-get update && sudo apt-get install plank
 
 처음 설정은 plank --preference 후 창에서 변경하고, 이후 실행할 때마다 자동으로 로딩되도록 하려면 gnome-tweak-tool > 시작 프로그램 메뉴에 plank를 등록해준다.
 
