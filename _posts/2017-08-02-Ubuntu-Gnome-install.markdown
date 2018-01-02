@@ -69,3 +69,12 @@ Pinta - 간단한 이미지 편집용 프로그램으로 사용, UI는 포토샵
 Dropbox - 다음과 같이 설치
 
   apt-get install nautilus-dropbox
+
+
+# 참고
+
+- [유용한_어플리케이션_:_내가_좋아하고_당신이_좋아할만한_소프트웨어_:_바람직한_우분투_초보자_문서](https://wiki.ubuntu-kr.org/index.php/%EC%9C%A0%EC%9A%A9%ED%95%9C_%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_:_%EB%82%B4%EA%B0%80_%EC%A2%8B%EC%95%84%ED%95%98%EA%B3%A0_%EB%8B%B9%EC%8B%A0%EC%9D%B4_%EC%A2%8B%EC%95%84%ED%95%A0%EB%A7%8C%ED%95%9C_%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4_:_%EB%B0%94%EB%9E%8C%EC%A7%81%ED%95%9C_%EC%9A%B0%EB%B6%84%ED%88%AC_%EC%B4%88%EB%B3%B4%EC%9E%90_%EB%AC%B8%EC%84%9C)
+
+- [박정규 bagjunggyu 님의 블로그](http://bagjunggyu.blogspot.kr/)
+
+-
