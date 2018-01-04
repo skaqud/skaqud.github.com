@@ -16,7 +16,8 @@ Docker hub에서 redmine으로 검색하면 많은 이미지들이 뜸, 가급�
 # Redmine 설치(on docker)
 
 별도로 설치하는 방법보다 간단함.
-우선은 db를 먼저 설치한다. 이미 설치되어 있는 db예 database를 만들고, 계정을 설정하여 사용하거나, mysql 자체도 docker로 띄워 link시켜 사용할 수 있다.
+
+우선은 db를 먼저 설치한다. 이미 설치되어 있는 db에 database를 만들고, 계정을 설정하여 사용하거나, mysql 자체도 docker로 띄워 link시켜 사용할 수 있다.
 
 별도로 사용할 경우 다음과 같이 database를 만들고 계정을 설정한다.(mysql기준)
 
