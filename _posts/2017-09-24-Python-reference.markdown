@@ -21,7 +21,6 @@ logging 추가하는 부분
 python hmac method(api인증)
 - https://www.jokecamp.com/blog/examples-of-creating-base64-hashes-using-hmac-sha256-in-different-languages/#python
 
-
 request 모듈에 대한 설명
 - http://dgkim5360.tistory.com/entry/python-requests
 
@@ -51,6 +50,11 @@ tests디렉토리 하위에 테스트코드가 있을 경우 cli에서 실행은
 
     python -m tests.testName
 
+
+# Python 프로젝트 구조관련
+
+참고 - [python - 전형적인 테스트 디렉토리 구조로 unittest 실행하기](http://code.i-harness.com/ko/q/1cf1d6)
+참고2 - [Python Project Howto](http://infinitemonkeycorps.net/docs/pph/)
 
 
 
