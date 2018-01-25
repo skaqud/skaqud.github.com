@@ -135,4 +135,7 @@ vundle을 이용해 NERDTree 설치
 
 참고3 - [vim 사용자를 위한 플러그인 매니저 vundle 을 소개 합니다.](https://kldp.org/node/125263)
 
+-> [vim-plug](https://github.com/junegunn/vim-plug)가 속도가 더 빠르고 편하다고 함
+
+
 참고4 - [vimawesome](http://vimawesome.com)
