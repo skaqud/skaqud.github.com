@@ -7,7 +7,7 @@ tags:
   - Docker
 ---
 
-Linux Container 관련 용어에 대한 설명(작성중)
+Linux Container 관련 용어에 대한 설명
 
 docker가 뭐하는 건지는 알겠는데, 어떤 원리로 돌아가는지 용어 자체를 모르겠어서 정리해 봄.
 
