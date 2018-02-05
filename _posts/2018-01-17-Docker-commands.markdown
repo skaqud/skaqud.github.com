@@ -87,6 +87,11 @@ Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
     docker-compose up
     # 기동(background로)
     docker-compose up -d
+    # 기동(background로, 특정 서비스만)
+    docker-compose up -d mysql
+    # 기동(background로, 특정 서비스만, scale설정)
+    docker-compose up -d scale mysql=2
+
     # 종료
     docker-compose down
     #볼륨까지 제거
@@ -100,10 +105,14 @@ Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
     docker-compose ps
 
     # 생성된 이미지까지 삭제
-    docker-compose down -rmi
+    docker-compose down -rmi local(all)
+
+    # 프로젝트 지정
+    docker-compose -p myproject
 
 
-# docker swarm
+
+# docker swarm mode
 
     #정보 조회 - 초기에는 비활성화 되어 있음
     docker info
@@ -152,3 +161,13 @@ routing mesh - swarm상에서 들어오는 패킷을 routing, virtual ip로 netw
 
 watch 명령 - 주기적으로 결과를 보여줌.
 watch docker service ls
+
+## 기타
+
+docker deamon에 보안 적용 : --tlsverify
+  - 기본 설치시 보안 연결이 적용되어 있지 않으며, 실 운영시에는 적용하여 데몬에 TLS, 도커 클라이언트는 인증된 것만 사용하도록 적용해야 함
+
+docker stats : 실행중인 모든 컨테이너의 자원 사용량
+
+스웜/스웜 모드 : 스웜(에이전트,코디네이터 필요), 스웜모드(도커에 내장됨)
+
