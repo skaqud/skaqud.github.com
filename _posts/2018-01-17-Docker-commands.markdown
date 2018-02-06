@@ -171,3 +171,10 @@ docker stats : 실행중인 모든 컨테이너의 자원 사용량
 
 스웜/스웜 모드 : 스웜(에이전트,코디네이터 필요), 스웜모드(도커에 내장됨)
 
+rancher-server 설치 및 테스트 :
+
+rancher server 설치 및 테스트해 보기
+
+    docker container run -d \
+    --restart=unless-stopped -p 8080:8080 \
+    --name=rancher-server rancher/server
