@@ -15,7 +15,7 @@ Cloud Foundry에 관한 정리
 
 처음 접근시 파악하기 힘든 부분이 있는데, Pivotal Web Service에 계정을 만들고 Get Started 부터 차근차근 해 보는 게 좋을듯. 오픈소스 버전의 경우 UI가 없음.
 
-아키텍처는 단순하게 예를 들자면 아래와 같음-[참고:cloud-foundry-v2-beginner](https://www.slideshare.net/jacopen/cloud-foundry-v2-beginner),
+아키텍처는 단순하게 예를 들자면 아래와 같음-[cloud-foundry-v2-beginner](https://www.slideshare.net/jacopen/cloud-foundry-v2-beginner)
 
 - Cloud Controller - API를 제공하고 각각의 구성요소를 제어
 - Router - API와 Apps에 대한 접근을 전달
@@ -61,11 +61,14 @@ Cloud Foundry에 관한 정리
 
 target디렉토리 하위에 생성된 jar를 cf에 push하면 됨.
 
-PCF에 로그인한 뒤(PWS계정 필요)
-cf login -a https://api.run.pivotal.io
+PCF에 로그인한 뒤(PWS계정 필요) 푸쉬
+    
+    # login
+    cf login -a https://api.run.pivotal.io
+    # push(deploy)
+    cf push spring-petclinic -p target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar -b https://github.com/cloudfoundry/java-buildpack.git
 
-
-
+이후 PWS의 콘솔에서 실행된 화면을 확인할 수 있음
 
 # 참고자료
 
@@ -77,9 +80,9 @@ cf login -a https://api.run.pivotal.io
 
 - [pass-ta](https://paas-ta.kr)
 
-- [Cloud Foundry | How it works](https://www.slideshare.net/jacopen/cloud-foundry-v2-beginner)
+- [Cloud Foundry - How it works](https://www.slideshare.net/jacopen/cloud-foundry-v2-beginner)
 
-- [Cloud Foundry V2 | Intermediate Deep Dive](https://www.slideshare.net/jacopen/cloud-foundry-v2-intermediate)
+- [Cloud Foundry V2 - Intermediate Deep Dive](https://www.slideshare.net/jacopen/cloud-foundry-v2-intermediate)
 
 - [Cloud Foundry Technical Overview](https://www.slideshare.net/cdavisafc/cloud-foundry-technical-overview)
 
