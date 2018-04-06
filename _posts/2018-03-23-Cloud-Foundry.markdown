@@ -59,6 +59,15 @@ Cloud Foundry에 관한 정리
     $ cd spring-petclinic
     $ ./mvnw clean install
 
+push를 위해서 cf의 설정파일을 생성해 줌 
+
+    $ vi manifest.yml
+    applications:
+        - name: spring-petclinic
+          memory: 768M
+          instances: 1
+          random-route: true
+
 target디렉토리 하위에 생성된 jar를 cf에 push하면 됨.
 
 PCF에 로그인한 뒤(PWS계정 필요) 푸쉬
