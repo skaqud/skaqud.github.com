@@ -335,14 +335,14 @@ tar로 sun jdk 설치시 - apt-get 등으로는 sun-jdk를 바로 설치하기 �
     $ python -m SimpleHTTPServer 8080
 
 
-## Screen 명령정리
+## Tmux 명령정리(Screen은 사용하지 않음)
 
 예전 터미널 상에서의 screen 명령보다는 tmux를 쓰거나 terminator 등 멀티화면 지원하는 ssh client를 쓰는 게 나음.
 tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 있지 않아서 터미널상에서 바로 쓸 수 있는 멀티Screen도구일 것 같음.
 
-    #설치
+    # 설치
     $ apt-get install tmux
-    #실행(실행시 아래 상태창이 생김)
+    # 실행(실행시 아래 상태창이 생김)
     $ tmux
     # 새 창띄우기 - 순서대로 0부터 번호가 부여된 창이 생성됨
     Ctrl+B 누르고 C
@@ -351,7 +351,7 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
     # 같은 화면을 나눠서 쓸 경우
     Ctrl+B 누르고 화살표
     # 화면 나누기(가로)
-    Ctrl+B 누르고 =
+    Ctrl+B 누르고 "
     # 화면 나누기(세로)
     Ctrl+B 누르고 %
 
