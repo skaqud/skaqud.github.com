@@ -88,6 +88,10 @@ Oh My Zsh 설치
 - [gruvbox 테마](https://github.com/morhetz/gruvbox)
 - [Fantasque Sans Mono font](https://github.com/belluzj/fantasque-sans)
 
+oh-my-zsh 플러그인
+
+- [Oh my zsh with autosuggestions & syntax-highlighting](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95)
+
 # vim 설치 및 설정
 
 ## 환경설정 ##
