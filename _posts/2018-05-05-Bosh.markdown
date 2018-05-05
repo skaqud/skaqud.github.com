@@ -26,8 +26,8 @@ Bosh 소개
 
 기본적으로 관리자가 CLI를 통해 명령을 수행하며, 해당 명령은 Director를 통해 CF 상의 VM에서 실행되고 수행된다.
 
-
 https://bosh.io/docs/images/bosh-architecture.png
+
 
 디플로이 절차
 
@@ -35,6 +35,7 @@ https://bosh.io/docs/images/deploy-sequence.png
 
 
 ## bosh 내부용어
+
 - release : 어플리케이션을 빌드하고 디플로이 하기 위한 버전 관리되는 설정 프로퍼티, 템플릿, 스크립트, 소스코드, 바이너리 파일 등의 집합
 - deployment : stemcell로 부터 생성된 VM의 집합, 특정 release로 부터 생성되고, 디스크에 데이터를 저장한다. Director라고 하는 중앙 서버의 배치 manifest에 의해 생성되고 관리된다.
 - stemcell : BOSH(CF)에서 사용하는 VM이미지, Director와 연결되는 agent를 기본적으로 가지고 있는 OS 이미지인 듯 하다. Director를 통해서만 VM을 생성할 수 있다.
@@ -122,6 +123,7 @@ bosh를 이용해 어플리케이션을 릴리즈 해 보는 테스트이며, bo
 http://mariash.github.io/learn-bosh
 
 --> ruby로 만든 웹 앱을 릴리즈 해 보는 테스트
+
 
 ### 디플로이 테스트(CF)
 
