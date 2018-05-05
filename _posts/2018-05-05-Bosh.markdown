@@ -4,10 +4,12 @@ title: Bosh 소개
 date: 2018-05-05 11:21:00
 tags:
 - Tech
-- CF
+- Bosh
 ---
 
+
 Bosh 소개
+
 
 
 ## bosh란?
@@ -181,3 +183,4 @@ https://starkandwayne.com/blog/running-cloud-foundry-locally-on-bosh-lite-with-b
     bosh -e vbox -d cf stop --hard
     # start all instances
     bosh -e vbox -d cf start
+
