@@ -13,7 +13,24 @@ VI사용시 자주 까먹는, 팁 모음
 
 ## 환경설정 ##
 
-로컬의 .vimrc 안에 다음과 같은 내용을 넣음.
+로컬의 .vimrc
+
+    " Specify a directory for plugins
+    " - For Neovim: ~/.local/share/nvim/plugged
+    " - Avoid using standard Vim directory names like 'plugin'
+    call plug#begin('~/.vim/plugged')
+
+    " Make sure you use single quotes
+
+    " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+    Plug 'junegunn/vim-easy-align'
+
+    " vim-airline
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    " Initialize plugin system
+    call plug#end()
 
     set hlsearch
     set ts=4
@@ -33,8 +50,8 @@ VI사용시 자주 까먹는, 팁 모음
     set softtabstop=4
     set tabstop=4
     set ruler
-    #keymap setting
-    nmap <F7> :NERDTree<CR>
+
+    "colorscheme jellybeans 
 
 ## Vundle, NERDTree 설치 ##
 
@@ -62,8 +79,13 @@ vundle을 이용해 NERDTree 설치
 
 -> [vim-plug](https://github.com/junegunn/vim-plug)가 속도가 더 빠르고 편하다고 함
 
-
 참고4 - [vimawesome](http://vimawesome.com)
+
+## vim-plug,vim-airline 설치
+
+추가중
+
+
 
 
 # Tab과 Space 관련
