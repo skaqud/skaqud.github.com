@@ -5,7 +5,8 @@ date: 2019-01-05 13:21:00
 tags:
 - Tech
 - Linux
-- 
+- Shell
+- Programming
 ---
 
 # Shell Programming 가이드
