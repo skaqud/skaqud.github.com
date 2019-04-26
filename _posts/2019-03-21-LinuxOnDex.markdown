@@ -8,8 +8,6 @@ tags:
 - Dex
 ---
 
-# linux on dex 설치
-
 갤럭시탭s4에 dex on linux 설치 및 사용기
 
 

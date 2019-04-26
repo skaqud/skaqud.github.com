@@ -9,8 +9,6 @@ tags:
 - Programming
 ---
 
-# Shell Programming 가이드
-
 - 쉘 프로그래밍 작성시 주의해야 할 부분, 어떻게 작성해야 하는지
 - Linux에 익숙하지 않은 개발자가 Devops환경에 적당히 적응하기 위한 쉘 사용법
 
