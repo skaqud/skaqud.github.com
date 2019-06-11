@@ -14,15 +14,18 @@ docker가 뭐하는 건지는 알겠는데, 어떤 원리로 돌아가는지 용
 
 # 용어설명
 
-`namespace` - 독립되고, 가상화 된 공간을 제공하는 리눅스 기술, Docker나 LXC모두 namespace 기술을 기반으로 만들어 짐. hostname, filesystem, network, process, ipc등 알려진 컴퓨팅 자원을 모두 분할한다.
+chroot, namespace, cgroup 기본적으로 세개 기술을 기반으로 만들어졌다고 생각. chroot는 오래전부터 있던 기술(82년), cgroup은 구글이 2006년 만들었음. 
+
+`chroot`(change root) - `파일을 분리(격리)하여 독립공간을 생성`,보안을 위해 새로운 가상 root 디렉토리를 생성하는 명령, 상위로 이동 불가능. 이 기능을 이용해서 ftp나 타 서비스에 활용하여 보안을 강화하는 데 사용하기도 함.
+
+`namespace` - `자원을 분리(격리)하여 독립된 공간을 만듦`, 독립되고, 가상화 된 공간을 제공하는 리눅스 기술, Docker나 LXC모두 namespace 기술을 기반으로 만들어 짐. ipc,mount,network,pid,user,uts등 6가지의 알려진 컴퓨팅 자원을 모두 분할한다.(커널 4.6이후에는 8가지)
 
 참고 - [Linux namespace](http://bluese05.tistory.com/11)
 
-`cgroup`(Control Groups) - CPU,memory 등 자원 사용률을 격리, 할당, 제한하는 Linux kernel의 기능
+`cgroup`(Control Groups) - `격리된 공간에서 자원을 제어할 수 있는기능`,CPU,memory 등 자원 사용률을 격리, 할당, 제한하는 Linux kernel의 기능
 
 참고 - [linux - cgroups (control groups)](http://linuxism.tistory.com/1601)
 
-chroot(change root) - 보안을 위해 새로운 가상 root 디렉토리를 생성하는 명령, 상위로 이동 불가능. 이 기능을 이용해서 ftp나 타 서비스에 활용하여 보안을 강화하는 데 사용하기도 함.
 
 
 # Docker의 원리
@@ -38,7 +41,7 @@ Docker 0.9 version 이후로 docker의 execution driver가 Docker 엔진으로�
 docker -d -e lxc
 
 Docker 이미지는 유니온 파일 시스템(AUFS)을 이용해 변경된 부분만 저장하고 있음.
-
+- 향후 overlay, overlay2로 발전되는 레이어드 된 구성을 가능하게 하는 파일시스템
 
 # 그밖의 컨테이너 기술들
 
