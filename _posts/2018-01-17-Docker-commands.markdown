@@ -9,9 +9,15 @@ tags:
 
 Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
 
-기존 버전과 달리 docker 관련 명령들이 docker + command + sub-command 방식으로 변경됨, 기존 명령도 동일하게 동작하나, 새로운 방식으로 사용하는 게 좋을 듯.
+기존 버전과 달리 docker 관련 명령들이 docker + command + sub-command 방식으로 변경됨, 기존 명령도 동일하게 동작하나, 새로운 방식으로 사용하는 게 좋을 듯. -> 입력시에는 짧은 게 좋을 것 같다. 
 
-# basic command
+# Docker
+
+Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 자체)는 읽기 전용이며, 다운로드시 기존 레이어를 재활용, 컨테이너 화 될때 RW레이어가  됨. 컨테이너 화 되면서 host파일, IP생성, dns설정 OS로 구동하기 위한 부분들이 생성, 설정됨
+
+## basic command
+
+    중간의 container 부분은 실제 입력시에는 생략 가능함.
 
     # 컨테이너 기동하기
     docker container run --publish 80:80 nginx
@@ -49,7 +55,22 @@ Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
     #alpine은 아주 작은 linux 배포본(bash가 없음)
     docker container run -it alpine sh
 
-# network command
+    #상세정보 보기
+    docker inspect web1
+    #history - 결과 목록만큼의 레이어 갯수를 확인(--no-trunc:truncate하지 않음)
+    docker image history ubuntu --no-trunc
+    #변경된 부분 확인 - 컨테이너 화 이후
+    docker diff web1 
+    # rename
+    docker rename abc web1
+
+    # 기본적으로 main프로세스를 나갈 경우 컨테이너가 멈추는데
+    # Crtl + p + q = container를 멈추지 않고 빠져나가기 <-> docker attach
+
+    # 검색-공식repo만 가능
+    docker search nginx --no-trunc
+
+## network command
 
     # port 확인(outer:inner)
     docker container run -p 80:80 --name webhost -d nginx
@@ -66,7 +87,7 @@ Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
     #net-alias 주기
     docker container run -d --net dude --net-alias search elasticsearch:2
 
-# image, volume command
+## image, volume command
 
     #이미지 확인
     docker image inspect nginx를
@@ -79,6 +100,31 @@ Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
     docker volumn create --help
     #bind mounting(add pwd)
     -v $(pwd):/usr/share/nginx/html
+
+    #나만의 컨테이너 이미지 만들기 - 현존하는 컨테이너의 이미지를 받아서 commit
+    #시작
+    docker container run -d --name web1 -p 80:80 nginx
+    # ubuntu-net이라는 이미지가 생김
+    docker container commit c1 ubuntu-net
+    # 히스토리가 보이긴 하나 다 보이지 않음. docker파일 이후 작업은 상세히 안나옴.
+    docker history ubuntu-net --no-trunc
+
+    #docker container export - 컨테이너를 단일레이어로 압축해버림.
+    docker container export c1 -o ubuntu-net.tar
+    #docker image save - 멀티레이어를 그대로 export함, 같은 이름의 이미지로 저장
+    docker image save ubuntu-net:latest -o unet.tar
+    # docker image import - export한 파일을 import
+    docker image import ubuntu-net.tar net:v1
+    # docker image load - save한 파일을 load
+    docker image load -i unet.tar
+
+    #외부 볼륨을 마운트해서 registry를 시작하고
+    docker container run -d --name registry -p 5000:5000 -v /image-data:/var/lib/registry registry
+    #태그 변경
+    docker tag busybox docker:5000/busybox
+    #해당 registry에 업로드
+    docker push docker:5000/busybox
+
 
 
 # docker-compose
