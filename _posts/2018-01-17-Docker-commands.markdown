@@ -9,15 +9,16 @@ tags:
 
 Docker-mastery 과정에서 정리한 Docker commands 모음(from udemy)
 
-기존 버전과 달리 docker 관련 명령들이 docker + command + sub-command 방식으로 변경됨, 기존 명령도 동일하게 동작하나, 새로운 방식으로 사용하는 게 좋을 듯. -> 입력시에는 짧은 게 좋을 것 같다. 
+기존 버전과 달리 docker 관련 명령들이 docker + command + sub-command 방식으로 변경됨, 기존 명령도 동일하게 동작하나, -새로운 방식으로 사용하는 게 좋을 듯.- -> 입력시에는 짧은 게 좋을 것 같다. 
 
 # Docker
 
-Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 자체)는 읽기 전용이며, 다운로드시 기존 레이어를 재활용, 컨테이너 화 될때 RW레이어가  됨. 컨테이너 화 되면서 host파일, IP생성, dns설정 OS로 구동하기 위한 부분들이 생성, 설정됨
+Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 자체)는 읽기 전용이며, 다운로드시 기존 레이어를 재활용, 컨테이너화 될때 RW레이어가 됨. 컨테이너화 되면서 host파일, IP생성, dns설정 OS로 구동하기 위한 부분들이 생성, 설정됨
 
 ## basic command
 
-    중간의 container 부분은 실제 입력시에는 생략 가능함.
+- 중간의 container 부분은 실제 입력시에는 생략 가능함.
+- 명령은 대부분 truncate되어 결과가 보여지며, 다 보려면 --no-trunc 옵션을 추가하면 됨.
 
     # 컨테이너 기동하기
     docker container run --publish 80:80 nginx
@@ -28,7 +29,7 @@ Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 �
 
     # 목록조회
     docker container ls
-    # 목록조회(stop중인것까지) - 앞3문자까지 입력해도 동작, zsh이므로 자동완성을 사용해도 됨
+    # 목록조회(stop중인것까지) - 앞3문자까지 입력해도 동작, 자동완성을 사용해도 됨
     docker container ls -a
     docker container stop a4e
 
@@ -118,11 +119,11 @@ Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 �
     # docker image load - save한 파일을 load
     docker image load -i unet.tar
 
-    #외부 볼륨을 마운트해서 registry를 시작하고
+    #외부 볼륨을 마운트해서 registry를 시작
     docker container run -d --name registry -p 5000:5000 -v /image-data:/var/lib/registry registry
     #태그 변경
     docker tag busybox docker:5000/busybox
-    #해당 registry에 업로드
+    #해당 registry에 업로드, busybox는 네트웤 명령이 들어간 scratch기반 OS
     docker push docker:5000/busybox
 
 
@@ -137,6 +138,7 @@ Docker 이미지는 연결된 여러 레이어로 구성, 레이어(이미지 �
     docker-compose up -d mysql
     # 기동(background로, 특정 서비스만, scale설정)
     docker-compose up -d scale mysql=2
+    # 늘렸다가 다시 줄일 수 있음. 나중에 실행된 컨테이너가 종료됨
 
     # 종료
     docker-compose down
