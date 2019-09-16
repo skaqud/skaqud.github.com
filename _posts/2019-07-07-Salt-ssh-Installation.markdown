@@ -22,14 +22,9 @@ https://repo.saltstack.com/#ubuntu 을 참고하여 master에 salt-ssh를 설치
 
     deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main
 
+    # 저장한 뒤 아래 명령을 수행
     apt update
     apt install salt-ssh
-
-다른 툴을 원한다면 아래와 같이 설치해도 좋음.
-
-    apt install salt-master
-    apt install salt-minion
-
 
 ## 사전작업
 
@@ -37,13 +32,21 @@ ssh를 통해 명령을 전달하기 위해 ssh key(openssh의 public key)를 �
 
 우선은 master서버의 roster파일에 명령을 내릴 대상의 정보를 등록한다.
 
+    # 다음 파일은 salt-ssh설치시 자동으로 생성되어 있음
     vi /etc/salt/roster
     minion:
     host: 192.168.100.101
     user: vagrant
     sudo: True
 
-master서버에서 minion을 향해 키를 등록한다.
+salt-ssh 설치 후 적어도 한 번은 명령을 실행해 주어야 다음 작업을 위한 key가 생성된다.
+
+
+    root@master:/etc/salt# salt-ssh minion test.ping -i
+    [ERROR   ] Failed collecting tops for Python binary python3.
+    ...
+
+master서버에서 minion을 향해 생성된 키(salt-ssh.rsa.pub)를 등록한다.
 
     ssh-copy-id -i /etc/salt/pki/master/ssh/salt-ssh.rsa.pub vagrant@192.168.100.101
 
@@ -60,6 +63,7 @@ master서버에서 minion을 향해 키를 등록한다.
 service ssh restart 로 재시작한 뒤, 다시 키를 등록하면 등록됨
     
     ssh-copy-id -i /etc/salt/pki/master/ssh/salt-ssh.rsa.pub vagrant@192.168.100.101
+
 
 ## 실행 및 확인
 
