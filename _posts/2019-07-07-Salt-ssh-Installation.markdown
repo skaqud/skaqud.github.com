@@ -39,7 +39,7 @@ ssh를 통해 명령을 전달하기 위해 ssh key(openssh의 public key)를 �
     user: vagrant
     sudo: True
 
-salt-ssh 설치 후 적어도 한 번은 명령을 실행해 주어야 다음 작업을 위한 key가 생성된다.
+salt-ssh 설치 후 적어도 한 번은 아래 명령을 실행해 주어야 이후 작업을 위한 공개key가 생성된다.
 
 
     root@master:/etc/salt# salt-ssh minion test.ping -i
@@ -54,7 +54,7 @@ master서버에서 minion을 향해 생성된 키(salt-ssh.rsa.pub)를 등록한
     
     vagrant@192.168.100.101: Permission denied (publickey).
 
-아래와 같이 대상서버의 /etc/ssh/sshd_config를 수정
+아래와 같이 먼저 대상서버에 ssh를 비번으로 접속해야 한다. 대상서버의 /etc/ssh/sshd_config를 수정
 
     vi /etc/ssh/sshd_config
     # 다음 부분만 수정해준뒤
@@ -67,7 +67,7 @@ service ssh restart 로 재시작한 뒤, 다시 키를 등록하면 등록됨
 
 ## 실행 및 확인
 
-이후 아래와 같이 명령을 실행할 겸, salt formula를 전송하기 위해 python을 minion에 설치한다. 이후 명령 수행을 위해 반드시 설치 필요함.
+이후 아래와 같이 명령을 실행할 겸, salt formula를 전송하기 위해 python을 minion에 설치한다. 이후 명령 수행을 위해 처음 한 번은 반드시 설치 필요함.
 
     salt-ssh minion -r 'sudo apt update;sudo apt install -y python-minimal'
 
@@ -84,7 +84,7 @@ service ssh restart 로 재시작한 뒤, 다시 키를 등록하면 등록됨
 
 기존에 만들어 놓은 salt formula들을 다음경로에 맞게 넣은 후 실행해 본다.
 
-    #formula 위치
+    #기본 formula 위치
     #/srv/saltstack, /srv/pillar
 
 아래와 같이 실행하여 설치를 확인한다.
