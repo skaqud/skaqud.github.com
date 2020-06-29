@@ -67,14 +67,18 @@ ubuntu, centos 에서 git은 최신 바이너리가 아닌 경우가 많음(항�
 
 Oh My Zsh 설치
 
-    $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-
+    # 2020.06 업데이트 from https://github.com/ohmyzsh/ohmyzsh
+    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # powerline10k
+    $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    
 참고 - http://nolboo.kim/blog/2015/08/21/oh-my-zsh/
 
-테마는 agnoster 등이 적당함. 설치시 git repository 표현에 몇몇 특수문자들이 필요하며, 폰트를 별도로 설치해 주는 게 좋다.
+~~테마는 agnoster 등이 적당함. 설치시 git repository 표현에 몇몇 특수문자들이 필요하며, 폰트를 별도로 설치해 주는 게 좋다.~~
 
-- [agnoster.zsh theme](https://gist.github.com/agnoster/371287)
-- [Powerline font](https://github.com/powerline/fonts)
+- [powerline10k](https://github.com/romkatv/powerlevel10k#oh-my-zsh) - (2020.06 업데이트)
+~~- [agnoster.zsh theme](https://gist.github.com/agnoster/371287)~~
+~~- [Powerline font](https://github.com/powerline/fonts)~~
 
 바로 위에 가서 받으면 됨.
 
