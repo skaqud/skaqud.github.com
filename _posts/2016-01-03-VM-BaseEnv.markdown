@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "VM 기본환경 구성하기"
+title:  "Linux 기본환경 구성하기"
 date:   2016-01-03 11:20:15 +0700
 tags:
 - reuse
@@ -12,9 +12,9 @@ tags:
 
 ---
 
-vagrant 를 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임
+vagrant 등을 사용하여 vm을 올릴 경우 매번 환경이 초기화되어, 번거로운 부분들이 있는데, 이런 부분들에 대해 정리해두고 매번 삽질하지 않도록 하기 위함임
 
-다음과 같은 내용들을 포함합니다.(ubuntu 14,16 버전 대상, 이 문서는 지속적으로 보완중입니다.)
+다음과 같은 내용들을 포함합니다.(ubuntu 14,16,18,20 버전 대상, 이 문서는 지속적으로 보완중입니다.)
 
 - repository 설정
 - shell설정
@@ -80,6 +80,8 @@ Oh My Zsh 설치
 ~~- [agnoster.zsh theme](https://gist.github.com/agnoster/371287)~~
 ~~- [Powerline font](https://github.com/powerline/fonts)~~
 
+powerelevel10k 를 받은 뒤 다음과 같이 zshrc 파일 안에 설정함(Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc
+)
 바로 위에 가서 받으면 됨.
 
 우분투 상에서 받은 otf 폰트는 /usr/share/fonts/opentype 하위에 넣으면 시스템에서 인식한다.(없을 경우 생성)
