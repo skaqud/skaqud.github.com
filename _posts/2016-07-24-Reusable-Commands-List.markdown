@@ -421,6 +421,23 @@ git remote set-url origin git@github.com:xxxx/repo.git
 xxxx/repo 부분만 변경
 
 
+## WSL
+
+### 기본 ubuntu 배포반 버전 변경하기
+
+https://winaero.com/blog/set-default-wsl-linux-distro-windows-10/
+
+wsl --list --all 
+로 목록 확인 후
+
+Ubuntu
+Ubuntu-20.04
+
+wsl --setdefault <DistributionName>
+와 같이 변경
+
+wsl --setdefault Ubuntu-20.04
+
 
 
 
