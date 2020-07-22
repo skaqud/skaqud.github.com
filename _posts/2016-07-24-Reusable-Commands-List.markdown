@@ -414,5 +414,13 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
 ssh -T git@github.com
 Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.
 
-이후 다시 확인
+위의 메세지 확인한 뒤
+
+git remote set-url origin git@github.com:xxxx/repo.git
+
+xxxx/repo 부분만 변경
+
+
+
+
 
