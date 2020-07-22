@@ -414,5 +414,5 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
 ssh -T git@github.com
 Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.
 
-
+이후 다시 확인
 
