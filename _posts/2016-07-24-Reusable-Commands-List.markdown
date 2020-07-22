@@ -399,3 +399,20 @@ tmux의 경우 사용법이 그나마 간단하고, 별도의 GUI를 가지고 �
     http.proxyLogin=USER@PASSWORD
     http.proxyPort=PORTNUMBER
     http.proxyHost=PROXYHTTP
+
+## Github
+
+### SSH 키 등록하기
+
+키 생성(ssh-keygen) - .ssh/id_rsa.pub 파일 내용 복사 - github 사이트에 등록
+
+이후 자동으로 해당 키를 사용하지 않을 경우
+
+[매뉴얼](https://docs.github.com/en/github/authenticating-to-github/error-permission-denied-publickey
+)을 참고하여 다음과 같이 실행
+
+ssh -T git@github.com
+Hi xxx! You've successfully authenticated, but GitHub does not provide shell access.
+
+
+
