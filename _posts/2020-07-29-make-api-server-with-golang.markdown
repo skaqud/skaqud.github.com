@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "golang기반 webhook 수신 서버 작성"
+title:  "golang기반 RestAPI서버 작성"
 date:   2020-07-29 10:43:00 +0900
 tags:
 - Docker
@@ -218,8 +218,8 @@ wsl1 에서는 docker를 사용하는 데 제약이 있었으나, wsl2에서는 
 golang 실행파일을 dockerize 하기 위해 Dockerfile을 만들고 컨테이너 빌드하는 과정이 필요합니다. 다음과 같이 Dockerfile을 생성합니다.
 
     FROM ubuntu                                                                         │
-    COPY ./sample/api/api /
-    CMD ["/api"]    
+    COPY ./sample/api/api /sampleapi
+    CMD ["/sampleapi"]    
 
 다음과 같이 빌드 및 실행합니다.
 
