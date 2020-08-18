@@ -79,7 +79,7 @@ Remote-WSL, Go 플러그인을 먼저 설치 한 뒤 New Window로 창을 하나
 Go플러그인에서 Install on WSL이라는 버튼이 활성화되어 설치한 뒤
 golang 소스파일을 하나 열면 관련된 플러그인들이 함께 설치되기 시작합니다. 플러그인 갯수는 lint계열부터 test 계열까지 5~10개 정도이며, 각각 개별/일괄로 우측 하단에 설치 관련된 알람을 눌러 설치를 진행하면 됩니다.(사전에 wsl상의 인스턴스에서 go관련 path가 정상으로 설정되었다면 무리없이 진행할 수 있을듯 합니다.)
 
-### go sample코드 생성
+## go sample코드 생성
 
 다음과 같은 샘플파일을 하나 만든 뒤, Run 까지 해보면서 관련 플러그인을 설치
 
@@ -122,7 +122,7 @@ golang 소스파일을 하나 열면 관련된 플러그인들이 함께 설치�
 
 테스트코드를 정상적으로 인식한 경우 vscode 상의 해당 테스트함수 바로 위에 run test 라고 메뉴가 보이며, 바로 테스트코드를 실행할 수 있습니다. 패키지 명 위에서는 해당 패키지의 테스트코드를 모두 수행하고 커버리지를 측정해 줍니다.
 
-### Sample API 서버 만들기
+## Sample API 서버 만들기
 
 go에서 애플리케이션 설계하기 - https://golangkorea.github.io/post/structuring-applications-in-go/
 
@@ -168,7 +168,7 @@ golang에서 일반적으로 웹 서비스를 만들기 위한 프레임워크�
 
 또한 go build main.go 와 같이 실행하면 나오는 실행파일을 docker로 만들어 Micro Service Architecture를 구성하는 서비스를 생성할 수 있습니다.
 
-### WSL2에 Docker 설치
+## WSL2에 Docker 설치
 
 golang으로 빌드된 실행파일은 여타의 다른 라이브러리나, 설정이 필요 없이 단독으로 실행 가능한 파일이므로, Docker 이미지 안에 Copy후 단순히 서비스를 실행하는 것 만으로도 서비스 실행이 가능하며 크기나, 실행 방법 측면에서 다른 언어들에 비해 무척 가볍고 단순합니다.
 
@@ -213,7 +213,7 @@ wsl1 에서는 docker를 사용하는 데 제약이 있었으나, wsl2에서는 
 
 브라우저를 통해 http://localhost 를 호출하시면 정상적으로 설치되었음을 확인할 수 있습니다.
 
-### Sample API Service Dockerize
+## Sample API Service Dockerize
 
 golang 실행파일을 dockerize 하기 위해 Dockerfile을 만들고 컨테이너 빌드하는 과정이 필요합니다. 다음과 같이 Dockerfile을 생성합니다.
 
